@@ -7,30 +7,29 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoginComponent } from './pages/login/login.component';
-import { MatCardModule, MatIconModule, MatToolbarModule, MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatCardModule, MatIconModule, MatToolbarModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSliderModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { PAGES } from './pages';
+import { COMPONENTS } from './components';
 
-// import { FlexLayoutModule } from '@angular/flex-layout/typings/module';
+const staticImports: any[] = [
+  //FlexLayoutModule,
+  MaterialModule
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    NavBarComponent,
-    LoginComponent
+    ...PAGES,
+    ...COMPONENTS
   ],
   imports: [
+    staticImports,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     BrowserAnimationsModule,
-    MatCardModule,
-    MatIconModule,
-    // FlexLayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
+    
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
     ])
