@@ -1,11 +1,17 @@
+:host {
+    background-color: blue;
+    color: white;
+    width: 100%;
+}
+
+.NavBar_MainContainer{
+}
+
 .rightNavBar{
-    background-color: brown;
 }
 
 .centralNavBar{
-    background-color: chartreuse;
 }
 
 .leftNavBar{
-    background-color: blue;
 }
