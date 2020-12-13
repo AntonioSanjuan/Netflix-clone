@@ -8,6 +8,7 @@
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
+    "esModuleInterop":true,
     "experimentalDecorators": true,
     "target": "es2015",
     "typeRoots": [
@@ -17,5 +18,7 @@
       "es2017",
       "dom"
     ]
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }
