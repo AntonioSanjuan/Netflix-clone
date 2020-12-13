@@ -3,12 +3,15 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { PAGES } from './pages';
 import { COMPONENTS } from './components';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { LoginComponent } from './pages/login/login.component';
 
 const staticImports: any[] = [
   FlexLayoutModule,
@@ -25,9 +28,10 @@ const staticImports: any[] = [
     staticImports,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: '', component: LoginComponent, pathMatch: 'full' },
     ])
   ],
   providers: [],
