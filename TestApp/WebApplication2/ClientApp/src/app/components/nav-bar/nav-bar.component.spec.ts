@@ -1,5 +1,4 @@
 describe('NavBarComponent', () => {
-
   beforeEach(() => {
   });
 

@@ -1,4 +1,4 @@
-describe('LoginComponent', () => {
+describe('NavBarComponent', () => {
   beforeEach(() => {
   });
 

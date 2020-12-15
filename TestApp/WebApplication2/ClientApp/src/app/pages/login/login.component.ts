@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     const loginForm: any = this.form.value;
-
     this.authService.login(loginForm.username, loginForm.password);
   }
 }
