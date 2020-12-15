@@ -6,7 +6,7 @@ export class CookieModule {
      * Save AccessToken
      * @param accessToken
      */
-    public setToken(accessToken: string, saveSession: boolean = undefined): void {
+    public setToken(accessToken: string, saveSession?: boolean): void {
         const timeToLive = (saveSession) ? undefined : 30 ;
         this.setCookie('access_token', accessToken);
     }
@@ -33,7 +33,7 @@ export class CookieModule {
         }
       }
 
-      getCookie(cookieName: string): string {
+      private getCookie(cookieName: string): string {
         const cookie: string = cookieName + '=';
         let cookieValue = '';
         const allCookiesArray: string[] = this.getAllCookies();
@@ -47,14 +47,14 @@ export class CookieModule {
         return cookieValue;
       }
 
-      deleteCookie(cookieName: string): void {
+      private deleteCookie(cookieName: string): void {
         const cookie: string = cookieName + '=';
         const oneSecond = 1;
 
         document.cookie = `${cookie};Path=/;max-age=${oneSecond}`;
       }
 
-      deleteAllCookies(): void {
+      private deleteAllCookies(): void {
         const allCookiesArray: string[] = this.getAllCookies();
         allCookiesArray.forEach((cookie: string) => {
           let cookieName: string = cookie.split('=')[0];

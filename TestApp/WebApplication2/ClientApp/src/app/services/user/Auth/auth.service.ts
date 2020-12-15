@@ -3,17 +3,17 @@ import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-import { CookieModule } from 'src/app/modules/cookieModule';
 import { ILoginRequest, LoginRequest } from 'src/app/models/user-models/Login/LoginRequest.model';
 import { ILoginResponse } from 'src/app/models/user-models/Login/LoginResponse.model';
 import { UserServicesNames } from 'src/app/models/user-models/serviceNames.model';
-import { UtilService } from '../util/utils.service';
+import { UtilService } from '../../util/utils.service';
+import { CookieModule } from 'src/app/modules/tokenModule/tokenModule';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl: string = 'http://localhost:1212/';
+  private baseUrl = 'http://localhost:1212/';
 
   private userServicesNames: UserServicesNames;
   private cookieModule: CookieModule;
@@ -39,8 +39,8 @@ export class AuthService {
     const loginRequestContent: ILoginRequest = new LoginRequest(username, password);
 
     this.http.post<ILoginResponse>(loginRequestUrl, { loginRequestContent }).subscribe(loginResponse => {
-      if(this.utilService.validator.responseValidator.isLoginResponseValid(loginResponse)){
-          var responseContent = {...loginResponse.content}
+      if (this.utilService.validator.responseValidator.isLoginResponseValid(loginResponse)) {
+          const responseContent = {...loginResponse.content};
           this.cookieModule.setToken(responseContent.accessToken);
           this.isAuthenticated.next(true);
           this.router.navigate(['home']);
