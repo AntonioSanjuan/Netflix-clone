@@ -31,8 +31,8 @@ const staticImports: any[] = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
-      { path: '', component: LoginComponent, pathMatch: 'full' },
-    ])
+    { path: '', component: LoginComponent, pathMatch: 'full' },
+], { relativeLinkResolution: 'legacy' })
   ],
   providers: [],
   bootstrap: [AppComponent]
