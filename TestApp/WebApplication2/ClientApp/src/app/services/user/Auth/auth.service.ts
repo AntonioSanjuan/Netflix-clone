@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,54 +8,52 @@ import { ILoginRequest, LoginRequest } from 'src/app/models/user-models/Login/Lo
 import { ILoginResponse } from 'src/app/models/user-models/Login/LoginResponse.model';
 import { UserServicesNames } from 'src/app/models/user-models/serviceNames.model';
 import { UtilService } from '../../util/utils.service';
-import { CookieModule } from 'src/app/modules/tokenModule/tokenModule';
+import { TokenModule } from 'src/app/modules/tokenModule/tokenModule';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  // appSettings service (?)
   private baseUrl = 'http://localhost:1212/';
 
   private userServicesNames: UserServicesNames;
-  private cookieModule: CookieModule;
+  private tokenModule: TokenModule;
+
   public isAuthenticated = new BehaviorSubject<boolean>(false);
 
   constructor(
     private router: Router,
     private http: HttpClient,
     private utilService: UtilService) {
-      this.cookieModule = new CookieModule();
+      this.tokenModule = new TokenModule();
       this.userServicesNames = new UserServicesNames(this.baseUrl);
   }
 
-  async checkAuthenticated() {
-    const authenticated = this.cookieModule.getToken();
-
-    this.isAuthenticated.next( (authenticated) ? true : false);
-    return authenticated;
+  private processLoginResponse(loginResponse: ILoginResponse): ILoginResponse | undefined {
+      if (this.utilService.validator.responseValidator.isLoginResponseValid(loginResponse)) {
+        const responseContent = {...loginResponse.content};
+        this.tokenModule.setToken(responseContent.accessToken);
+        this.isAuthenticated.next(true);
+        // this.router.navigate(['home']);
+      }else{
+        this.isAuthenticated.next(false);
+      }
+      return loginResponse;
   }
 
-  async login(username: string, password: string) {
+  public async login(username: string, password: string): Promise<ILoginResponse> {
     const loginRequestUrl: string = this.userServicesNames.getLoginUrl();
     const loginRequestContent: ILoginRequest = new LoginRequest(username, password);
 
-    this.http.post<ILoginResponse>(loginRequestUrl, { loginRequestContent }).subscribe(loginResponse => {
-      if (this.utilService.validator.responseValidator.isLoginResponseValid(loginResponse)) {
-          const responseContent = {...loginResponse.content};
-          this.cookieModule.setToken(responseContent.accessToken);
-          this.isAuthenticated.next(true);
-          this.router.navigate(['home']);
-      }
-
-    });
+    return await this.http.post<ILoginResponse>(loginRequestUrl, loginRequestContent).pipe(
+      map(response =>  this.processLoginResponse(response))
+    ).toPromise();
   }
 
-
-
-  async logout() {
-    this.cookieModule.clearTokens();
+  public logout() {
+    this.tokenModule.clearTokens();
     this.isAuthenticated.next(false);
-    this.router.navigate(['']);
+    // this.router.navigate(['']);
   }
-
 }

@@ -1,4 +1,4 @@
-export class CookieModule {
+export class TokenModule {
     private readonly ONE_HOUR = 3600;
     private readonly ONE_MONTH = 3600 * 24 * 30;
     private readonly COMMONDOMAIN = 'to-do';

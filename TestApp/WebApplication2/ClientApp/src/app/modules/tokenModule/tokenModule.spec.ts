@@ -1,4 +1,4 @@
-import { CookieModule as TokenModule } from './tokenModule';
+import { TokenModule as TokenModule } from './tokenModule';
 
 describe('[UnitTesting] cookieModule', () => {
     const sut = new TokenModule();

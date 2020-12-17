@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
@@ -11,11 +10,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { PAGES } from './pages';
 import { COMPONENTS } from './components';
-import { LoginComponent } from './pages/login/login.component';
+import { RoutingModule } from './routing.module';
 
 const staticImports: any[] = [
   FlexLayoutModule,
   MaterialModule
+];
+const routesImports: any[] = [
+  RoutingModule
 ];
 
 @NgModule({
@@ -26,13 +28,11 @@ const staticImports: any[] = [
   ],
   imports: [
     staticImports,
+    routesImports,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot([
-    { path: '', component: LoginComponent, pathMatch: 'full' },
-], { relativeLinkResolution: 'legacy' })
   ],
   providers: [],
   bootstrap: [AppComponent]
