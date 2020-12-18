@@ -1,6 +1,6 @@
-import { fakeAsync, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController  } from '@angular/common/http/testing';
+
 import { AuthService } from './auth.service';
 import { UtilService } from '../../util/utils.service';
 import { Validator } from '../../util/modules/validators/validatorModule';
@@ -13,7 +13,7 @@ describe('[IntegrationTest] AuthService', () => {
 
   // dependencies
   let httpMock: HttpTestingController;
-  
+
   let utilServiceStub = {} as UtilService;
   let validatorStub = {} as Validator;
   let responseValidatorStub = {} as ResponseValidator;
