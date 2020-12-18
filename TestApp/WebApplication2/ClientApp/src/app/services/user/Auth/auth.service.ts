@@ -34,7 +34,7 @@ export class AuthService {
         const responseContent = {...loginResponse.content};
         this.tokenModule.setToken(responseContent.accessToken);
         this.isAuthenticated.next(true);
-      }else{
+      } else {
         this.isAuthenticated.next(false);
       }
       return loginResponse;
