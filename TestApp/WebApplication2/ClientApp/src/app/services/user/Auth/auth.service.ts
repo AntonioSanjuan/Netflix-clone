@@ -23,7 +23,6 @@ export class AuthService {
   public isAuthenticated = new BehaviorSubject<boolean>(false);
 
   constructor(
-    private router: Router,
     private http: HttpClient,
     private utilService: UtilService) {
       this.tokenModule = new TokenModule();
@@ -35,7 +34,6 @@ export class AuthService {
         const responseContent = {...loginResponse.content};
         this.tokenModule.setToken(responseContent.accessToken);
         this.isAuthenticated.next(true);
-        // this.router.navigate(['home']);
       }else{
         this.isAuthenticated.next(false);
       }
@@ -54,6 +52,5 @@ export class AuthService {
   public logout() {
     this.tokenModule.clearTokens();
     this.isAuthenticated.next(false);
-    // this.router.navigate(['']);
   }
 }
