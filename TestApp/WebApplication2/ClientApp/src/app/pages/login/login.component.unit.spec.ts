@@ -76,8 +76,8 @@ describe('NavBarComponent', () => {
     const user = component.form.value.username;
     const pass = component.form.value.password;
 
-    expect(user).toEqual('');
-    expect(pass).toEqual('');
+    expect(user).toBeNull();
+    expect(pass).toBeNull();
   });
 
   it('initialy component error should BE undefined, ', () => {

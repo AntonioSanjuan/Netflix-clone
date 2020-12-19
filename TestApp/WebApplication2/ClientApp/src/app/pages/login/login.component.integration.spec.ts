@@ -17,7 +17,7 @@ describe('NavBarComponent', () => {
   let router: Router;
 
   let authServiceStub;
-  let loginMock = {} as ILoginResponse;
+  const loginMock = {} as ILoginResponse;
   let isAuthenticatedValueMock = false;
 
   beforeEach(() => {
