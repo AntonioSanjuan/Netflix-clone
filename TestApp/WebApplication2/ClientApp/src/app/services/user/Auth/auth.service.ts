@@ -21,7 +21,7 @@ export class AuthService {
   private tokenModule: TokenModule;
 
   private isAuthenticated$ = new BehaviorSubject<boolean>(false);
-  private isAuthenticated: boolean = false;
+  private isAuthenticated = false;
 
   constructor(
     private http: HttpClient,
@@ -36,7 +36,6 @@ export class AuthService {
     this.isAuthenticated$.next(this.isAuthenticated);
   }
   public getIsAuthenticated(): boolean {
-    console.log('%c⧭', 'color: #731d6d', this.isAuthenticated);
     return this.isAuthenticated;
   }
   public getIsAuthenticated$(): Observable<boolean> {

@@ -5,7 +5,6 @@ import { AuthService } from './auth.service';
 import { UtilService } from '../../util/utils.service';
 import { Validator } from '../../util/modules/validators/validatorModule';
 import { ResponseValidator } from '../../util/modules/validators/responses/responseValidatorModule';
-import { HomeComponent } from 'src/app/pages/home/home.component';
 
 describe('[IntegrationTest] AuthService', () => {
   const loginUrl = 'http://localhost:1212/api/User/Login';
@@ -28,7 +27,6 @@ describe('[IntegrationTest] AuthService', () => {
       imports: [ HttpClientTestingModule ],
       providers: [
         AuthService,
-        HomeComponent,
         {provide: UtilService, useValue: utilServiceStub},
       ],
     }).compileComponents();
@@ -43,7 +41,7 @@ describe('[IntegrationTest] AuthService', () => {
   });
 
 
-  it('login: should call http POST method for the given route',  () => {
+  it('login() should call http POST method for the given route',  () => {
     sut.login('user', 'pass').then(
       async () => {
       }
@@ -54,7 +52,7 @@ describe('[IntegrationTest] AuthService', () => {
     req.flush({});
   });
 
-  it('login: loginResponse should be checked via ValidatorModule', () => {
+  it('login() loginResponse should be checked via ValidatorModule', () => {
     // spy
     const isLoginResponseValidSpy = jest.spyOn(responseValidatorStub, 'isLoginResponseValid');
 
@@ -68,7 +66,7 @@ describe('[IntegrationTest] AuthService', () => {
     expect(isLoginResponseValidSpy).toHaveBeenCalled();
   });
 
-  it('login: loginResponse with success check should BE authenticated', () => {
+  it('login() loginResponse with success check should BE authenticated', () => {
     sut.login('user', 'pass').then(
       async () => {
       }
@@ -76,11 +74,11 @@ describe('[IntegrationTest] AuthService', () => {
     const req = httpMock.expectOne(loginUrl);
     req.flush({});
 
-    const actual = sut.isAuthenticated.value;
+    const actual = sut.getIsAuthenticated();
     expect(actual).toEqual(true);
   });
 
-  it('login: loginResponse with failure check should NOT BE authenticated', () => {
+  it('login() loginResponse with failure check should NOT BE authenticated', () => {
     // mock
     isLoginResponseValidMock = false;
 
@@ -91,11 +89,11 @@ describe('[IntegrationTest] AuthService', () => {
     const req = httpMock.expectOne(loginUrl);
     req.flush({});
 
-    const actual = sut.isAuthenticated.value;
+    const actual = sut.getIsAuthenticated();
     expect(actual).toEqual(false);
   });
 
-  it('logout: logout WITH user previously authenticated', () => {
+  it('logout() logout WITH user previously authenticated', () => {
     sut.login('user', 'pass').then(
       async () => {
       }
@@ -104,13 +102,18 @@ describe('[IntegrationTest] AuthService', () => {
     req.flush({});
 
     sut.logout();
-    const actual = sut.isAuthenticated.value;
+    const actual = sut.getIsAuthenticated();
     expect(actual).toEqual(false);
   });
 
-  it('logout: logout WITH user previously authenticated', () => {
+  it('getIsAuthenticated() initially should return false', () => {
+    const actual = sut.getIsAuthenticated();
+    expect(actual).toEqual(false);
+  });
+
+  it('logout() logout WITH user previously authenticated', () => {
     sut.logout();
-    const actual = sut.isAuthenticated.value;
+    const actual = sut.getIsAuthenticated();
     expect(actual).toEqual(false);
   });
 });

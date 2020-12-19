@@ -1,7 +1,5 @@
-export interface IResponseNotification {
-    error: IResponseNotificationError;
-}
+import { IGenericError } from '../../errors/genericError.model';
 
-export interface IResponseNotificationError {
-    errorMessage: string;
+export interface IResponseNotification {
+    error: IGenericError;
 }
