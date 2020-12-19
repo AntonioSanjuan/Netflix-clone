@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -20,7 +20,8 @@ export class AuthService {
   private userServicesNames: UserServicesNames;
   private tokenModule: TokenModule;
 
-  public isAuthenticated = new BehaviorSubject<boolean>(false);
+  private isAuthenticated$ = new BehaviorSubject<boolean>(false);
+  private isAuthenticated: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -29,18 +30,31 @@ export class AuthService {
       this.userServicesNames = new UserServicesNames(this.baseUrl);
   }
 
+
+  private setIsAuthenticated(isAuthenticated: boolean) {
+    this.isAuthenticated = isAuthenticated;
+    this.isAuthenticated$.next(this.isAuthenticated);
+  }
+  public getIsAuthenticated(): boolean {
+    console.log('%c⧭', 'color: #731d6d', this.isAuthenticated);
+    return this.isAuthenticated;
+  }
+  public getIsAuthenticated$(): Observable<boolean> {
+    return this.isAuthenticated$.asObservable();
+  }
+
   private processLoginResponse(loginResponse: ILoginResponse): ILoginResponse | undefined {
       if (this.utilService.validator.responseValidator.isLoginResponseValid(loginResponse)) {
         const responseContent = {...loginResponse.content};
         this.tokenModule.setToken(responseContent.accessToken);
-        this.isAuthenticated.next(true);
+        this.setIsAuthenticated(true);
       } else {
-        this.isAuthenticated.next(false);
+        this.setIsAuthenticated(false);
       }
       return loginResponse;
   }
 
-  public async login(username: string, password: string): Promise<ILoginResponse> {
+  public async login(username: string, password: string) {
     const loginRequestUrl: string = this.userServicesNames.getLoginUrl();
     const loginRequestContent: ILoginRequest = new LoginRequest(username, password);
 
@@ -51,6 +65,6 @@ export class AuthService {
 
   public logout() {
     this.tokenModule.clearTokens();
-    this.isAuthenticated.next(false);
+    this.setIsAuthenticated(false);
   }
 }
