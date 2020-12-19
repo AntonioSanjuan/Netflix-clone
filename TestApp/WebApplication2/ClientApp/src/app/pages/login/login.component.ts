@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 
 import { IResponseNotificationError } from 'src/app/models/common/response/notification/notification.model';
+import { ILoginResponse, ILoginResponseContent } from 'src/app/models/user-models/Login/LoginResponse.model';
 import { AuthService } from 'src/app/services/user/Auth/auth.service';
 
 @Component({
@@ -13,8 +14,6 @@ import { AuthService } from 'src/app/services/user/Auth/auth.service';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   error: IResponseNotificationError;
-
-  public loginInvalid: boolean;
 
   constructor(
     private router: Router,
@@ -29,18 +28,18 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  login() {
-    const loginForm: any = this.form.value;
-    this.authService.login(loginForm.username, loginForm.password)
+  public async login() {
+    const loginForm = this.form.value;
+    await this.authService.login(loginForm.username, loginForm.password)
     .then((loginResponse) => {
-      if (this.authService.isAuthenticated) {
-        // this.router.navigate(['home']);
+      if (this.authService.getIsAuthenticated()) {
+        this.router.navigate(['home']);
       }
-      this.setError(loginResponse.notification.error);
+      this.setNotificationResponse(loginResponse);
     });
   }
 
-  private setError(error?: IResponseNotificationError) {
-    this.error = (error) ? {...error} : {} as IResponseNotificationError;
+  private setNotificationResponse(loginResponse?: ILoginResponse) {
+    this.error = (loginResponse?.notification?.error) ? {...loginResponse?.notification?.error} : undefined;
   }
 }
