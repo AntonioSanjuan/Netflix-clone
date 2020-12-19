@@ -1,6 +1,6 @@
 import { RouterTestingModule } from '@angular/router/testing';
 import { TestBed } from '@angular/core/testing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
@@ -9,6 +9,7 @@ import { routes } from 'src/app/routing.module';
 import { HomeComponent } from '../home/home.component';
 import { AuthService } from 'src/app/services/user/Auth/auth.service';
 import { ILoginResponse } from 'src/app/models/user-models/Login/LoginResponse.model';
+import { BehaviorSubject } from 'rxjs';
 
 describe('NavBarComponent', () => {
   let component: LoginComponent;
@@ -16,14 +17,13 @@ describe('NavBarComponent', () => {
   let router: Router;
 
   let authServiceStub;
-  let loginMock = {} as Promise<ILoginResponse>;
-  let isAuthenticatedMock: boolean;
+  let loginMock = {} as ILoginResponse;
+  let isAuthenticatedValueMock = false;
 
   beforeEach(() => {
     authServiceStub = {
-        login : jest.fn(() => loginMock),
-        logout : jest.fn(() => null),
-        isAuthenticated: jest.fn(() => isAuthenticatedMock)
+        login : jest.fn(() => new Promise((resolve, reject) => resolve({})).then(() => loginMock) ),
+        getIsAuthenticated : jest.fn(() => isAuthenticatedValueMock )
     };
 
     TestBed.configureTestingModule({
@@ -45,13 +45,36 @@ describe('NavBarComponent', () => {
   fixture.detectChanges();
   });
 
+  it('login() should call AuthService.Login() function', () => {
+    const loginSpy = jest.spyOn(authServiceStub, 'login');
 
-  it('initialy uuser&pass form is empty, ', () => {
-    const user = component.form.value.username;
-    const pass = component.form.value.password;
+    component.login().then(() => {
+    });
 
-    expect(user).toEqual('');
-    expect(pass).toEqual('');
+    expect(loginSpy).toHaveBeenCalled();
+  });
+
+  it('login() sucessfull should navigate', () => {
+    // mock
+    isAuthenticatedValueMock = true;
+
+    const navigateSpy = spyOn(router, 'navigate');
+
+    component.login().then(() => {
+      expect(navigateSpy).toHaveBeenCalled();
+    });
+
+  });
+
+  it('login() failure should NOT navigate', () => {
+    // mock
+    isAuthenticatedValueMock = false;
+
+    const navigateSpy = spyOn(router, 'navigate');
+
+    component.login().then(() => {
+      expect(navigateSpy).not.toHaveBeenCalled();
+    });
 
   });
 });
