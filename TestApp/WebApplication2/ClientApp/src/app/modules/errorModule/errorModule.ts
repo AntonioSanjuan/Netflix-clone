@@ -8,7 +8,6 @@ export abstract class ErrorModule {
             errorCode: -1,
             errorMessage: error.message,
             error: {...error}
-
         } as IGenericError;
         return output;
     }
@@ -18,7 +17,6 @@ export abstract class ErrorModule {
             errorCode: error.status,
             errorMessage: error.message,
             error: {...error}
-
         } as IGenericError;
         return output;
     }
