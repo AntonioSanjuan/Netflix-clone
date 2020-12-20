@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 import { ILoginRequest, LoginRequest } from 'src/app/models/user-models/Login/LoginRequest.model';
 import { ILoginResponse } from 'src/app/models/user-models/Login/LoginResponse.model';
-import { UserServicesNames } from 'src/app/models/user-models/serviceNames.model';
 import { UtilService } from '../../util/utils.service';
 import { TokenModule } from 'src/app/modules/tokenModule/tokenModule';
+import { UserServicesNames } from 'src/app/modules/serviceNameModule/userServiceNameModule/userServiceNameModule';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   // appSettings service (?)
-  private baseUrl = 'http://localhost:1212/';
+  private baseUrl = 'https://localhost:44339/movieApi/';
 
   private userServicesNames: UserServicesNames;
   private tokenModule: TokenModule;
