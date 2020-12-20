@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MovieApi.services.interfaces
 {
-    interface IMovieService
+    public interface IMovieService
     {
     }
 }

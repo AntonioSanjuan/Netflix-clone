@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using MovieApi.Models.AppSettings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,11 +29,8 @@ namespace MovieApi.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
- 
-
-        public UserController()
+        public UserController(IOptions<AppSettingsModel> appSettings)
         {
-
         }
     }
 }

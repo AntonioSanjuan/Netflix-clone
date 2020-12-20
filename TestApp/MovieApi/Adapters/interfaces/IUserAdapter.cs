@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MovieApi.adapters.interfaces
 {
-    interface IUserAdapter
+    public interface IUserAdapter
     {
     }
 }
