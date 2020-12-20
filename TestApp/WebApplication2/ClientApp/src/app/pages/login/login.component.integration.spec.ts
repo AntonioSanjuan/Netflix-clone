@@ -9,7 +9,6 @@ import { routes } from 'src/app/routing.module';
 import { HomeComponent } from '../home/home.component';
 import { AuthService } from 'src/app/services/user/Auth/auth.service';
 import { ILoginResponse } from 'src/app/models/user-models/Login/LoginResponse.model';
-import { BehaviorSubject } from 'rxjs';
 
 describe('NavBarComponent', () => {
   let component: LoginComponent;
@@ -52,9 +51,19 @@ describe('NavBarComponent', () => {
     const loginSpy = jest.spyOn(authServiceStub, 'login');
 
     component.login().then(() => {
+      expect(loginSpy).toHaveBeenCalled();
     });
 
-    expect(loginSpy).toHaveBeenCalled();
+  });
+
+  it('login() should call AuthService.getIsAuthenticated() function', () => {
+    // spy
+    const getIsAuthenticatedSpy = jest.spyOn(authServiceStub, 'getIsAuthenticated');
+
+    component.login().then(() => {
+      expect(getIsAuthenticatedSpy).toHaveBeenCalled();
+    });
+
   });
 
   it('login() sucessfull should navigate', () => {
