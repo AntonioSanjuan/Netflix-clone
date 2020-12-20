@@ -1,6 +1,6 @@
 <div class="NavBar_MainContainer" fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100"> 
     <div class="leftNavBar" fxLayoutAlign="start center" fxFlex="20">
-        <app-nav-menu></app-nav-menu>
+        <app-nav-menu  *ngIf="isAuthenticated"></app-nav-menu>
     </div>
     <div class="centralNavBar" fxLayoutAlign="center center" fxFlex="60">
         <h1>Movie Recommender</h1>
