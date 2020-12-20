@@ -10,7 +10,7 @@ import { HomeComponent } from '../home/home.component';
 import { AuthService } from 'src/app/services/user/Auth/auth.service';
 import { ILoginResponse } from 'src/app/models/user-models/Login/LoginResponse.model';
 
-describe('NavBarComponent', () => {
+describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture;
   let router: Router;

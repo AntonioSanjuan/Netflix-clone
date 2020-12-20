@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+
 import { IGenericError } from '../models/common/errors/genericError.model';
 import { ErrorModule } from '../modules/errorModule/errorModule';
 
@@ -28,7 +29,6 @@ export class RequestInterceptor implements HttpInterceptor {
                         // server-side error
                         outputError = {...ErrorModule.createHttpServerSideGenericError(error)};
                     }
-                    // console.log(errorMessage);
                     return throwError(outputError);
                 })
             );
