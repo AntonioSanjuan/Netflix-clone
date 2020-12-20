@@ -21,6 +21,8 @@ describe('NavBarComponent', () => {
   let isAuthenticatedValueMock = false;
 
   beforeEach(() => {
+    isAuthenticatedValueMock = false;
+
     authServiceStub = {
         login : jest.fn(() => new Promise((resolve, reject) => resolve({})).then(() => loginMock) ),
         getIsAuthenticated : jest.fn(() => isAuthenticatedValueMock )
@@ -46,6 +48,7 @@ describe('NavBarComponent', () => {
   });
 
   it('login() should call AuthService.Login() function', () => {
+    // spy
     const loginSpy = jest.spyOn(authServiceStub, 'login');
 
     component.login().then(() => {
