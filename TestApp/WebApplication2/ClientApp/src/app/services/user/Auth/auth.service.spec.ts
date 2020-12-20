@@ -19,6 +19,8 @@ describe('[IntegrationTest] AuthService', () => {
   let isLoginResponseValidMock = true;
 
   beforeEach(() => {
+    isLoginResponseValidMock = true;
+
     responseValidatorStub = { isLoginResponseValid : jest.fn(() => isLoginResponseValidMock) };
     validatorStub = { responseValidator : responseValidatorStub };
     utilServiceStub = { validator: validatorStub };
@@ -66,7 +68,7 @@ describe('[IntegrationTest] AuthService', () => {
     expect(isLoginResponseValidSpy).toHaveBeenCalled();
   });
 
-  it('login() loginResponse with success check should BE authenticated', () => {
+  it('login() loginResponse with success check should set authenticated TRUE', () => {
     sut.login('user', 'pass').then(
       async () => {
       }
@@ -78,7 +80,20 @@ describe('[IntegrationTest] AuthService', () => {
     expect(actual).toEqual(true);
   });
 
-  it('login() loginResponse with failure check should NOT BE authenticated', () => {
+  it('login() loginResponse with success check should set authentication subscribe TRUE', () => {
+    sut.login('user', 'pass').then(
+      async () => {
+      }
+    );
+    const req = httpMock.expectOne(loginUrl);
+    req.flush({});
+
+    sut.getIsAuthenticated$().subscribe((actual) => {
+      expect(actual).toEqual(true);
+    });
+  });
+
+  it('login() loginResponse with failure check should set authentication FALSE', () => {
     // mock
     isLoginResponseValidMock = false;
 
@@ -93,7 +108,7 @@ describe('[IntegrationTest] AuthService', () => {
     expect(actual).toEqual(false);
   });
 
-  it('logout() logout WITH user previously authenticated', () => {
+  it('logout() logout once user has been previously authenticated', () => {
     sut.login('user', 'pass').then(
       async () => {
       }
@@ -106,12 +121,18 @@ describe('[IntegrationTest] AuthService', () => {
     expect(actual).toEqual(false);
   });
 
-  it('getIsAuthenticated() initially should return false', () => {
+  it('getIsAuthenticated() initially should return FALSE', () => {
     const actual = sut.getIsAuthenticated();
     expect(actual).toEqual(false);
   });
 
-  it('logout() logout WITH user previously authenticated', () => {
+  it('getIsAuthenticated$() initially should return FALSE', () => {
+    sut.getIsAuthenticated$().subscribe((actual) => {
+      expect(actual).toEqual(true);
+    });
+  });
+
+  it('logout() logout once user has been previously authenticated', () => {
     sut.logout();
     const actual = sut.getIsAuthenticated();
     expect(actual).toEqual(false);
