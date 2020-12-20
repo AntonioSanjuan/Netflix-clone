@@ -1,4 +1,4 @@
-import { ICommonResponse } from '../../common/commonResponse.mode';
+import { ICommonResponse } from '../../common/commonResponse.model';
 
 export interface ILoginResponse extends ICommonResponse<ILoginResponseContent> {}
 
