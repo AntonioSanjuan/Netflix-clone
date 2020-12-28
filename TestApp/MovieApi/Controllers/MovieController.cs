@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using MovieApi.Models.AppSettings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +12,10 @@ namespace MovieApi.Controllers
     [ApiController]
     public class MovieController : ControllerBase
     {
-        public MovieController()
+        TheMoviedbSettingsModel _theMoviedbSettings;
+        public MovieController(IOptions<TheMoviedbSettingsModel> theMoviedbSettings)
         {
-
+            _theMoviedbSettings = theMoviedbSettings.Value;
         }
     }
 }

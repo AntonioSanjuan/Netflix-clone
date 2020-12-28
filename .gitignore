@@ -2,8 +2,9 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/TestApp/.vs/TestApp
-/TestApp/WebApplication2/ClientApp/e2e
-/TestApp/.vs/MovieRecommender
-/bin
-/obj
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Visual Studio 2015 cache/options directory
+.vs/

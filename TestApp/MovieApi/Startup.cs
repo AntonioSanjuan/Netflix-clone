@@ -1,21 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using MovieApi.adapters;
 using MovieApi.adapters.interfaces;
 using MovieApi.Models.AppSettings;
 using MovieApi.services;
 using MovieApi.services.interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
 
 namespace MovieApi
 {
@@ -33,8 +27,13 @@ namespace MovieApi
         {
             services.AddControllers();
 
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+            });
+
             services.Configure<AppSettingsModel>(Configuration.GetSection("AppSettings"));
             services.Configure<FireBaseSettingsModel>(Configuration.GetSection("FirebaseSettings"));
+            services.Configure<TheMoviedbSettingsModel>(Configuration.GetSection("TheMoviedbSettings"));
 
 
             services.AddHttpClient<IUserService, UserService>(c =>
@@ -57,22 +56,33 @@ namespace MovieApi
             //Adapters
             services.AddTransient<IUserAdapter, UserAdapter>();
             services.AddTransient<IMovieAdapter, MovieAdapter>();
+
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials()
+                );
+            });
+            services.AddControllersWithViews();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
-            app.UseHttpsRedirection();
-
+            app.UseDeveloperExceptionPage();
             app.UseRouting();
-
-            app.UseAuthorization();
-
+            app.UseCors("CorsPolicy");
+            app.UseHttpsRedirection();
+            app.UseSession();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
