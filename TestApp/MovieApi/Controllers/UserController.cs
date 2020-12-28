@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MovieApi.Models.AppSettings;
+using MovieApi.Models.Common;
 using MovieApi.Models.User.Login.Request;
 using MovieApi.Models.User.Login.Response;
 using MovieApi.services.interfaces;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace MovieApi.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -26,6 +28,8 @@ namespace MovieApi.Controllers
         }
 
         [HttpPost("Login")]
+        [ProducesResponseType(typeof(LoginResponseModel), 200)]
+        [ProducesResponseType(typeof(CommonResponseErrorModel), 500)]
         public async Task<IActionResult> Login([FromBody] LoginRequestModel loginRequest)
         {
             LoginResponseModel loginResponse = null;
