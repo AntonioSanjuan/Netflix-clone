@@ -15,7 +15,7 @@ import { UserServicesNames } from 'src/app/modules/serviceNameModule/userService
 
 export class AuthService {
   // appSettings service (?)
-  private baseUrl = 'https://localhost:44339/movieApi/';
+  private baseUrl = 'https://localhost:44339/';
 
   private userServicesNames: UserServicesNames;
   private tokenModule: TokenModule;
