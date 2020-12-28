@@ -32,30 +32,16 @@ namespace MovieApi
             });
 
             services.Configure<AppSettingsModel>(Configuration.GetSection("AppSettings"));
-            services.Configure<FireBaseSettingsModel>(Configuration.GetSection("FirebaseSettings"));
             services.Configure<TheMoviedbSettingsModel>(Configuration.GetSection("TheMoviedbSettings"));
 
-
-            services.AddHttpClient<IUserService, UserService>(c =>
-            {
-                c.BaseAddress = new Uri(Configuration.GetSection("AppConfiguration:DefaultCredentials:DET:dataEnvironment").Value);
-                c.Timeout = TimeSpan.FromMilliseconds(60000);
-                c.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            });
-
-            services.AddHttpClient<IMovieService, MovieService>(c =>
-            {
-                c.BaseAddress = new Uri(Configuration.GetSection("AppConfiguration:DefaultCredentials:DAT:providerEnvironment").Value);
-                c.Timeout = TimeSpan.FromMilliseconds(60000);
-                c.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            });
-
-            //Services
-            //services.AddTransient<IUserService, UserService>();
-            //services.AddTransient<IMovieService, MovieService>();
             //Adapters
             services.AddTransient<IUserAdapter, UserAdapter>();
             services.AddTransient<IMovieAdapter, MovieAdapter>();
+            
+            //Services
+            services.AddHttpClient<IUserService, UserService>();
+            services.AddHttpClient<IMovieService, MovieService>();
+
 
 
             services.AddCors(options =>

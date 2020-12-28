@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\TheMoviedb\" />
+    <Folder Include="Models\TheMoviedb\Requests\" />
   </ItemGroup>
 
   <ItemGroup>

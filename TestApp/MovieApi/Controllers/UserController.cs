@@ -21,9 +21,9 @@ namespace MovieApi.Controllers
     {
         private readonly TheMoviedbSettingsModel _theMoviedbSettings;
         private readonly IUserService _userService;
-        public UserController(IOptions<TheMoviedbSettingsModel> theMoviedbSettings)
+        public UserController(IOptions<TheMoviedbSettingsModel> theMoviedbSettings, IUserService userService)
         {
-            //_userService = userService;
+            _userService = userService;
             _theMoviedbSettings = theMoviedbSettings.Value;
         }
 
@@ -33,7 +33,7 @@ namespace MovieApi.Controllers
         public async Task<IActionResult> Login([FromBody] LoginRequestModel loginRequest)
         {
             LoginResponseModel loginResponse = null;
-
+            loginResponse = await _userService.Login(loginRequest);
             return Ok(loginResponse);
         }
     }

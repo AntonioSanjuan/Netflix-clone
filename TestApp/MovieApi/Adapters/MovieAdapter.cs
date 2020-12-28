@@ -9,11 +9,6 @@ namespace MovieApi.adapters
 {
     public class MovieAdapter : IMovieAdapter
     {
-        private readonly IMovieService _movieService;
-
-        public MovieAdapter(IMovieService movieService)
-        {
-            _movieService = movieService;
-        }
+        public MovieAdapter() {}
     }
 }

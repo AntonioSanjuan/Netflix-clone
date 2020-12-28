@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace MovieApi.Controllers
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
     public class MovieController : ControllerBase
@@ -17,5 +18,7 @@ namespace MovieApi.Controllers
         {
             _theMoviedbSettings = theMoviedbSettings.Value;
         }
+
+
     }
 }
