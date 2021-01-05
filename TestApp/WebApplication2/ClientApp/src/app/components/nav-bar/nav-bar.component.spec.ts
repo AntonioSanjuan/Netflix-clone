@@ -1,5 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ILoginResponse } from 'src/app/models/user-models/Login/LoginResponse.model';
 import { UtilService } from 'src/app/services/util/utils.service';
@@ -23,7 +25,7 @@ describe('NavBarComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [NavBarComponent],
-      imports: [],
+      imports: [HttpClientTestingModule],
       providers: [
         {provide: UtilService, useValue: authServiceStub},
       ],
@@ -40,6 +42,6 @@ describe('NavBarComponent', () => {
     // spy
     const actual = component.isAuthenticated;
 
-    expect(actual).toBeFalse();
+    expect(actual).toEqual(false);
   });
 });

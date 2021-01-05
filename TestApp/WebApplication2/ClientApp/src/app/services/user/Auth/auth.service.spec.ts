@@ -7,7 +7,7 @@ import { Validator } from '../../util/modules/validators/validatorModule';
 import { ResponseValidator } from '../../util/modules/validators/responses/responseValidatorModule';
 
 describe('[IntegrationTest] AuthService', () => {
-  const loginUrl = 'http://localhost:1212/api/User/Login';
+  const loginUrl = 'https://localhost:44339/api/User/Login';
   let sut: AuthService;
 
   // dependencies
