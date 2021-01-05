@@ -25,6 +25,8 @@ namespace MovieApi.services
             _httpClient = httpClient;
             _userAdapter = userAdapter;
             _theMoviedbSettings = theMoviedbSettingsModel.Value;
+
+            _serviceNameModule = new UserServiceNameModule(_theMoviedbSettings);
         }
 
         public async Task<CreateRequestTokenErrorResponseModel> CreateRequestToken()
