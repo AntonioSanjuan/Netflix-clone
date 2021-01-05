@@ -1,4 +1,9 @@
-﻿using NUnit.Framework;
+﻿using Moq;
+using MovieApi.Controllers;
+using MovieApi.Models.Movie.GetTopTatedMovies.Request;
+using MovieApi.Models.Movie.GetTopTatedMovies.Response;
+using MovieApi.services.interfaces;
+using NUnit.Framework;
 
 namespace MovieApiTest.Controllers
 {
@@ -7,6 +12,14 @@ namespace MovieApiTest.Controllers
         [SetUp]
         public void Setup()
         {
+            var mockMovieService = new Mock<IMovieService>();
+
+            TopRatedMoviesRequestModel loginRequest = null;
+            TopRatedMoviesResponseModel loginResponse = null;
+            mockMovieService.Setup(repo => repo.GetTopRatedMovies(loginRequest))
+                .ReturnsAsync(loginResponse);
+
+            var controller = new MovieController(mockMovieService.Object);
         }
 
         [Test]
