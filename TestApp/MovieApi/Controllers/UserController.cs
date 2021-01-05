@@ -19,12 +19,10 @@ namespace MovieApi.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly TheMoviedbSettingsModel _theMoviedbSettings;
         private readonly IUserService _userService;
-        public UserController(IOptions<TheMoviedbSettingsModel> theMoviedbSettings, IUserService userService)
+        public UserController(IUserService userService)
         {
             _userService = userService;
-            _theMoviedbSettings = theMoviedbSettings.Value;
         }
 
         [HttpPost("Login")]
@@ -32,7 +30,7 @@ namespace MovieApi.Controllers
         [ProducesResponseType(typeof(CommonResponseErrorModel), 500)]
         public async Task<IActionResult> Login([FromBody] LoginRequestModel loginRequest)
         {
-            LoginResponseModel loginResponse = null;
+            LoginResponseModel loginResponse;
             loginResponse = await _userService.Login(loginRequest);
             return Ok(loginResponse);
         }

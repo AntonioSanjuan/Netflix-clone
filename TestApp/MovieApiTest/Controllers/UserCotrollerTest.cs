@@ -15,14 +15,13 @@ namespace MovieApiTest.Controllers
         {
             //dependencies (mock)
             var mockUserService = new Mock<IUserService>();
-            var mockMoviedbSettings = new Mock<IOptions<TheMoviedbSettingsModel>>();
 
             LoginRequestModel loginRequest = null;
             LoginResponseModel loginResponse = null;
             mockUserService.Setup(repo => repo.Login(loginRequest))
                 .ReturnsAsync(loginResponse);
 
-            var controller = new UserController(mockMoviedbSettings.Object, mockUserService.Object);
+            var controller = new UserController(mockUserService.Object);
         }
 
         [Test]

@@ -18,11 +18,9 @@ namespace MovieApi.Controllers
     [ApiController]
     public class MovieController : ControllerBase
     {
-        TheMoviedbSettingsModel _theMoviedbSettings;
-        IMovieService _movieService;
-        public MovieController(IOptions<TheMoviedbSettingsModel> theMoviedbSettings, IMovieService movieService)
+        private readonly IMovieService _movieService;
+        public MovieController(IMovieService movieService)
         {
-            _theMoviedbSettings = theMoviedbSettings.Value;
             _movieService = movieService;
         }
         
