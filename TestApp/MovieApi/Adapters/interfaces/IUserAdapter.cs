@@ -1,4 +1,4 @@
-﻿using MovieApi.Models.TheMoviedb.Responses.Auth.CreateRequestToken;
+﻿using MovieApi.Models.TheMoviedb.Auth.CreateRequestToken.Response;
 using MovieApi.Models.User.Login.Response;
 using System.Net.Http;
 using System.Threading.Tasks;

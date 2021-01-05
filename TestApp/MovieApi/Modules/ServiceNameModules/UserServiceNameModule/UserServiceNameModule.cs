@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace MovieApi.Modules.ServiceNameModule.UserServiceNameModule
 {
-    public static class UserServiceNameModule
+    public class UserServiceNameModule
     {
-        public static string CreateRequestTokenUrl(TheMoviedbSettingsModel theMoviedbSettings)
+        TheMoviedbSettingsModel _theMoviedbSettings;
+        public UserServiceNameModule(TheMoviedbSettingsModel theMoviedbSettings)
         {
-            var v3Settings = theMoviedbSettings.Version.V3;
+            _theMoviedbSettings = theMoviedbSettings;
+        }
+
+        public string CreateRequestTokenUrl()
+        {
+            var v3Settings = _theMoviedbSettings.Version.V3;
             string output = v3Settings.BaseUrl + v3Settings.SubUrls.createRequestToken;
             output = output.Replace("<<api_key>>", v3Settings.ApiKey);
             return output;

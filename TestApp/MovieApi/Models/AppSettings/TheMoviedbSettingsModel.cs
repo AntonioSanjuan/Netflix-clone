@@ -19,6 +19,7 @@ namespace MovieApi.Models.AppSettings
     public class TheMoviedbVersionSettingModel
     {
         public string BaseUrl { get; set; }
+        public string ImageBaseUrl { get; set; }
         public SubUrls SubUrls { get; set; }
         public string ApiKey { get; set; }
     }
@@ -26,5 +27,6 @@ namespace MovieApi.Models.AppSettings
     public class SubUrls
     {
         public string createRequestToken { get; set; }
+        public string getTopRatedMovies { get; set; }
     }
 }

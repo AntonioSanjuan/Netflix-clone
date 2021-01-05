@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\TheMoviedb\Requests\" />
+    <Folder Include="Models\Movie\GetMovieImages\Request\" />
+    <Folder Include="Models\TheMoviedb\Auth\CreateRequestToken\Request\" />
+    <Folder Include="Models\TheMoviedb\Movies\TopRatedMovies\Request\" />
   </ItemGroup>
 
   <ItemGroup>

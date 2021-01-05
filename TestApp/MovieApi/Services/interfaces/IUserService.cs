@@ -1,9 +1,6 @@
-﻿using MovieApi.Models.TheMoviedb.Responses.Auth.CreateRequestToken;
+﻿using MovieApi.Models.TheMoviedb.Auth.CreateRequestToken.Response;
 using MovieApi.Models.User.Login.Request;
 using MovieApi.Models.User.Login.Response;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MovieApi.services.interfaces

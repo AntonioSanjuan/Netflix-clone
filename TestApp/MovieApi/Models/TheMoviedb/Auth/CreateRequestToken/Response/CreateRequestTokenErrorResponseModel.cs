@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MovieApi.Models.TheMoviedb.Responses.Auth.CreateRequestToken
+namespace MovieApi.Models.TheMoviedb.Auth.CreateRequestToken.Response
 {
     public class CreateRequestTokenErrorResponseModel
     {

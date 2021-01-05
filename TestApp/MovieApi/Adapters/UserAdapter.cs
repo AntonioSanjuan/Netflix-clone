@@ -1,11 +1,8 @@
 ﻿using MovieApi.adapters.interfaces;
-using MovieApi.Models.TheMoviedb.Responses.Auth.CreateRequestToken;
+using MovieApi.Models.TheMoviedb;
+using MovieApi.Models.TheMoviedb.Auth.CreateRequestToken.Response;
 using MovieApi.Models.User.Login.Response;
 using MovieApi.Modules.ConversionTypeModules.LoginConversionTypeModule;
-using MovieApi.services.interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -36,9 +33,9 @@ namespace MovieApi.adapters
             };
             CreateRequestTokenResponseModel createRequestTokenResponse = JsonSerializer.Deserialize<CreateRequestTokenResponseModel>(responseAsString, options);
 
-            return (createRequestTokenResponse.Success) ? 
+            return (createRequestTokenResponse.Status_code == (int)MoviedbStatusCodes.Success) ? 
                 LoginConversionTypeModule.Sucess(createRequestTokenResponse) :
-                LoginConversionTypeModule.Failure(createRequestTokenResponse);
+                LoginConversionTypeModule.Failure();
         }
     }
 }
