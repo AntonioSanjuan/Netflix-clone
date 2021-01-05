@@ -23,14 +23,14 @@ namespace MovieApi.Models.Movie.GetTopTatedMovies.Response
     {
         public MovieImageResponseModel Images { get; set; }
         public string Overview { get; set; }
-        public string Release_date { get; set; }
+        public string ReleaseDate { get; set; }
         public int MovieId { get; set; }
-        public string Original_title { get; set; }
-        public string Original_language { get; set; }
+        public string OriginalTitle { get; set; }
+        public string OriginalLanguage { get; set; }
         public string Title { get; set; }
         public double Popularity { get; set; }
-        public int Vote_count { get; set; }
-        public double Vote_average { get; set; }
+        public int VoteCount { get; set; }
+        public double VoteAverage { get; set; }
 
     }
 }

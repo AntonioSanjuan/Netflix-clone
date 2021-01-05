@@ -52,14 +52,14 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.TopR
                 {
                     MovieId = singleInput.Id,
                     Images = singleImage,
-                    Vote_average = singleInput.Vote_average,
-                    Original_language = singleInput.Original_language,
-                    Original_title = singleInput.Original_title,
+                    VoteAverage = singleInput.Vote_average,
+                    OriginalLanguage = singleInput.Original_language,
+                    OriginalTitle = singleInput.Original_title,
                     Overview = singleInput.Overview,
                     Popularity = singleInput.Popularity,
-                    Release_date = singleInput.Release_date,
+                    ReleaseDate = singleInput.Release_date,
                     Title = singleInput.Title,
-                    Vote_count = singleInput.Vote_count,
+                    VoteCount = singleInput.Vote_count,
                 });
             }
             return output;
