@@ -50,7 +50,7 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.TopR
                 MovieImageResponseModel singleImage = inputImages.Where(movie => movie.MovieId == singleInput.Id).FirstOrDefault();
                 output.Add(new TopRatedMoviesResponseContentMovies()
                 {
-                    Id = singleInput.Id,
+                    MovieId = singleInput.Id,
                     Images = singleImage,
                     Vote_average = singleInput.Vote_average,
                     Original_language = singleInput.Original_language,

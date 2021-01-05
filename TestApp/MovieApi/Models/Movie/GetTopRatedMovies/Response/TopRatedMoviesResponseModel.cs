@@ -24,7 +24,7 @@ namespace MovieApi.Models.Movie.GetTopTatedMovies.Response
         public MovieImageResponseModel Images { get; set; }
         public string Overview { get; set; }
         public string Release_date { get; set; }
-        public int Id { get; set; }
+        public int MovieId { get; set; }
         public string Original_title { get; set; }
         public string Original_language { get; set; }
         public string Title { get; set; }
