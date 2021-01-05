@@ -35,9 +35,11 @@ export class AuthService {
     this.isAuthenticated = isAuthenticated;
     this.isAuthenticated$.next(this.isAuthenticated);
   }
+
   public getIsAuthenticated(): boolean {
     return this.isAuthenticated;
   }
+
   public getIsAuthenticated$(): Observable<boolean> {
     return this.isAuthenticated$.asObservable();
   }
