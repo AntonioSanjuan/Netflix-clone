@@ -29,7 +29,7 @@ namespace MovieApi.services
             _serviceNameModule = new UserServiceNameModule(_theMoviedbSettings);
         }
 
-        public async Task<CreateRequestTokenErrorResponseModel> CreateRequestToken()
+        public async Task<CreateRequestTokenResponseModel> CreateRequestToken()
         {
             string url = _serviceNameModule.CreateRequestTokenUrl();
             HttpResponseMessage response = _httpClient.GetAsync(url).Result;
