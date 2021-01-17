@@ -13,17 +13,23 @@ namespace MovieApiTest.Controllers
     {
         Mock<IMovieService> _mockMovieService;
         MovieController _controller;
-        [SetUp]
-        public void Setup()
-        {
-            _mockMovieService = new Mock<IMovieService>();
 
+        private void MockService()
+        {
             TopRatedMoviesRequestModel loginRequest = null;
             TopRatedMoviesResponseModel loginResponse = null;
+
             _mockMovieService.Setup(repo => repo.GetTopRatedMovies(loginRequest))
                 .ReturnsAsync(loginResponse);
 
             _controller = new MovieController(_mockMovieService.Object);
+        }
+
+        [SetUp]
+        public void Setup()
+        {
+            _mockMovieService = new Mock<IMovieService>();
+            MockService();
         }
 
         [Test]

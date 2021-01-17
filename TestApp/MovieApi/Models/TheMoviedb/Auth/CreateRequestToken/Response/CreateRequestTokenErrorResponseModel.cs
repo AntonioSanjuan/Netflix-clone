@@ -9,5 +9,13 @@ namespace MovieApi.Models.TheMoviedb.Auth.CreateRequestToken.Response
     {
         public string Status_message { get; set; }
         public int Status_code { get; set; }
+
+        public CreateRequestTokenErrorResponseModel CreateErrorFromService()
+        {
+            Status_code = 500;
+            Status_message = "Internal error from user service";
+
+            return this;
+        }
     }
 }

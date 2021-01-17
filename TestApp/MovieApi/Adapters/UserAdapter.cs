@@ -37,5 +37,10 @@ namespace MovieApi.adapters
                 LoginConversionTypeModule.Sucess(createRequestTokenResponse) :
                 LoginConversionTypeModule.Failure();
         }
+
+        public LoginResponseModel ToLoginErrorResponse()
+        {
+            return LoginConversionTypeModule.Failure();
+        }
     }
 }

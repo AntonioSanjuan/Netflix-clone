@@ -6,6 +6,7 @@ using MovieApi.Models.User.Login.Request;
 using MovieApi.Models.User.Login.Response;
 using MovieApi.Modules.ServiceNameModule.UserServiceNameModule;
 using MovieApi.services.interfaces;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -31,18 +32,33 @@ namespace MovieApi.services
 
         public async Task<CreateRequestTokenResponseModel> CreateRequestToken()
         {
-            string url = _serviceNameModule.CreateRequestTokenUrl();
-            HttpResponseMessage response = _httpClient.GetAsync(url).Result;
-            CreateRequestTokenResponseModel requestTokenResponse = await _userAdapter.ToRequestTokenResponse(response);
-            return requestTokenResponse;
+            try
+            {
+                string url = _serviceNameModule.CreateRequestTokenUrl();
+                HttpResponseMessage response = _httpClient.GetAsync(url).Result;
+                CreateRequestTokenResponseModel requestTokenResponse = await _userAdapter.ToRequestTokenResponse(response);
+                return requestTokenResponse;
+            }
+            catch(Exception)
+            {
+                return (CreateRequestTokenResponseModel) new CreateRequestTokenResponseModel().CreateErrorFromService();
+            }
         }
 
         public async Task<LoginResponseModel> Login(LoginRequestModel loginRequest)
         {
-            string url = _serviceNameModule.CreateRequestTokenUrl();
-            HttpResponseMessage response = _httpClient.GetAsync(url).Result;
-            LoginResponseModel loginResponse = await _userAdapter.ToLoginResponse(response);
-            return loginResponse;
+            try
+            {
+                _ = await CreateRequestToken();
+                string url = _serviceNameModule.CreateRequestTokenUrl();
+                HttpResponseMessage response = _httpClient.GetAsync(url).Result;
+                LoginResponseModel loginResponse = await _userAdapter.ToLoginResponse(response);
+                return loginResponse;
+            }
+            catch (Exception)
+            {
+                return _userAdapter.ToLoginErrorResponse();
+            }
         }
 
     }

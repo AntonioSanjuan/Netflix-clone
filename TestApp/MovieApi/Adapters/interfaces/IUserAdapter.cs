@@ -9,5 +9,7 @@ namespace MovieApi.adapters.interfaces
     {
         Task<LoginResponseModel> ToLoginResponse(HttpResponseMessage response);
         Task<CreateRequestTokenResponseModel> ToRequestTokenResponse(HttpResponseMessage response);
+        LoginResponseModel ToLoginErrorResponse();
+
     }
 }

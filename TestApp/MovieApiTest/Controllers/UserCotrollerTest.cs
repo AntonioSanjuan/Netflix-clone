@@ -15,27 +15,32 @@ namespace MovieApiTest.Controllers
     public class UserCotrollerTest
     {
         Mock<IUserService> _mockUserService;
-        CreateRequestTokenResponseModel _createRequestTokenResponse = new CreateRequestTokenResponseModel();
-        LoginResponseModel _loginResponse = new LoginResponseModel();
+        CreateRequestTokenResponseModel _createRequestTokenResponse;
+        LoginResponseModel _loginResponse;
 
         UserController _controller;
 
+        private void MockService()
+        {
+            LoginRequestModel loginRequest = null;
+
+            _mockUserService.Setup(repo => repo.Login(loginRequest))
+            .ReturnsAsync(_loginResponse);
+            _mockUserService.Setup(repo => repo.CreateRequestToken())
+                .ReturnsAsync(_createRequestTokenResponse);
+
+            _controller = new UserController(_mockUserService.Object);
+        }
         [SetUp]
         public void Setup()
         {
 
             //dependencies (mock) + spy
+            _createRequestTokenResponse = new CreateRequestTokenResponseModel();
+            _loginResponse = new LoginResponseModel();
             _mockUserService = new Mock<IUserService>();
 
-            LoginRequestModel loginRequest = null;
-
-
-            _mockUserService.Setup(repo => repo.Login(loginRequest))
-                .ReturnsAsync(_loginResponse);
-            _mockUserService.Setup(repo => repo.CreateRequestToken())
-                .ReturnsAsync(_createRequestTokenResponse);
-
-            _controller = new UserController(_mockUserService.Object);
+            MockService();
         }
 
         [Test]
