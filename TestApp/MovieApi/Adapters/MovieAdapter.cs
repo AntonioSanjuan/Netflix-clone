@@ -13,7 +13,7 @@ namespace MovieApi.adapters
 {
     public class MovieAdapter : IMovieAdapter
     {
-        public void MovieAzzpter() {}
+        public MovieAdapter() {}
 
         public TopRatedMoviesResponseModel ToTopRatedMoviesResponse(GetTopRatedMoviesResponseModel getTopRatedMoviesResponse, List<MovieImageResponseModel> topRatedImageMovies)
         {

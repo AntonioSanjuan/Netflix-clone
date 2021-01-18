@@ -2,6 +2,7 @@
 using MovieApi.Models.Common.Response.Notification;
 using MovieApi.Models.Common.Response.Schema;
 using MovieApi.Models.TheMoviedb.Auth.CreateRequestToken.Response;
+using MovieApi.Models.User;
 using MovieApi.Models.User.Login.Response;
 
 namespace MovieApi.Modules.ConversionTypeModules.LoginConversionTypeModule
@@ -13,7 +14,7 @@ namespace MovieApi.Modules.ConversionTypeModules.LoginConversionTypeModule
             LoginResponseModel output = new LoginResponseModel()
             {
                 Notification = CommonConversionTypeModule.CommonConversionTypeModule.CreateSuccessNotification(),
-                ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(),
+                ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(UserServiceMethodNames.Login),
                 Content = new LoginResponseContent
                 {
                     IsValid = createRequestTokenResponse.Success,
@@ -28,7 +29,7 @@ namespace MovieApi.Modules.ConversionTypeModules.LoginConversionTypeModule
             LoginResponseModel output = new LoginResponseModel()
             {
                 Notification = CommonConversionTypeModule.CommonConversionTypeModule.CreateFailureNotification(),
-                ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(),
+                ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(UserServiceMethodNames.Login),
                 Content = new LoginResponseContent()
                 {
                     IsValid = false,

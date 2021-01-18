@@ -51,7 +51,7 @@ namespace MovieApiTest.Adapters
         }
 
         [Test]
-        public async Task ToLoginResponseWithoutContentThrowException()
+        public void ToLoginResponseWithoutContentThrowException()
         {
             HttpResponseMessage ToRequestTokenResponseRequest = new HttpResponseMessage()
             {
@@ -77,7 +77,7 @@ namespace MovieApiTest.Adapters
         }
 
         [Test]
-        public async Task ToLoginErrorResponse()
+        public void ToLoginErrorResponse()
         {
             MockAdapter();
             var actual = _adapter.ToLoginErrorResponse();

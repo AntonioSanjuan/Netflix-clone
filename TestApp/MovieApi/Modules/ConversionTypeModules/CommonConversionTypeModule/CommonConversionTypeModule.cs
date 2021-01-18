@@ -10,11 +10,11 @@ namespace MovieApi.Modules.ConversionTypeModules.CommonConversionTypeModule
 {
     public static class CommonConversionTypeModule
     {
-        public static ResponseSchemaModel CreateSchema()
+        public static ResponseSchemaModel CreateSchema(string methodName)
         {
             return new ResponseSchemaModel()
             {
-                ResponseMethod = "Login",
+                ResponseMethod = methodName,
                 ResponseTime = 0
             };
         }

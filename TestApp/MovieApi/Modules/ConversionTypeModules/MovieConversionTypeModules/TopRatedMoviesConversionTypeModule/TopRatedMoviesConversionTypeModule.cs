@@ -1,4 +1,5 @@
-﻿using MovieApi.Models.Movie.GetMovieImages.Response;
+﻿using MovieApi.Models.Movie;
+using MovieApi.Models.Movie.GetMovieImages.Response;
 using MovieApi.Models.Movie.GetTopTatedMovies.Response;
 using MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.TopR
             TopRatedMoviesResponseModel output = new TopRatedMoviesResponseModel()
             {
                 Notification = CommonConversionTypeModule.CommonConversionTypeModule.CreateFailureNotification(),
-                ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(),
+                ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(MovieServiceMethodNames.GetTopRatedMovies),
                 Content = new TopRatedMoviesResponseContent()
                 {
                     Page = 1,
@@ -30,7 +31,7 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.TopR
             TopRatedMoviesResponseModel output = new TopRatedMoviesResponseModel()
             {
                 Notification = CommonConversionTypeModule.CommonConversionTypeModule.CreateSuccessNotification(),
-                ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(),
+                ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(MovieServiceMethodNames.GetTopRatedMovies),
                 Content = new TopRatedMoviesResponseContent()
                 {
                     Page = topRatedMoviesResponseModel.Page,
