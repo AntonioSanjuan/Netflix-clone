@@ -7,16 +7,13 @@ using MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.TopRated
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace MovieApi.adapters
 {
     public class MovieAdapter : IMovieAdapter
     {
-        public MovieAdapter() {}
+        public void MovieAzzpter() {}
 
         public TopRatedMoviesResponseModel ToTopRatedMoviesResponse(GetTopRatedMoviesResponseModel getTopRatedMoviesResponse, List<MovieImageResponseModel> topRatedImageMovies)
         {
@@ -32,6 +29,11 @@ namespace MovieApi.adapters
             _sb.Append(Convert.ToBase64String(bytes, 0, bytes.Length));
 
             return $"data:image/{imageFormat};base64,{_sb.ToString()}";
+        }
+
+        public TopRatedMoviesResponseModel TopTopRatedMoviesErrorResponse()
+        {
+            return TopRatedMoviesConversionTypeModule.Failure();
         }
     }
 }

@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Adapters\" />
     <Folder Include="Modules\" />
   </ItemGroup>
 

@@ -13,5 +13,7 @@ namespace MovieApi.adapters.interfaces
     {
         TopRatedMoviesResponseModel ToTopRatedMoviesResponse(GetTopRatedMoviesResponseModel response, List<MovieImageResponseModel> topRatedImageMovies);
         string ToBase64MovieImage(Byte[] bytes, string imageUrl);
+        TopRatedMoviesResponseModel TopTopRatedMoviesErrorResponse();
+
     }
 }

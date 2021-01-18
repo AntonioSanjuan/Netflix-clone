@@ -7,6 +7,7 @@ using MovieApi.Models.Movie.GetTopTatedMovies.Response;
 using MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response;
 using MovieApi.Modules.ServiceNameModules.MovieServiceNameModule;
 using MovieApi.services.interfaces;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
@@ -34,38 +35,52 @@ namespace MovieApi.services
 
         public async Task<TopRatedMoviesResponseModel> GetTopRatedMovies(TopRatedMoviesRequestModel request)
         {
-            string url = _serviceNameModule.CreateTopRatedMoviesUrl(request);
-            HttpResponseMessage response = _httpClient.GetAsync(url).Result;
-            var responseAsString = await response.Content.ReadAsStringAsync();
-            GetTopRatedMoviesResponseModel getTopRatedMoviesResponse = JsonSerializer.Deserialize<GetTopRatedMoviesResponseModel>(responseAsString, new JsonSerializerOptions
+            try
             {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            });
-            List<MovieImageResponseModel> topRatedImageMovies = await GetTopRatedMovieImages(getTopRatedMoviesResponse);
-            TopRatedMoviesResponseModel topRatedMoviesResponse = _movieAdapter.ToTopRatedMoviesResponse(getTopRatedMoviesResponse, topRatedImageMovies);
+                string url = _serviceNameModule.CreateTopRatedMoviesUrl(request);
+                HttpResponseMessage response = _httpClient.GetAsync(url).Result;
+                var responseAsString = await response.Content.ReadAsStringAsync();
+                GetTopRatedMoviesResponseModel getTopRatedMoviesResponse = JsonSerializer.Deserialize<GetTopRatedMoviesResponseModel>(responseAsString, new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                });
+                List<MovieImageResponseModel> topRatedImageMovies = await GetTopRatedMovieImages(getTopRatedMoviesResponse);
+                TopRatedMoviesResponseModel topRatedMoviesResponse = _movieAdapter.ToTopRatedMoviesResponse(getTopRatedMoviesResponse, topRatedImageMovies);
 
-            return topRatedMoviesResponse;
+                return topRatedMoviesResponse;
+            }
+            catch (Exception)
+            {
+                return _movieAdapter.TopTopRatedMoviesErrorResponse();
+            }
         }
 
-        public async Task<List<MovieImageResponseModel>> GetTopRatedMovieImages(GetTopRatedMoviesResponseModel getTopRatedMovies)
+        private async Task<List<MovieImageResponseModel>> GetTopRatedMovieImages(GetTopRatedMoviesResponseModel getTopRatedMovies)
         {
-            List<MovieImageResponseModel> output = new List<MovieImageResponseModel>();
-            
-            foreach(var movie in getTopRatedMovies.Results)
+            try
             {
-                string base64BackdropImageUrl = _serviceNameModule.CreateMovieImageUrl(movie.Backdrop_path);
-                string Base64PosterImageUrl = _serviceNameModule.CreateMovieImageUrl(movie.Poster_path);
-                output.Add(new MovieImageResponseModel(
-                    movie.Id,
-                    string.IsNullOrEmpty(Base64PosterImageUrl) ?
-                        null:
-                        _movieAdapter.ToBase64MovieImage(await _httpClient.GetByteArrayAsync(Base64PosterImageUrl), Base64PosterImageUrl),
-                    string.IsNullOrEmpty(base64BackdropImageUrl) ?
-                        null:
-                        _movieAdapter.ToBase64MovieImage(await _httpClient.GetByteArrayAsync(base64BackdropImageUrl), base64BackdropImageUrl)
-                ));
+                List<MovieImageResponseModel> output = new List<MovieImageResponseModel>();
+
+                foreach (var movie in getTopRatedMovies.Results)
+                {
+                    string base64BackdropImageUrl = _serviceNameModule.CreateMovieImageUrl(movie.Backdrop_path);
+                    string Base64PosterImageUrl = _serviceNameModule.CreateMovieImageUrl(movie.Poster_path);
+                    output.Add(new MovieImageResponseModel(
+                        movie.Id,
+                        string.IsNullOrEmpty(Base64PosterImageUrl) ?
+                            null :
+                            _movieAdapter.ToBase64MovieImage(await _httpClient.GetByteArrayAsync(Base64PosterImageUrl), Base64PosterImageUrl),
+                        string.IsNullOrEmpty(base64BackdropImageUrl) ?
+                            null :
+                            _movieAdapter.ToBase64MovieImage(await _httpClient.GetByteArrayAsync(base64BackdropImageUrl), base64BackdropImageUrl)
+                    ));
+                }
+                return output;
             }
-            return output;
+            catch (Exception)
+            {
+                return new List<MovieImageResponseModel>();
+            }
         }
     }
 }
