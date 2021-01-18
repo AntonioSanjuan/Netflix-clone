@@ -20,7 +20,7 @@ namespace MovieApiTest.Controllers
 
         UserController _controller;
 
-        private void MockService()
+        private void MockController()
         {
             LoginRequestModel loginRequest = null;
 
@@ -40,7 +40,7 @@ namespace MovieApiTest.Controllers
             _loginResponse = new LoginResponseModel();
             _mockUserService = new Mock<IUserService>();
 
-            MockService();
+            MockController();
         }
 
         [Test]

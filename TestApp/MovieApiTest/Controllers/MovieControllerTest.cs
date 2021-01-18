@@ -14,7 +14,7 @@ namespace MovieApiTest.Controllers
         Mock<IMovieService> _mockMovieService;
         MovieController _controller;
 
-        private void MockService()
+        private void MockController()
         {
             TopRatedMoviesRequestModel loginRequest = null;
             TopRatedMoviesResponseModel loginResponse = null;
@@ -29,14 +29,14 @@ namespace MovieApiTest.Controllers
         public void Setup()
         {
             _mockMovieService = new Mock<IMovieService>();
-            MockService();
+            MockController();
         }
 
         [Test]
-        public async Task TopTatedMovies()
+        public async Task TopRatedMovies()
         {
             TopRatedMoviesRequestModel getTopRatedMoviesRequest = new TopRatedMoviesRequestModel();
-            await _controller.GetTopTatedMovies(getTopRatedMoviesRequest);
+            await _controller.GetTopRatedMovies(getTopRatedMoviesRequest);
 
             //assert
             _mockMovieService.Verify(spy => spy.GetTopRatedMovies(getTopRatedMoviesRequest), Times.Once());

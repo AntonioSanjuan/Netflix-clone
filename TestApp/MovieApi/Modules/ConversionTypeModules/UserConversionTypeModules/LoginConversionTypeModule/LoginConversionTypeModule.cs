@@ -16,7 +16,7 @@ namespace MovieApi.Modules.ConversionTypeModules.LoginConversionTypeModule
                 ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(),
                 Content = new LoginResponseContent
                 {
-                    IsValid = true,
+                    IsValid = createRequestTokenResponse.Success,
                     AccessToken = createRequestTokenResponse.Request_token
                 }
             };

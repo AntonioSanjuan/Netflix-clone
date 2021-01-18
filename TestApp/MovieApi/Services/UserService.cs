@@ -49,7 +49,6 @@ namespace MovieApi.services
         {
             try
             {
-                _ = await CreateRequestToken();
                 string url = _serviceNameModule.CreateRequestTokenUrl();
                 HttpResponseMessage response = _httpClient.GetAsync(url).Result;
                 LoginResponseModel loginResponse = await _userAdapter.ToLoginResponse(response);

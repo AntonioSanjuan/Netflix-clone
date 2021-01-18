@@ -147,7 +147,7 @@ namespace MovieApiTest.Services
             //assert
             _mockHttpMessageHandler.Protected().Verify(
                "SendAsync",
-               Times.Exactly(2),
+               Times.Exactly(1),
                ItExpr.Is<HttpRequestMessage>(req => req.Method == HttpMethod.Get &&
                                                     req.RequestUri.IsAbsoluteUri
                                                 ),
