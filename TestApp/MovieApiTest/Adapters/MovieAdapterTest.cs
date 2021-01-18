@@ -25,11 +25,27 @@ namespace MovieApiTest.Adapters
         }
 
         [Test]
-        public void ToTopRatedMoviesResponse()
+        public void ToTopRatedMoviesResponseWithStatusCodeSuccess()
         {
-            GetTopRatedMoviesResponseModel getTopRatedMoviesResponseRequestParam = null;
-            List<MovieImageResponseModel> topRatedImageMoviesRequestParam = new List<MovieImageResponseModel>();
+            GetTopRatedMoviesResponseModel getTopRatedMoviesResponseRequestParam = new GetTopRatedMoviesResponseModel() { Status_code = 0, Total_results = 0, Results = new List<GetTopRatedMovie>(), Page = 1, Total_pages = 1};
+            List<MovieImageResponseModel> topRatedImageMoviesRequestParam = new List<MovieImageResponseModel>() { };
+
+            MockAdapter();
             var actual = _adapter.ToTopRatedMoviesResponse(getTopRatedMoviesResponseRequestParam, topRatedImageMoviesRequestParam);
+            Assert.IsEmpty(actual.Content.Movies);
+            Assert.AreEqual("GetTopRatedMovies", actual.ResponseSchema.ResponseMethod);
+        }
+
+        [Test]
+        public void ToTopRatedMoviesResponseWithStatusCodeFailure()
+        {
+            GetTopRatedMoviesResponseModel getTopRatedMoviesResponseRequestParam = new GetTopRatedMoviesResponseModel() { Status_code = 1 };
+            List<MovieImageResponseModel> topRatedImageMoviesRequestParam = new List<MovieImageResponseModel>() {  };
+
+            MockAdapter();
+            var actual = _adapter.ToTopRatedMoviesResponse(getTopRatedMoviesResponseRequestParam, topRatedImageMoviesRequestParam);
+            Assert.IsNull(actual.Content.Movies);
+            Assert.AreEqual("GetTopRatedMovies", actual.ResponseSchema.ResponseMethod);
         }
 
         [Test]

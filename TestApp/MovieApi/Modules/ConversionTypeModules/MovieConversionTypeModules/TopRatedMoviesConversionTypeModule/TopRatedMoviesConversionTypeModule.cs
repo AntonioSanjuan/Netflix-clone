@@ -43,7 +43,7 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.TopR
             return output;
         }
 
-        public static List<TopRatedMoviesResponseContentMovies> ConvertTopRatedMovies(List<GetTopRatedMovie> input, List<MovieImageResponseModel> inputImages)
+        private static List<TopRatedMoviesResponseContentMovies> ConvertTopRatedMovies(List<GetTopRatedMovie> input, List<MovieImageResponseModel> inputImages)
         {
             List<TopRatedMoviesResponseContentMovies> output = new List<TopRatedMoviesResponseContentMovies>();
             foreach(GetTopRatedMovie singleInput in input)
