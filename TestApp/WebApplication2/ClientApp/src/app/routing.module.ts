@@ -13,7 +13,7 @@ export enum PagePaths {
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: PagePaths.Login,
+    redirectTo: PagePaths.Home,
     pathMatch: 'full'
   },
   {
