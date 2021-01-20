@@ -1,11 +1,9 @@
-import { DataSupplierServicesEnumNames } from 'src/app/models/dataSupplier-models/serviceNames.mode';
+import { MovieDBServiceNameModule } from './DataSuppliers/MovieDBServiceNameModule';
 
 export class DataSupplierServicesNames {
-    protected baseUrl: string;
-    protected controllerSuburl = 'api/Movie/';
+    movieDB: MovieDBServiceNameModule;
 
     constructor(baseUrl: string) {
-       this.baseUrl = baseUrl + this.controllerSuburl;
+      this.movieDB = new MovieDBServiceNameModule(baseUrl);
     }
-
 }
