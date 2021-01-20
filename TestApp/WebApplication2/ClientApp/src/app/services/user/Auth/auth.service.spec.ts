@@ -17,11 +17,12 @@ describe('[IntegrationTest] AuthService', () => {
   let validatorStub = {} as Validator;
   let responseValidatorStub = {} as ResponseValidator;
   let isLoginResponseValidMock = true;
+  let isGetTopRatedMoviesResponseValidMock = true;
 
   beforeEach(() => {
     isLoginResponseValidMock = true;
-
-    responseValidatorStub = { isLoginResponseValid : jest.fn(() => isLoginResponseValidMock) };
+    responseValidatorStub = { isLoginResponseValid : jest.fn(() => isLoginResponseValidMock),
+      isGetTopRatedMoviesResponseValid: jest.fn(() => isGetTopRatedMoviesResponseValidMock) };
     validatorStub = { responseValidator : responseValidatorStub };
     utilServiceStub = { validator: validatorStub };
 

@@ -1,8 +1,8 @@
-import { ResponseValidator } from "./responses/responseValidatorModule";
+import { ResponseValidator } from './responses/responseValidatorModule';
 
-export class Validator{
-    constructor(){}
+export class Validator {
+    constructor() {}
 
     public responseValidator: ResponseValidator = new ResponseValidator();
-    
+
 }
