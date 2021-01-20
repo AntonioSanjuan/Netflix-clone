@@ -45,7 +45,7 @@ describe('[IntegrationTest] MovieDBService', () => {
     httpMock.verify();
   });
 
-  it('topRatedMovies() should call http POST method for the given route',  () => {
+  it('getTopRatedMovies() should call http POST method for the given route',  () => {
     sut.getTopRatedMovies(0).then(
       async () => {
       }
@@ -57,7 +57,7 @@ describe('[IntegrationTest] MovieDBService', () => {
 
   });
 
-  it('login() loginResponse should be checked via ValidatorModule', () => {
+  it('getTopRatedMovies() getTopRatedMoviesResponse should be checked via ValidatorModule', () => {
     // spy
     const isTopRatedMoviesResponseValidSpy = jest.spyOn(responseValidatorStub, 'isGetTopRatedMoviesResponseValid');
 

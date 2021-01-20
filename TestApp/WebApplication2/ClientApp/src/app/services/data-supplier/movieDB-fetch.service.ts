@@ -33,7 +33,7 @@ export class MovieDBService {
 
   public async getTopRatedMovies(page: number) {
     const getTopRatedMoviesRequestUrl: string = this.movieServicesNames.movieDB.getTopRatedMoviesUrl();
-    const getTopRatedMoviesRequestContent: GetTopRatedMoviesRequest = new GetTopRatedMoviesRequest('', page, '');
+    const getTopRatedMoviesRequestContent: GetTopRatedMoviesRequest = new GetTopRatedMoviesRequest('en-US', page, '');
 
     return await this.http.post<IGetTopRatedMoviesResponse>(getTopRatedMoviesRequestUrl, getTopRatedMoviesRequestContent).pipe(
       map(response => this.processGetTopRatedMoviesResponset(response))
