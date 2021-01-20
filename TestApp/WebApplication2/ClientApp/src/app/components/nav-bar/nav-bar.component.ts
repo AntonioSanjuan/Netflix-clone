@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/services/user/Auth/auth.service';
@@ -13,6 +14,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   isAuthenticatedSubsciption: Subscription;
 
   constructor(
+    private router: Router,
     private authService: AuthService
     ) { }
 
@@ -25,6 +27,10 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.unsubscribeAll();
+  }
+
+  goToLoginPage(){
+    this.router.navigate(['login']);
   }
 
   private unsubscribeAll(): void {

@@ -1,15 +1,21 @@
+import { routes } from 'src/app/routing.module';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ILoginResponse } from 'src/app/models/user-models/Login/LoginResponse.model';
 import { UtilService } from 'src/app/services/util/utils.service';
 import { NavBarComponent } from './nav-bar.component';
+import { Router } from '@angular/router';
+import { LoginComponent } from 'src/app/pages/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from 'src/app/pages/home/home.component';
 
 describe('NavBarComponent', () => {
   let component: NavBarComponent;
   let fixture;
+  let router: Router;
 
   let authServiceStub;
   const loginMock = {} as ILoginResponse;
@@ -24,8 +30,12 @@ describe('NavBarComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [NavBarComponent],
-      imports: [HttpClientTestingModule],
+      declarations: [NavBarComponent, LoginComponent, HomeComponent],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes(routes),
+        ReactiveFormsModule
+      ],
       providers: [
         {provide: UtilService, useValue: authServiceStub},
       ],
@@ -34,6 +44,7 @@ describe('NavBarComponent', () => {
 
   fixture = TestBed.createComponent(NavBarComponent);
   component = fixture.componentInstance;
+  router = TestBed.inject(Router);
 
   fixture.detectChanges();
   });
@@ -43,5 +54,13 @@ describe('NavBarComponent', () => {
     const actual = component.isAuthenticated;
 
     expect(actual).toEqual(false);
+  });
+
+  it('goToLoginPage() should redirect to login page', () => {
+    // spy
+    const navigateSpy = spyOn(router, 'navigate');
+    component.goToLoginPage();
+
+    expect(navigateSpy).toHaveBeenCalledWith(['login']);
   });
 });
