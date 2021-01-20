@@ -1,3 +1,3 @@
-export enum DataSupplierServicesEnumNames {
-
+export enum MovieDBServicesEnumNames {
+  GetTopRatedMovies = 'TopRatedMovies',
 }
