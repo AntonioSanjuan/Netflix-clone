@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     const loginForm = this.form.value;
     await this.authService.login(loginForm.username, loginForm.password)
     .then((loginResponse) => {
+      console.log(loginResponse);
       if (this.authService.getIsAuthenticated()) {
         this.router.navigate(['home']);
       }

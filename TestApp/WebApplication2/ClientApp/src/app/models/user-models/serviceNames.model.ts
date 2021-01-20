@@ -1,4 +1,5 @@
- export enum UserServicesEnumNames {
-    Login = 'Login',
-    GetUser = 'GetUser'
+export enum UserServicesEnumNames {
+  Login = 'Login',
+  GetUser = 'GetUser'
 }
+
