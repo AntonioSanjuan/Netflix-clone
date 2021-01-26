@@ -5,17 +5,19 @@
     max-height: 3em;
 }
 
-.NavBar_MainContainer{
+.NavBar_MainContainer {
+    
 }
 
-.rightNavBar{
+.rightNavBar {
     margin-right: 1%;
 }
 
-.centralNavBar{
+.centralNavBar {
   margin-top: 1%;
 }
 
-.leftNavBar{
+.leftNavBar {
     margin-left: 1%;
 }
+
