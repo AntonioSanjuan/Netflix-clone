@@ -1,6 +1,8 @@
 :host {
     width: 100%;
 }
-
+.mat-menu-item{
+  cursor: auto;
+}
 .NavMenu_MainContainer{
 }
