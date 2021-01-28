@@ -1,0 +1,37 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+/* You can add global styles to this file, and also import other style files */
+/* Provide sufficient contrast against white background */
+
+.btn-primary {
+  color: var(--text-small-constrast-colour);
+  background-color: var(--app-primary-colour);
+  border-color: var(--app-primary-colour);
+}
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+// Light theme
+$light-primary: mat-palette($mat-indigo);
+$light-accent:  mat-palette($mat-blue-grey, A200, A100, A400);
+$light-theme:   mat-light-theme($light-primary, $light-accent);
+
+@media (prefers-color-scheme: light) {
+  @include angular-material-theme($light-theme);
+}
+
+// Dark theme
+$dark-primary: mat-palette($mat-blue-grey);
+$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
+$dark-warn:    mat-palette($mat-deep-orange);
+$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+@media (prefers-color-scheme: dark) {
+  @include angular-material-theme($dark-theme);
+}
