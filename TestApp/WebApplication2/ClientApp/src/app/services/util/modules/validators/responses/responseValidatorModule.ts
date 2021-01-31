@@ -1,4 +1,4 @@
-import { IGetTopRatedMoviesResponse } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
+import { IGetTopRatedMoviesResponseDto } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
 import { ILoginResponse } from 'src/app/models/user-models/Login/LoginResponse.model';
 
 export class ResponseValidator {
@@ -10,7 +10,7 @@ export class ResponseValidator {
         }
     }
 
-    public isGetTopRatedMoviesResponseValid(loginResponse: IGetTopRatedMoviesResponse): boolean {
+    public isGetTopRatedMoviesResponseValid(loginResponse: IGetTopRatedMoviesResponseDto): boolean {
       try {
           return (loginResponse && loginResponse.content && loginResponse.content.movies !== undefined);
       } catch {

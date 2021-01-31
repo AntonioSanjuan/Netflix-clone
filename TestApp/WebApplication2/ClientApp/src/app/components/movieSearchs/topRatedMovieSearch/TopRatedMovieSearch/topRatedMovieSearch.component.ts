@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { MovieDBService } from 'src/app/services/data-supplier/movieDB-fetch.service';
-import { IGetTopRatedMoviesResponse } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
+import { IGetTopRatedMoviesResponseDto } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -10,7 +10,7 @@ import { IGetTopRatedMoviesResponse } from 'src/app/models/dataSupplier-models/G
   styleUrls: ['./topRatedMovieSearch.component.scss']
 })
 export class TopRatedMovieSearchComponent implements OnInit, OnDestroy {
-  fetchedTopRatedMovies: IGetTopRatedMoviesResponse;
+  fetchedTopRatedMovies: IGetTopRatedMoviesResponseDto;
   fetchedPage = 1;
 
   constructor(
@@ -35,7 +35,6 @@ export class TopRatedMovieSearchComponent implements OnInit, OnDestroy {
 
   private async fetchTopRatedMovies(pageNumber: number) {
     await this.movieDBService.getTopRatedMovies(pageNumber).then((topRatedMoviesResponse) => {
-      console.log(topRatedMoviesResponse);
       this.fetchedTopRatedMovies = topRatedMoviesResponse;
       this.fetchedPage = pageNumber;
     });

@@ -1,6 +1,6 @@
 import { ICommonResponse } from '../../common/commonResponse.model';
 
-export interface IGetTopRatedMoviesResponse extends ICommonResponse<IGetTopRatedMoviesResponseContent> {}
+export interface IGetTopRatedMoviesResponseDto extends ICommonResponse<IGetTopRatedMoviesResponseContent> {}
 
 export interface IGetTopRatedMoviesResponseContent {
   page: number;

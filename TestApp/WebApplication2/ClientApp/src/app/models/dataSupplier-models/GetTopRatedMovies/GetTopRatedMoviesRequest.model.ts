@@ -4,7 +4,7 @@ export interface IGetTopRatedMoviesRequest {
   region: string;
 }
 
-export class GetTopRatedMoviesRequest implements IGetTopRatedMoviesRequest {
+export class GetTopRatedMoviesRequestDto implements IGetTopRatedMoviesRequest {
   language: string;
   page: number;
   region: string;

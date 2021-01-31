@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { GetTopRatedMoviesRequest as GetTopRatedMoviesRequestDto } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesRequest.model';
-import { IGetTopRatedMoviesResponse as IGetTopRatedMoviesResponseDto } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
+import { GetTopRatedMoviesRequestDto } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesRequest.model';
+import { IGetTopRatedMoviesResponseDto } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
 import { DataSupplierServicesNames } from 'src/app/modules/serviceNameModule/dataSupplierServiceNameModule/dataSupplierServiceNamesModule';
 
 import { UtilService } from '../util/utils.service';
