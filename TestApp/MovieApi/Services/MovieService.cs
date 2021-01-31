@@ -61,7 +61,7 @@ namespace MovieApi.services
             {
                 List<MovieImageResponseModel> output = new List<MovieImageResponseModel>();
 
-                if (getTopRatedMovies.Success)
+                if (getTopRatedMovies.Results != null)
                 {
                     foreach (var movie in getTopRatedMovies.Results)
                     {

@@ -11,7 +11,7 @@ import { IGetTopRatedMoviesResponse } from 'src/app/models/dataSupplier-models/G
 })
 export class TopRatedMovieSearchComponent implements OnInit, OnDestroy {
   fetchedTopRatedMovies: IGetTopRatedMoviesResponse;
-  fetchedPage = 0;
+  fetchedPage = 1;
 
   constructor(
     private movieDBService: MovieDBService
@@ -26,7 +26,7 @@ export class TopRatedMovieSearchComponent implements OnInit, OnDestroy {
   }
 
   private initialize() {
-    this.fetchTopRatedMovies(0);
+    this.fetchTopRatedMovies(1);
   }
 
   private unsubscribeAll() {
@@ -35,6 +35,7 @@ export class TopRatedMovieSearchComponent implements OnInit, OnDestroy {
 
   private async fetchTopRatedMovies(pageNumber: number) {
     await this.movieDBService.getTopRatedMovies(pageNumber).then((topRatedMoviesResponse) => {
+      console.log(topRatedMoviesResponse);
       this.fetchedTopRatedMovies = topRatedMoviesResponse;
       this.fetchedPage = pageNumber;
     });

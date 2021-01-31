@@ -17,10 +17,16 @@ namespace MovieApi.adapters
 
         public TopRatedMoviesResponseModel ToTopRatedMoviesResponse(GetTopRatedMoviesResponseModel getTopRatedMoviesResponse, List<MovieImageResponseModel> topRatedImageMovies)
         {
-            return ((getTopRatedMoviesResponse.Success) && (getTopRatedMoviesResponse.Status_code == (int)MoviedbStatusCodes.Success)) ?
+            return (IsSuccessResponse(getTopRatedMoviesResponse)) ?
                 TopRatedMoviesConversionTypeModule.Success(getTopRatedMoviesResponse, topRatedImageMovies) :
             TopRatedMoviesConversionTypeModule.Failure();
         }
+
+        private bool IsSuccessResponse(GetTopRatedMoviesResponseModel getTopRatedMoviesResponse)
+        {
+            return (getTopRatedMoviesResponse.Errors == null && getTopRatedMoviesResponse.Status_code == (int)MoviedbStatusCodes.Success);
+        }
+            
         public string ToBase64MovieImage(Byte[] bytes, string imageUrl)
         {
             string imageFormat = imageUrl.Split(".").Last();
