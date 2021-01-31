@@ -1,4 +1,31 @@
-<div class="Home_MainContainer" fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100">
-  <h1>Queeee</h1>
-  working on progress :)
+<div class="Home_MainContainer" fxLayout="column" fxLayoutAlign="start center" fxFlex="100">
+  <div class="Home_ModuleSelector" fxLayoutAlign="space-around center" fxLayout="column" fxFlex="10">
+    <div fxLayoutAlign="space-around center" fxLayout="row" fxFlex="100">
+      <div class="searchSelector" fxLayoutAlign="center center" fxLayout="column" fxFlex="33">
+        <button mat-raised-button class="app-button">Filter Search</button>
+      </div>
+      <div class="searchSelector" fxLayoutAlign="center center" fxLayout="row" fxFlex="33">
+        <button mat-raised-button class="app-button">Top Rated Movies</button>
+      </div>
+      <div class="searchSelector" fxLayoutAlign="center center" fxLayout="row" fxFlex="33">
+        <button  mat-raised-button class="app-button">Top Movies</button>
+      </div>
+    </div>
+  </div>
+  <div class="Home_ModuleContent" fxLayout="row" fxFlex="80">
+    <div ng-switch="selectedSearch">
+      <div ng-switch-when="SearchType.FilterSearch">
+      </div>
+      <div ng-switch-when="SearchType.TopRatedMoviesSearch">
+        <app-topRatedMovieSearch></app-topRatedMovieSearch>
+      </div>
+      <div ng-switch-when="SearchType.TopMoviesSearch">
+      </div>
+    </div>
+  </div>
+  <div class="Home_ModuleInfo" fxLayout="row" fxFlex="10">
+    <div fxLayoutAlign="space-around center" fxLayout="row" fxFlex="100">
+      <p>working on progress :)</p>
+    </div>
+  </div>
 </div>

@@ -1,43 +1,42 @@
 <div class="Login_MainContainer" fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100">
-  <div fxLayout="column" fxLayoutAlign="space-around center" >
-    <div fxFlex="30">
-      <mat-card>
-        <mat-card-content>
-          <form [formGroup]="form" (ngSubmit)="validateForm()">
-            <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100">
-              <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="70">
-                <h2>Log In</h2>
-                <mat-form-field>
-                  <mat-label>Email</mat-label>
-                  <input matInput placeholder="Email" formControlName="username"  name="username" autocomplete="on" required>
-                  <mat-error>
-                    Please, provide a valid email address
-                  </mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                  <mat-label>Password</mat-label>
-                  <input matInput type="password" placeholder="Password" formControlName="password"  name="password" autocomplete="on" required>
-                  <mat-error>
-                    Please, provide a valid password
-                  </mat-error>
-                </mat-form-field>
-              </div>
-              <div *ngIf="error" fxLayout="row" fxLayoutAlign="space-around center" fxFlex="15">
+  <div fxFlexOffset="40" fxFlex="20">
+    <mat-card>
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="validateForm()">
+          <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="100">
+            <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="70">
+              <h2>Log In</h2>
+              <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="username"  name="username" autocomplete="on" required>
                 <mat-error>
-                  {{error.errorMessage}}
+                  Please, provide a valid email address
                 </mat-error>
-              </div>
-              <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="15">
-                <button mat-raised-button color="primary">Login</button>
-                <button mat-raised-button color="primary" disabled>Register</button>
-              </div>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput type="password" placeholder="Password" formControlName="password"  name="password" autocomplete="on" required>
+                <mat-error>
+                  Please, provide a valid password
+                </mat-error>
+              </mat-form-field>
             </div>
-          </form>
-        </mat-card-content>
-      </mat-card>
-    </div>
-    <div fxFlex>
-
-    </div>
+            <div *ngIf="error" fxLayout="row" fxLayoutAlign="space-around center" fxFlex="15">
+              <mat-error>
+                {{error.errorMessage}}
+              </mat-error>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-around center" fxFlex="15">
+              <button mat-raised-button class="app-primary-accent-button-colour">Login</button>
+              <button mat-raised-button class="app-primary-accent-button-colour" disabled>Register</button>
+            </div>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
   </div>
+  <div fxFlex>
+
+  </div>
+
 </div>

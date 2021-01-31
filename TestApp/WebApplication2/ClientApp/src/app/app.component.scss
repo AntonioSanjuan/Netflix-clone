@@ -1,24 +1,42 @@
 @media (prefers-color-scheme: light) {
   :host {
+    //background
     --app-background-color:  #f2f2f2;
-    --app-primary-colour : #0033cc;
-    --app-secondary-color: #1a53ff;
     --text-tittle-colour: #0d0d0d;
     --text-small-colour:  #262626;
+
+    //primary colour
+    --app-primary-colour : #1f326d;
+    --app-secondary-color: #1a53ff;
     --text-tittle-contrast-colour: #e6e6e6;
     --text-small-constrast-colour:  #cccccc;
+
+    //accent colour
+    --app-primary-accent-colour: #e17f00;
+    --app-secondary-accent-colour: #df9029;
+    --text-tittle-accent-contrast-colour: #e6e6e6;
+    --text-small-accent-constrast-colour:  #cccccc;
   }
 }
 
 @media (prefers-color-scheme: dark){
   :host {
+    //background
     --app-background-color: #000d1a;
-    --app-primary-colour :  #4d4d4d;
-    --app-secondary-color:  #737373;
     --text-tittle-colour: #e6e6e6;
     --text-small-colour:  #cccccc;
+
+    //primary colour
+    --app-primary-colour :  #4d4d4d;
+    --app-secondary-color:  #737373;
     --text-tittle-contrast-colour: #e6e6e6;
     --text-small-constrast-colour:  #cccccc;
+
+    //accent colour
+    --app-primary-accent-colour: #e17f00;
+    --app-secondary-accent-colour: #df9029;
+    --text-tittle-accent-contrast-colour: #e6e6e6;
+    --text-small-accent-constrast-colour:  #cccccc;
   }
 }
 

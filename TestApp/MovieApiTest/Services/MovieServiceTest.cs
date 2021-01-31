@@ -74,10 +74,10 @@ namespace MovieApiTest.Services
         [Test]
         public async Task GetTopRatedMoviesWithInvalidUri()
         {
-            TopRatedMoviesRequestModel getTopRatedMoviesRequest = new TopRatedMoviesRequestModel()
+            TopRatedMoviesRequestModelDto getTopRatedMoviesRequest = new TopRatedMoviesRequestModelDto()
             {
-                Page = 1,
-                Language = "DE"
+                page = 1,
+                language = "DE"
             };
             const string baseUrl = "baseUrl";
             const string imageBaseUrl = "imageBaseUrl";
@@ -118,10 +118,10 @@ namespace MovieApiTest.Services
         [Test]
         public async Task GetTopRatedMoviesWithValidUri()
         {
-            TopRatedMoviesRequestModel getTopRatedMoviesRequest = new TopRatedMoviesRequestModel()
+            TopRatedMoviesRequestModelDto getTopRatedMoviesRequest = new TopRatedMoviesRequestModelDto()
             {
-                Page = 1,
-                Language = ""
+                page = 1,
+                language = ""
             };
             const string baseUrl = "http://baseUrl";
             const string imageBaseUrl = "http://imageBaseUrl";

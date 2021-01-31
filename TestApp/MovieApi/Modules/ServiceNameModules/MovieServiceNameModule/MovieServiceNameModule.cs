@@ -26,13 +26,13 @@ namespace MovieApi.Modules.ServiceNameModules.MovieServiceNameModule
             return output;
         }
 
-        public string CreateTopRatedMoviesUrl(TopRatedMoviesRequestModel request)
+        public string CreateTopRatedMoviesUrl(TopRatedMoviesRequestModelDto request)
         {
             var v3Settings = _theMoviedbSettings.Version.V3;
             string output = v3Settings.BaseUrl + v3Settings.SubUrls.getTopRatedMovies;
             output = output.Replace("<<api_key>>", v3Settings.ApiKey);
-            output = output.Replace("<<language>>", request.Language);
-            output = output.Replace("<<page>>", request.Page.ToString());
+            output = output.Replace("<<language>>", request.language);
+            output = output.Replace("<<page>>", request.page.ToString());
             return output;
         }
     }

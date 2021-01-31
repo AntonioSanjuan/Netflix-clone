@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MovieApi.Models.User.Login.Request
 {
-    public class LoginRequestModel
+    public class LoginRequestModelDto
     {
         public string user { get; set; }
         public string pass { get; set; }

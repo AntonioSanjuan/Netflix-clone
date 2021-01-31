@@ -3,8 +3,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
-import { ILoginRequest, LoginRequest } from 'src/app/models/user-models/Login/LoginRequest.model';
-import { ILoginResponse } from 'src/app/models/user-models/Login/LoginResponse.model';
+import { ILoginRequest as ILoginRequestDto, LoginRequest } from 'src/app/models/user-models/Login/LoginRequest.model';
+import { ILoginResponse as ILoginResponseDto } from 'src/app/models/user-models/Login/LoginResponse.model';
 import { UtilService } from '../../util/utils.service';
 import { TokenModule } from 'src/app/modules/tokenModule/tokenModule';
 import { UserServicesNames } from 'src/app/modules/serviceNameModule/userServiceNameModule/userServiceNameModule';
@@ -44,7 +44,7 @@ export class AuthService {
     return this.isAuthenticated$.asObservable();
   }
 
-  private processLoginResponse(loginResponse: ILoginResponse): ILoginResponse | undefined {
+  private processLoginResponse(loginResponse: ILoginResponseDto): ILoginResponseDto | undefined {
       if (this.utilService.validator.responseValidator.isLoginResponseValid(loginResponse)) {
         const responseContent = {...loginResponse.content};
         this.tokenModule.setToken(responseContent.accessToken);
@@ -57,9 +57,9 @@ export class AuthService {
 
   public async login(username: string, password: string) {
     const loginRequestUrl: string = this.userServicesNames.getLoginUrl();
-    const loginRequestContent: ILoginRequest = new LoginRequest(username, password);
+    const loginRequestContent: ILoginRequestDto = new LoginRequest(username, password);
 
-    return await this.http.post<ILoginResponse>(loginRequestUrl, loginRequestContent).pipe(
+    return await this.http.post<ILoginResponseDto>(loginRequestUrl, loginRequestContent).pipe(
       map(response =>  this.processLoginResponse(response))
     ).toPromise();
   }

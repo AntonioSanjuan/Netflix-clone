@@ -74,7 +74,7 @@ namespace MovieApiTest.Services
         [Test]
         public async Task LoginWithInvalidUrl()
         {
-            LoginRequestModel loginRequest = new LoginRequestModel
+            LoginRequestModelDto loginRequest = new LoginRequestModelDto
             {
                 user = "",
                 pass = ""
@@ -116,7 +116,7 @@ namespace MovieApiTest.Services
         [Test]
         public async Task LoginWithValidUrl()
         {
-            LoginRequestModel loginRequest = new LoginRequestModel
+            LoginRequestModelDto loginRequest = new LoginRequestModelDto
             {
                 user = "",
                 pass = ""

@@ -8,6 +8,7 @@ namespace MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response
 {
     public class GetTopRatedMoviesErrorResponseModel : CreateRequestTokenErrorResponseModel
     {
+        public List<string> Errors { get; set; }
         public bool Success { get; set; }
     }
 }

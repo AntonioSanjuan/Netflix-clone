@@ -49,6 +49,10 @@ describe('NavBarComponent', () => {
   fixture.detectChanges();
   });
 
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
   it('initially AuthService.getIsAuthenticated() should be FALSE', () => {
     // spy
     const actual = component.isAuthenticated;
@@ -62,5 +66,13 @@ describe('NavBarComponent', () => {
     component.goToLoginPage();
 
     expect(navigateSpy).toHaveBeenCalledWith(['login']);
+  });
+
+  it('goTopHomePage() should redirect to home page', () => {
+    // spy
+    const navigateSpy = spyOn(router, 'navigate');
+    component.goToHomePage();
+
+    expect(navigateSpy).toHaveBeenCalledWith(['home']);
   });
 });

@@ -46,6 +46,10 @@ describe('LoginComponent', () => {
   fixture.detectChanges();
   });
 
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
   it('login() should call AuthService.Login() function', () => {
     // spy
     const loginSpy = jest.spyOn(authServiceStub, 'login');

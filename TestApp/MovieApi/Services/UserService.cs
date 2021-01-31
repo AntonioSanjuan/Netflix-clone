@@ -45,7 +45,7 @@ namespace MovieApi.services
             }
         }
 
-        public async Task<LoginResponseModel> Login(LoginRequestModel loginRequest)
+        public async Task<LoginResponseModel> Login(LoginRequestModelDto loginRequest)
         {
             try
             {

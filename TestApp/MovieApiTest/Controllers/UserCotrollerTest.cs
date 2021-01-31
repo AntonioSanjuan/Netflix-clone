@@ -22,7 +22,7 @@ namespace MovieApiTest.Controllers
 
         private void MockController()
         {
-            LoginRequestModel loginRequest = null;
+            LoginRequestModelDto loginRequest = null;
 
             _mockUserService.Setup(repo => repo.Login(loginRequest))
             .ReturnsAsync(_loginResponse);
@@ -46,7 +46,7 @@ namespace MovieApiTest.Controllers
         [Test]
         public async Task Login()
         {
-            LoginRequestModel loginRequest = new LoginRequestModel{
+            LoginRequestModelDto loginRequest = new LoginRequestModelDto{
                 user = "",
                 pass = ""
             };

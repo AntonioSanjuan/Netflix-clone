@@ -1,37 +1,50 @@
-@import '~@angular/material/theming';
+:root{
+  .app-button{
+    color: var(--text-tittle-colour);
+    background-color: var(--app-background-color);
 
-@include mat-core();
-/* You can add global styles to this file, and also import other style files */
-/* Provide sufficient contrast against white background */
+    border-style: solid;
+    border-width: thin;
+    width: fit-content;
+  }
 
-.btn-primary {
-  color: var(--text-small-constrast-colour);
-  background-color: var(--app-primary-colour);
-  border-color: var(--app-primary-colour);
+  .app-primary-accent-button-colour{
+    color: var(--text-tittle-accent-contrast-colour);
+    background-color: var(--app-primary-accent-colour);
+
+    border-style: solid;
+    border-width: thin;
+    width: fit-content;
+  }
+
+ .app-secondary-accent-button-colour{
+    color: var(--text-tittle-accent-contrast-colour);
+    background-color: var(--app-secondary-accent-colour);
+
+    border-style: solid;
+    border-width: thin;
+    width: fit-content;
+ }
+
+  .app-primary-button-colour{
+    color: var(--text-tittle-contrast-colour);
+    background-color: var(--app-primary-colour);
+
+    border-style: solid;
+    border-width: thin;
+    width: fit-content;
+  }
+
+  .app-secondary-button-colour{
+    color: var(--text-tittle-contrast-colour);
+    background-color: var(--app-secondary-colour);
+
+    border-style: solid;
+    border-width: thin;
+    width: fit-content;
+  }
 }
-
-
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-
-
-// Light theme
-$light-primary: mat-palette($mat-indigo);
-$light-accent:  mat-palette($mat-blue-grey, A200, A100, A400);
-$light-theme:   mat-light-theme($light-primary, $light-accent);
-
-@media (prefers-color-scheme: light) {
-  @include angular-material-theme($light-theme);
-}
-
-// Dark theme
-$dark-primary: mat-palette($mat-blue-grey);
-$dark-accent:  mat-palette($mat-amber, A200, A100, A400);
-$dark-warn:    mat-palette($mat-deep-orange);
-$dark-theme:   mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
-
-@media (prefers-color-scheme: dark) {
-  @include angular-material-theme($dark-theme);
-}
+div { width: 100%; }

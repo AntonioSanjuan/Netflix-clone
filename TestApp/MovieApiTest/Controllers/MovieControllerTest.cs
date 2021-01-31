@@ -16,7 +16,7 @@ namespace MovieApiTest.Controllers
 
         private void MockController()
         {
-            TopRatedMoviesRequestModel loginRequest = null;
+            TopRatedMoviesRequestModelDto loginRequest = null;
             TopRatedMoviesResponseModel loginResponse = null;
 
             _mockMovieService.Setup(repo => repo.GetTopRatedMovies(loginRequest))
@@ -35,7 +35,7 @@ namespace MovieApiTest.Controllers
         [Test]
         public async Task TopRatedMovies()
         {
-            TopRatedMoviesRequestModel getTopRatedMoviesRequest = new TopRatedMoviesRequestModel();
+            TopRatedMoviesRequestModelDto getTopRatedMoviesRequest = new TopRatedMoviesRequestModelDto();
             await _controller.GetTopRatedMovies(getTopRatedMoviesRequest);
 
             //assert

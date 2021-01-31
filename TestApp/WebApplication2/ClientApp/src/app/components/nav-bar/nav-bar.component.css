@@ -4,9 +4,12 @@
     width: 100%;
     max-height: 3em;
 }
+.NavBar_AppName {
+    cursor: pointer;
+}
 
 .NavBar_MainContainer {
-    
+
 }
 
 .rightNavBar {

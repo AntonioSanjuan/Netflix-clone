@@ -29,7 +29,11 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.unsubscribeAll();
   }
 
-  goToLoginPage(){
+  goToHomePage() {
+    this.router.navigate(['home']);
+  }
+
+  goToLoginPage() {
     this.router.navigate(['login']);
   }
 

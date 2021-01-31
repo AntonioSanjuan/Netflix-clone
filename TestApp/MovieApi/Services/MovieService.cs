@@ -33,7 +33,7 @@ namespace MovieApi.services
             _serviceNameModule = new MovieServiceNameModule(_theMoviedbSettings);
         }
 
-        public async Task<TopRatedMoviesResponseModel> GetTopRatedMovies(TopRatedMoviesRequestModel request)
+        public async Task<TopRatedMoviesResponseModel> GetTopRatedMovies(TopRatedMoviesRequestModelDto request)
         {
             try
             {
@@ -61,19 +61,22 @@ namespace MovieApi.services
             {
                 List<MovieImageResponseModel> output = new List<MovieImageResponseModel>();
 
-                foreach (var movie in getTopRatedMovies.Results)
+                if (getTopRatedMovies.Success)
                 {
-                    string base64BackdropImageUrl = _serviceNameModule.CreateMovieImageUrl(movie.Backdrop_path);
-                    string Base64PosterImageUrl = _serviceNameModule.CreateMovieImageUrl(movie.Poster_path);
-                    output.Add(new MovieImageResponseModel(
-                        movie.Id,
-                        string.IsNullOrEmpty(Base64PosterImageUrl) ?
-                            null :
-                            _movieAdapter.ToBase64MovieImage(await _httpClient.GetByteArrayAsync(Base64PosterImageUrl), Base64PosterImageUrl),
-                        string.IsNullOrEmpty(base64BackdropImageUrl) ?
-                            null :
-                            _movieAdapter.ToBase64MovieImage(await _httpClient.GetByteArrayAsync(base64BackdropImageUrl), base64BackdropImageUrl)
-                    ));
+                    foreach (var movie in getTopRatedMovies.Results)
+                    {
+                        string base64BackdropImageUrl = _serviceNameModule.CreateMovieImageUrl(movie.Backdrop_path);
+                        string Base64PosterImageUrl = _serviceNameModule.CreateMovieImageUrl(movie.Poster_path);
+                        output.Add(new MovieImageResponseModel(
+                            movie.Id,
+                            string.IsNullOrEmpty(Base64PosterImageUrl) ?
+                                null :
+                                _movieAdapter.ToBase64MovieImage(await _httpClient.GetByteArrayAsync(Base64PosterImageUrl), Base64PosterImageUrl),
+                            string.IsNullOrEmpty(base64BackdropImageUrl) ?
+                                null :
+                                _movieAdapter.ToBase64MovieImage(await _httpClient.GetByteArrayAsync(base64BackdropImageUrl), base64BackdropImageUrl)
+                        ));
+                    }
                 }
                 return output;
             }

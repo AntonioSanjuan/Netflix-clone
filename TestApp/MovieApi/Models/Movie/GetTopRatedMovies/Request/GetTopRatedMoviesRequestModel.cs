@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace MovieApi.Models.Movie.GetTopTatedMovies.Request
 {
-    public class TopRatedMoviesRequestModel
+    public class TopRatedMoviesRequestModelDto
     {
-        public string Language { get; set; }
-        public int Page { get; set; }
-        public string Region { get; set; }
+        public string language { get; set; }
+        public int page { get; set; }
+        public string region { get; set; }
     }
 }

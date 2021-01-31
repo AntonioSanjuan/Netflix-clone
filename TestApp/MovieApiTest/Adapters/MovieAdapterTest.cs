@@ -27,7 +27,7 @@ namespace MovieApiTest.Adapters
         [Test]
         public void ToTopRatedMoviesResponseWithStatusCodeSuccess()
         {
-            GetTopRatedMoviesResponseModel getTopRatedMoviesResponseRequestParam = new GetTopRatedMoviesResponseModel() { Status_code = 0, Total_results = 0, Results = new List<GetTopRatedMovie>(), Page = 1, Total_pages = 1};
+            GetTopRatedMoviesResponseModel getTopRatedMoviesResponseRequestParam = new GetTopRatedMoviesResponseModel() { Status_code = 0, Total_results = 0, Results = new List<GetTopRatedMovie>(), Page = 1, Total_pages = 1, Success = true};
             List<MovieImageResponseModel> topRatedImageMoviesRequestParam = new List<MovieImageResponseModel>() { };
 
             MockAdapter();

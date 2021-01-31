@@ -17,7 +17,7 @@ namespace MovieApi.adapters
 
         public TopRatedMoviesResponseModel ToTopRatedMoviesResponse(GetTopRatedMoviesResponseModel getTopRatedMoviesResponse, List<MovieImageResponseModel> topRatedImageMovies)
         {
-            return (getTopRatedMoviesResponse.Status_code == (int)MoviedbStatusCodes.Success) ?
+            return ((getTopRatedMoviesResponse.Success) && (getTopRatedMoviesResponse.Status_code == (int)MoviedbStatusCodes.Success)) ?
                 TopRatedMoviesConversionTypeModule.Success(getTopRatedMoviesResponse, topRatedImageMovies) :
             TopRatedMoviesConversionTypeModule.Failure();
         }

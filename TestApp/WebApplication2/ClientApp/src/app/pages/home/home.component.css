@@ -1,3 +1,14 @@
 .Home_MainContainer{
 
 }
+:host{
+  height: 100%;
+  width: 100%;
+}
+
+.Home_ModuleSelector{
+  width: 100%;
+}
+.searchSelector{
+text-align: center;
+}

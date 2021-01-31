@@ -71,6 +71,9 @@ describe('LoginComponent', () => {
   fixture.detectChanges();
   });
 
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
   it('initialy component user and password should BE empty, ', () => {
     const user = component.form.value.username;
