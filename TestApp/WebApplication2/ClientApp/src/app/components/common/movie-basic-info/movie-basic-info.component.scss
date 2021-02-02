@@ -2,12 +2,13 @@
   height: 7em;
   width: 100%;
 }
+
+// hovers
 .MovieBasicInfo_MainContainer:hover{
   background-color: var(--app-background-color-hover);
 }
 .MovieBasicInfo_MainContainer:hover .app-button{
   background-color: var(--app-background-color-hover);
-
 }
 
 .MovieBasicInfo_MainContainer{
@@ -58,7 +59,7 @@
 }
 
 .MovieBasicInfo_ContentTitleData{
-  height: 100%;
+  height: fit-content;
 }
 
 .MovieBasicInfo_ContentDescData{
