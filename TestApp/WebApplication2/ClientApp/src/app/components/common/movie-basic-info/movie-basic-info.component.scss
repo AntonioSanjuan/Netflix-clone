@@ -2,12 +2,20 @@
   height: 7em;
   width: 100%;
 }
+.MovieBasicInfo_MainContainer:hover{
+  background-color: var(--app-background-color-hover);
+}
+.MovieBasicInfo_MainContainer:hover .app-button{
+  background-color: var(--app-background-color-hover);
+
+}
 
 .MovieBasicInfo_MainContainer{
   border-radius: 2em;
   border: thin;
   border-style: solid;
 }
+
 .MovieBasicInfo_SubContainer{
   padding-top: 0.5%;
   padding-bottom: 0.5%;
@@ -15,6 +23,7 @@
   padding-right: 0.5%;
   height: 100%;
 }
+
 .MovieBasicInfo_Image{
   width: fit-content;
   height: fit-content;
@@ -22,20 +31,38 @@
   max-height: 200px;
 }
 
+.MovieBasicInfo_ActionsContainer{
+  margin-right: 1%;
+}
 
 .MovieBasicInfo_ImageContainer{
+  margin-left: 1%;
   border-radius: 20%;
-  border: thin;
-  border-style: solid;
   height: 90%;
   width: 90%;
   overflow: hidden;
 }
 
 .MovieBasicInfo_Content{
+  height: 100%;
+  margin-left: 1%;
+}
+
+.MovieBasicInfo_ContentContainer{
+  height: 100%;
 }
 
 .MovieBasicInfo_Action{
   margin-top: 4%;
   margin-bottom: 4%;
+}
+
+.MovieBasicInfo_ContentTitleData{
+  height: 100%;
+}
+
+.MovieBasicInfo_ContentDescData{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 100%;
 }

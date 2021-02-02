@@ -1,18 +1,27 @@
 <div class="MovieBasicInfo_MainContainer" fxLayout="column" fxLayoutAlign="start center" fxFlex="100">
   <div class="MovieBasicInfo_SubContainer" fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
-    <div class="MovieBasicInfo_ImageContainer" fxLayoutAlign="center center" fxFlex="15">
-      <img class="MovieBasicInfo_Image" src="{{base64Image}}" alt="to-do">
+    <div class="MovieBasicInfo_ImageContainer app-border" fxLayoutAlign="center center" fxFlex="15">
+      <img class="MovieBasicInfo_Image" src="{{base64Image}}" alt="{{tittle}}">
     </div>
-    <div class="MovieBasicInfo_Content" fxLayout="column" fxLayoutAlign="start center" fxFlex="75">
-        {{tittle}}
+    <div class="MovieBasicInfo_Content" fxLayout="row" fxLayoutAlign="start center" fxFlex="75">
+      <div class="MovieBasicInfo_ContentContainer" fxLayout="column" fxLayoutAlign="start center" fxFlex="100">
+        <div class="MovieBasicInfo_ContentTitleData app-textHeader" fxLayout="column" fxLayoutAlign="start start" fxFlex="30">
+          <h4>{{tittle}}</h4>
+        </div >
+        <div class="MovieBasicInfo_ContentDescData app-text-normal" fxLayout="column" fxLayoutAlign="start center" fxFlex="70">
+          {{description}}
+        </div >
+      </div>
     </div>
-    <div class="MovieBasicInfo_Actions" fxLayout="column" fxLayoutAlign="start center" fxFlex="10">
-      <div class="MovieBasicInfo_ActionsContainer" fxLayout="column" fxLayoutAlign="start start" fxFlex="100">
-        <div class="MovieBasicInfo_Action" layout="column" fxLayoutAlign="start start" fxFlex="50">
-          <button mat-raised-button class="app-button"><mat-icon>bookmark_border</mat-icon></button>
+    <div class="MovieBasicInfo_Actions" fxLayout="row" fxLayoutAlign="center center" fxFlex="10">
+      <div class="MovieBasicInfo_ActionsContainer" fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
+        <div class="MovieBasicInfo_Action" fxLayoutAlign="center center" fxFlex="50">
+          <button mat-icon-button>
+            <mat-icon class="app-button">bookmark_border</mat-icon>
+          </button>
         </div>
-        <div class="MovieBasicInfo_Action" fxLayout="column" fxLayoutAlign="start start" fxFlex="50">
-          <button mat-raised-button class="app-button"><mat-icon>check_circle_outline</mat-icon></button>
+        <div class="MovieBasicInfo_Action" fxLayoutAlign="center center" fxFlex="50">
+          <button mat-icon-button><mat-icon class="app-button">check_circle_outline</mat-icon></button>
         </div>
       </div>
     </div>

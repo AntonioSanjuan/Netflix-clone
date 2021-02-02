@@ -19,5 +19,4 @@ export class HomeComponent  implements OnInit {
   private initialize() {
     this.selectedSearch = SearchType.TopRatedMoviesSearch;
   }
-
 }

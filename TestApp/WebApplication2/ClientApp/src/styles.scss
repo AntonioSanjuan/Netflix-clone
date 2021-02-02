@@ -1,46 +1,56 @@
 :root{
-  .app-button{
+  .app-textHeader{
     color: var(--text-tittle-colour);
-    background-color: var(--app-background-color);
+    font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+    font-size: 1em;
+  }
+  .app-text-big{
+    font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+    font-size:0.9em;
+  }
 
+  .app-text-normal{
+    font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+    font-size:0.8em;
+  }
+
+  .app-text-small{
+    font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+    font-size:0.7em;
+  }
+
+  .app-button{
+    color: var(--text-small-colour);
+    background-color: var(--app-background-color);
+    width: fit-content;
+  }
+
+  .app-border{
     border-style: solid;
     border-width: thin;
-    width: fit-content;
   }
 
   .app-primary-accent-button-colour{
     color: var(--text-tittle-accent-contrast-colour);
     background-color: var(--app-primary-accent-colour);
-
-    border-style: solid;
-    border-width: thin;
     width: fit-content;
   }
 
  .app-secondary-accent-button-colour{
     color: var(--text-tittle-accent-contrast-colour);
     background-color: var(--app-secondary-accent-colour);
-
-    border-style: solid;
-    border-width: thin;
     width: fit-content;
  }
 
   .app-primary-button-colour{
     color: var(--text-tittle-contrast-colour);
     background-color: var(--app-primary-colour);
-
-    border-style: solid;
-    border-width: thin;
     width: fit-content;
   }
 
   .app-secondary-button-colour{
     color: var(--text-tittle-contrast-colour);
     background-color: var(--app-secondary-colour);
-
-    border-style: solid;
-    border-width: thin;
     width: fit-content;
   }
 }
@@ -50,3 +60,5 @@ html, body {
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 div { width: 100%; }
+
+

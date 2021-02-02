@@ -2,6 +2,7 @@
   :host {
     //background
     --app-background-color:  #f2f2f2;
+    --app-background-color-hover: #d5d5d5;
     --text-tittle-colour: #0d0d0d;
     --text-small-colour:  #262626;
 
@@ -23,8 +24,9 @@
   :host {
     //background
     --app-background-color: #000d1a;
-    --text-tittle-colour: #e6e6e6;
-    --text-small-colour:  #cccccc;
+    --app-background-color-hover: #001326;
+    --text-tittle-colour: #b3b3b3;
+    --text-small-colour:  #8d8d8d;
 
     //primary colour
     --app-primary-colour :  #4d4d4d;
