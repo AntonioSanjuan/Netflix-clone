@@ -9,7 +9,7 @@ export interface IGetTopRatedMoviesResponseContent {
   total_pages: number;
 }
 
-interface TopRatedMovie {
+export interface TopRatedMovie {
   images: TopRatedImages;
   overview: string;
   releaseDate: string;
@@ -22,7 +22,7 @@ interface TopRatedMovie {
   voteAverage: number;
 }
 
-interface TopRatedImages {
+export interface TopRatedImages {
   movieId: number;
   posterImageToBase64: string;
   backdropImageToBase64: string;

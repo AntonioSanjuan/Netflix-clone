@@ -1,0 +1,41 @@
+:host{
+  height: 7em;
+  width: 100%;
+}
+
+.MovieBasicInfo_MainContainer{
+  border-radius: 2em;
+  border: thin;
+  border-style: solid;
+}
+.MovieBasicInfo_SubContainer{
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+  height: 100%;
+}
+.MovieBasicInfo_Image{
+  width: fit-content;
+  height: fit-content;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+
+.MovieBasicInfo_ImageContainer{
+  border-radius: 20%;
+  border: thin;
+  border-style: solid;
+  height: 90%;
+  width: 90%;
+  overflow: hidden;
+}
+
+.MovieBasicInfo_Content{
+}
+
+.MovieBasicInfo_Action{
+  margin-top: 4%;
+  margin-bottom: 4%;
+}

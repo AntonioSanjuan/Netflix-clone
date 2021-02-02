@@ -12,20 +12,15 @@
       </div>
     </div>
   </div>
-  <div class="Home_ModuleContent" fxLayout="row" fxFlex="80">
-    <div ng-switch="selectedSearch">
-      <div ng-switch-when="SearchType.FilterSearch">
+  <div class="Home_ModuleContent" fxLayoutAlign="start center" fxLayout="column" fxFlex="90">
+    <div [ngSwitch]="selectedSearch" fxLayoutAlign="start center" fxLayout="column">
+      <div class="searchContent" *ngSwitchCase="0" fxLayoutAlign="start center" fxLayout="column">
       </div>
-      <div ng-switch-when="SearchType.TopRatedMoviesSearch">
+      <div class="searchContent" *ngSwitchCase="1" fxLayoutAlign="start center" fxLayout="row">
         <app-topRatedMovieSearch></app-topRatedMovieSearch>
       </div>
-      <div ng-switch-when="SearchType.TopMoviesSearch">
+      <div class="searchContent" *ngSwitchCase="2" fxLayoutAlign="start center" fxLayout="row">
       </div>
-    </div>
-  </div>
-  <div class="Home_ModuleInfo" fxLayout="row" fxFlex="10">
-    <div fxLayoutAlign="space-around center" fxLayout="row" fxFlex="100">
-      <p>working on progress :)</p>
     </div>
   </div>
 </div>

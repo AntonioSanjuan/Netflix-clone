@@ -10,7 +10,6 @@ export class HomeComponent  implements OnInit {
   selectedSearch: SearchType;
 
   constructor() {
-
   }
 
   ngOnInit() {

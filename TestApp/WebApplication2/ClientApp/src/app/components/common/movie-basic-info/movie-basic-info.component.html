@@ -1,0 +1,20 @@
+<div class="MovieBasicInfo_MainContainer" fxLayout="column" fxLayoutAlign="start center" fxFlex="100">
+  <div class="MovieBasicInfo_SubContainer" fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+    <div class="MovieBasicInfo_ImageContainer" fxLayoutAlign="center center" fxFlex="15">
+      <img class="MovieBasicInfo_Image" src="{{base64Image}}" alt="to-do">
+    </div>
+    <div class="MovieBasicInfo_Content" fxLayout="column" fxLayoutAlign="start center" fxFlex="75">
+        {{tittle}}
+    </div>
+    <div class="MovieBasicInfo_Actions" fxLayout="column" fxLayoutAlign="start center" fxFlex="10">
+      <div class="MovieBasicInfo_ActionsContainer" fxLayout="column" fxLayoutAlign="start start" fxFlex="100">
+        <div class="MovieBasicInfo_Action" layout="column" fxLayoutAlign="start start" fxFlex="50">
+          <button mat-raised-button class="app-button"><mat-icon>bookmark_border</mat-icon></button>
+        </div>
+        <div class="MovieBasicInfo_Action" fxLayout="column" fxLayoutAlign="start start" fxFlex="50">
+          <button mat-raised-button class="app-button"><mat-icon>check_circle_outline</mat-icon></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

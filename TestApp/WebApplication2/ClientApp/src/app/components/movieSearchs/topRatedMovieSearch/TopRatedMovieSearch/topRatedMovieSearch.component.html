@@ -1,3 +1,11 @@
-<p>
-  TopRatedMovieSearch works!
-</p>
+<div class="TopRatedMovieSearch_MainContainer" fxLayout="column" fxLayoutAlign="start center" fxFlex="100">
+  <div class="TopRatedMovieSearch_MovieBasicInfoElemet" *ngFor="let fetchedTopRatedMovie of fetchedTopRatedMovies?.content?.movies" fxLayout="column" fxLayoutAlign="start center"fxFlex="10">
+    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <app-movie-basic-info
+        [tittle] = "fetchedTopRatedMovie.title"
+        [description] = "fetchedTopRatedMovie.overview"
+        [base64Image] = "fetchedTopRatedMovie.images.backdropImageToBase64"
+      ></app-movie-basic-info>
+    </div>
+  </div>
+</div>

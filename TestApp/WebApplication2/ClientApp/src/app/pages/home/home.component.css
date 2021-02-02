@@ -5,10 +5,17 @@
   height: 100%;
   width: 100%;
 }
-
+.Home_ModuleContent{
+  height: fit-content;
+}
 .Home_ModuleSelector{
   width: 100%;
 }
+
 .searchSelector{
-text-align: center;
+  text-align: center;
+}
+.searchContent{
+  overflow: hidden;
+  width: 100%;
 }
