@@ -1,4 +1,13 @@
+html{
+  height: 100%;
+}
+
 :root{
+  body{
+    height: 100%;
+    margin: 0;
+    sfont-family: Roboto, "Helvetica Neue", sans-serif;
+  }
   .app-textHeader{
     color: var(--text-tittle-colour);
     font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
@@ -55,10 +64,6 @@
   }
 }
 
-html, body {
-  height: 100%;
-}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 div { width: 100%; }
 
 

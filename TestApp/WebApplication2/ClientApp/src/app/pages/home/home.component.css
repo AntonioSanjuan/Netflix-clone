@@ -6,9 +6,11 @@
   width: 100%;
 }
 .Home_ModuleContent{
-  height: fit-content;
+  margin-top: 1%;
+  height: 100%;
 }
 .Home_ModuleSelector{
+  margin-top: 1%;
   width: 100%;
 }
 
