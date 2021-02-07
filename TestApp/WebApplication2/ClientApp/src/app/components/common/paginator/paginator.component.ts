@@ -7,22 +7,25 @@ import { EventEmitter } from 'events';
   styleUrls: ['./paginator.component.css']
 })
 export class PaginatorComponent implements OnInit {
-  @Input() numberOfPages: number;
-  @Input() selectedPage: number;
-  @Input() pagesToShow: number;
+  @Input() numberOfPages = 1;
+  @Input() selectedPage = 1;
+  @Input() pagesToShow = 1;
 
   @Output() pageSelectionEvent: EventEmitter;
 
-  startPage: number = undefined;
+  private startPage: number = undefined;
+
+  pages = [];
   goToLastPageAvailable: boolean = undefined;
   goToFirstPageAvailable: boolean = undefined;
+
   constructor() { }
 
   ngOnInit() {
-    this.calculateStartPage();
+    this.calculatePages();
   }
 
-  private calculateStartPage() {
+  private calculatePages() {
     const sideElements = this.pagesToShow / 2;
 
     const auxFirstPageToShow = this.selectedPage - sideElements;
@@ -35,6 +38,8 @@ export class PaginatorComponent implements OnInit {
     } else if ((auxFirstPageToShow >= 1) && ( auxLastPageToShow > this.numberOfPages)) {
       this.setEndOverflowState();
     }
+
+    this.setPages();
   }
 
   private setStartOverflowState() {
@@ -44,14 +49,18 @@ export class PaginatorComponent implements OnInit {
   }
 
   private setEndOverflowState() {
-    this.startPage = this.numberOfPages - this.pagesToShow;
+    this.startPage = this.numberOfPages - this.pagesToShow + 1;
     this.goToLastPageAvailable = false;
     this.goToFirstPageAvailable = true;
   }
 
   private setNoOverflowState(startPage: number) {
-    this.startPage = startPage;
+    this.startPage = Math.floor(startPage + 1);
     this.goToLastPageAvailable = true;
     this.goToFirstPageAvailable = true;
+  }
+
+  private setPages() {
+    this.pages = Array.from({length: this.pagesToShow}, (v , k) => k + this.startPage);
   }
 }

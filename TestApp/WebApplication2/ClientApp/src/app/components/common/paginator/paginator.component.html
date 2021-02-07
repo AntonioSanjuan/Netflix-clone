@@ -1,3 +1,19 @@
-<p>
-  paginator works!
-</p>
+<div class="Paginator_MainContainer" fxLayout="row" fxLayoutAlign="space-around center">
+  <div class="Paginator_ActionsContainer" fxLayout="row" fxLayoutAlign="center center" fxFlex="100">
+    <div *ngIf="goToFirstPageAvailable">
+      <button mat-icon-button>
+        <mat-icon class="app-button">navigate_before</mat-icon>
+      </button>
+    </div>
+    <div *ngFor="let page of pages" class="Paginator_pageSelector">
+      <button class="app-button app-border">
+        {{page}}
+      </button>
+    </div>
+    <div *ngIf="goToLastPageAvailable">
+      <button mat-icon-button>
+        <mat-icon class="app-button">navigate_next</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

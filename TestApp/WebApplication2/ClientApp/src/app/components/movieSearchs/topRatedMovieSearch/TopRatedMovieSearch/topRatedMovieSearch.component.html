@@ -8,4 +8,9 @@
       ></app-movie-basic-info>
     </div>
   </div>
+  <app-paginator *ngIf="fetchedTopRatedMovies?.content"
+    [pagesToShow] = "5"
+    [numberOfPages] = "fetchedTopRatedMovies.content.total_pages"
+    [selectedPage] = "fetchedTopRatedMovies.content.page"
+  ></app-paginator>
 </div>
