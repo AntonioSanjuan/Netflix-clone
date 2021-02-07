@@ -29,7 +29,9 @@ describe('PaginatorComponent', () => {
   it('startPage should be numberOfPage-pagesToShow if end-overflow exists, ', () => {
     component.numberOfPages = 10;
     component.pagesToShow = 5;
-    component.selectedPage = 2;
+    component.selectedPage = 9;
+
+    component.ngOnInit();
 
     expect(component.startPage).toEqual(component.numberOfPages - component.pagesToShow);
   });
@@ -37,7 +39,9 @@ describe('PaginatorComponent', () => {
   it('startPage should be 1 if start-overflow exists, ', () => {
     component.numberOfPages = 10;
     component.pagesToShow = 5;
-    component.selectedPage = 9;
+    component.selectedPage = 2;
+
+    component.ngOnInit();
 
     expect(component.startPage).toEqual(1);
   });
@@ -47,7 +51,9 @@ describe('PaginatorComponent', () => {
     component.pagesToShow = 5;
     component.selectedPage = 6;
 
+    component.ngOnInit();
+
     expect(component.startPage).toBeGreaterThan(1);
-    expect(component.startPage).toBeLessThanOrEqual(component.numberOfPages - component.pagesToShow);
+    expect(component.startPage).toBeLessThan(component.numberOfPages - component.pagesToShow);
   });
 });

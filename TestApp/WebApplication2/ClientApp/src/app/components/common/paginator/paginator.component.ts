@@ -18,6 +18,33 @@ export class PaginatorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.calculateStartPage();
+  }
+
+  private calculateStartPage() {
+    const sideElements = this.pagesToShow / 2;
+    const pagesToShowIsPair  = (this.pagesToShow % 2) === 0;
+
+    let auxFirstPageToShow: number;
+    const auxLastPageToShow = this.selectedPage + sideElements;
+    if (pagesToShowIsPair) {
+      auxFirstPageToShow = this.selectedPage - sideElements;
+    } else {
+      auxFirstPageToShow = this.selectedPage - sideElements;
+    }
+
+    if ((auxFirstPageToShow >= 1) && ( auxLastPageToShow <= this.numberOfPages)) {
+      console.log("no overflow")
+      this.startPage = auxFirstPageToShow;
+    } else if ((auxFirstPageToShow < 1) && ( auxLastPageToShow <= this.numberOfPages)) {
+      console.log("initial-overflow")
+      this.startPage = 1;
+    } else if ((auxFirstPageToShow >= 1) && ( auxLastPageToShow > this.numberOfPages)) {
+      console.log("end-overfow")
+      this.startPage = this.numberOfPages - this.pagesToShow;
+    }
+
+
   }
 
 }
