@@ -34,13 +34,10 @@ export class PaginatorComponent implements OnInit {
     }
 
     if ((auxFirstPageToShow >= 1) && ( auxLastPageToShow <= this.numberOfPages)) {
-      console.log("no overflow")
       this.startPage = auxFirstPageToShow;
     } else if ((auxFirstPageToShow < 1) && ( auxLastPageToShow <= this.numberOfPages)) {
-      console.log("initial-overflow")
       this.startPage = 1;
     } else if ((auxFirstPageToShow >= 1) && ( auxLastPageToShow > this.numberOfPages)) {
-      console.log("end-overfow")
       this.startPage = this.numberOfPages - this.pagesToShow;
     }
 
