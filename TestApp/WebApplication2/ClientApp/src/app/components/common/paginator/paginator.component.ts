@@ -23,15 +23,10 @@ export class PaginatorComponent implements OnInit {
 
   private calculateStartPage() {
     const sideElements = this.pagesToShow / 2;
-    const pagesToShowIsPair  = (this.pagesToShow % 2) === 0;
+    console.log(sideElements);
 
-    let auxFirstPageToShow: number;
+    const auxFirstPageToShow = this.selectedPage - sideElements;
     const auxLastPageToShow = this.selectedPage + sideElements;
-    if (pagesToShowIsPair) {
-      auxFirstPageToShow = this.selectedPage - sideElements;
-    } else {
-      auxFirstPageToShow = this.selectedPage - sideElements;
-    }
 
     if ((auxFirstPageToShow >= 1) && ( auxLastPageToShow <= this.numberOfPages)) {
       this.startPage = auxFirstPageToShow;
@@ -40,8 +35,6 @@ export class PaginatorComponent implements OnInit {
     } else if ((auxFirstPageToShow >= 1) && ( auxLastPageToShow > this.numberOfPages)) {
       this.startPage = this.numberOfPages - this.pagesToShow;
     }
-
-
   }
 
 }

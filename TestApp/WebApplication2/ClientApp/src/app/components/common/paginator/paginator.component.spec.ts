@@ -9,6 +9,12 @@ describe('PaginatorComponent', () => {
   let component: PaginatorComponent;
   let fixture: ComponentFixture<PaginatorComponent>;
 
+  function initializeComponent() {
+    fixture = TestBed.createComponent(PaginatorComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ PaginatorComponent ]
@@ -17,16 +23,14 @@ describe('PaginatorComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PaginatorComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('startPage should be numberOfPage-pagesToShow if end-overflow exists, ', () => {
+  it('startPage should be numberOfPage-pagesToShow if end-overflow exists with odd pagesToShow value, ', () => {
     component.numberOfPages = 10;
     component.pagesToShow = 5;
     component.selectedPage = 9;
@@ -36,7 +40,7 @@ describe('PaginatorComponent', () => {
     expect(component.startPage).toEqual(component.numberOfPages - component.pagesToShow);
   });
 
-  it('startPage should be 1 if start-overflow exists, ', () => {
+  it('startPage should be 1 if start-overflow exists with odd pagesToShow value, ', () => {
     component.numberOfPages = 10;
     component.pagesToShow = 5;
     component.selectedPage = 2;
@@ -46,9 +50,40 @@ describe('PaginatorComponent', () => {
     expect(component.startPage).toEqual(1);
   });
 
-  it('startPage should be numberOfPage no overflow exists, ', () => {
+  it('startPage should be numberOfPage no overflow exists with odd pagesToShow value, ', () => {
     component.numberOfPages = 10;
     component.pagesToShow = 5;
+    component.selectedPage = 6;
+
+    component.ngOnInit();
+
+    expect(component.startPage).toBeGreaterThan(1);
+    expect(component.startPage).toBeLessThan(component.numberOfPages - component.pagesToShow);
+  });
+
+  it('startPage should be numberOfPage-pagesToShow if end-overflow exists with pair pagesToShow value, ', () => {
+    component.numberOfPages = 10;
+    component.pagesToShow = 6;
+    component.selectedPage = 9;
+
+    component.ngOnInit();
+
+    expect(component.startPage).toEqual(component.numberOfPages - component.pagesToShow);
+  });
+
+  it('startPage should be 1 if start-overflow exists with pair pagesToShow value, ', () => {
+    component.numberOfPages = 10;
+    component.pagesToShow = 6;
+    component.selectedPage = 2;
+
+    component.ngOnInit();
+
+    expect(component.startPage).toEqual(1);
+  });
+
+  it('startPage should be numberOfPage no overflow exists with pair pagesToShow value, ', () => {
+    component.numberOfPages = 10;
+    component.pagesToShow = 6;
     component.selectedPage = 6;
 
     component.ngOnInit();
