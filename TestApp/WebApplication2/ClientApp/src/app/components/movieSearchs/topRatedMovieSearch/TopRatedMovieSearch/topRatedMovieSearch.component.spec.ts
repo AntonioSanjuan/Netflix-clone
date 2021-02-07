@@ -4,31 +4,44 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TopRatedMovieSearchComponent } from './topRatedMovieSearch.component';
 import { MovieDBService } from 'src/app/services/data-supplier/movieDB-fetch.service';
+import { MovieBasicInfoComponent } from 'src/app/components/common/movie-basic-info/movie-basic-info.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ChangeDetectorRef, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('topRatedMovieSearchComponent', () => {
   let component: TopRatedMovieSearchComponent;
   let fixture: ComponentFixture<TopRatedMovieSearchComponent>;
+  let changeDetector: ChangeDetectorRef;
 
   let movieDBServiceStub;
+  let changeDetectorRefStub;
   const getTopRatedMock = {} as IGetTopRatedMoviesResponseDto;
 
   beforeEach(() => {
+    changeDetectorRefStub = {
+      markForCheck : jest.fn(() => {})
+    };
     movieDBServiceStub = {
       getTopRatedMovies : jest.fn(() => new Promise((resolve, reject) => resolve({})).then(() => getTopRatedMock) )
     };
 
     TestBed.configureTestingModule({
-      declarations: [ TopRatedMovieSearchComponent ],
+      declarations: [ TopRatedMovieSearchComponent, MovieBasicInfoComponent ],
+      imports: [
+        ReactiveFormsModule
+      ],
       providers: [
         {provide: MovieDBService, useValue: movieDBServiceStub},
+        {provide: ChangeDetectorRef, useValue: changeDetectorRefStub}
       ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(TopRatedMovieSearchComponent);
     component = fixture.componentInstance;
+    changeDetector = TestBed.inject(ChangeDetectorRef);
+
     fixture.detectChanges();
   });
 
@@ -37,8 +50,9 @@ describe('topRatedMovieSearchComponent', () => {
   });
 
   it('initialy should request topRatedMovies page 0 to movieDBService, ', () => {
-      // spy
-      const getTopRatedMoviesSpy = jest.spyOn(movieDBServiceStub, 'getTopRatedMovies');
-      expect(getTopRatedMoviesSpy).toHaveBeenCalledWith(1);
+    // spy
+    const getTopRatedMoviesSpy = jest.spyOn(movieDBServiceStub, 'getTopRatedMovies');
+    expect(getTopRatedMoviesSpy).toHaveBeenCalledWith(1);
   });
+
 });
