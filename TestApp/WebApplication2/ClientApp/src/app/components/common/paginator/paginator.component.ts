@@ -23,7 +23,6 @@ export class PaginatorComponent implements OnInit {
 
   private calculateStartPage() {
     const sideElements = this.pagesToShow / 2;
-    console.log(sideElements);
 
     const auxFirstPageToShow = this.selectedPage - sideElements;
     const auxLastPageToShow = this.selectedPage + sideElements;
@@ -36,5 +35,4 @@ export class PaginatorComponent implements OnInit {
       this.startPage = this.numberOfPages - this.pagesToShow;
     }
   }
-
 }

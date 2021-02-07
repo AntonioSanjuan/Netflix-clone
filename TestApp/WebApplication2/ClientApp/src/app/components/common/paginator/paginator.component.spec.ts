@@ -9,12 +9,6 @@ describe('PaginatorComponent', () => {
   let component: PaginatorComponent;
   let fixture: ComponentFixture<PaginatorComponent>;
 
-  function initializeComponent() {
-    fixture = TestBed.createComponent(PaginatorComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ PaginatorComponent ]
@@ -23,7 +17,9 @@ describe('PaginatorComponent', () => {
   });
 
   beforeEach(() => {
-
+    fixture = TestBed.createComponent(PaginatorComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create', () => {
