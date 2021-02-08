@@ -1,17 +1,16 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
-import { EventEmitter } from 'events';
+import { Component, Input, OnInit, Output, EventEmitter, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-paginator',
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.css']
 })
-export class PaginatorComponent implements OnInit {
+export class PaginatorComponent implements OnInit, OnChanges {
   @Input() numberOfPages = 1;
   @Input() selectedPage = 1;
   @Input() pagesToShow = 1;
 
-  @Output() pageSelectionEvent: EventEmitter;
+  @Output() pageSelectionEvent = new EventEmitter<number>();
 
   private startPage: number = undefined;
 
@@ -23,6 +22,22 @@ export class PaginatorComponent implements OnInit {
 
   ngOnInit() {
     this.calculatePages();
+  }
+
+  ngOnChanges() {
+    this.calculatePages();
+  }
+
+  public selecPage(page: number) {
+    this.pageSelectionEvent.emit(page);
+  }
+
+  public selectLastPage() {
+    this.pageSelectionEvent.emit(this.numberOfPages);
+  }
+
+  public selectFirstPage() {
+    this.pageSelectionEvent.emit(1);
   }
 
   private calculatePages() {

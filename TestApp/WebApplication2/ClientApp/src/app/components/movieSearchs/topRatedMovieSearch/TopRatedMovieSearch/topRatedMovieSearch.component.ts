@@ -35,6 +35,12 @@ export class TopRatedMovieSearchComponent implements OnInit, OnDestroy {
     // to-do
   }
 
+  public fetchTopRatedPage(page: number) {
+    console.log(page);
+    this.fetchTopRatedMovies(page);
+
+  }
+
   private async fetchTopRatedMovies(pageNumber: number) {
     await this.movieDBService.getTopRatedMovies(pageNumber).then((topRatedMoviesResponse) => {
       this.fetchedTopRatedMovies = {...topRatedMoviesResponse};
