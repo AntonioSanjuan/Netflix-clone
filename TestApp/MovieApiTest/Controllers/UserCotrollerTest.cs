@@ -16,7 +16,7 @@ namespace MovieApiTest.Controllers
     {
         Mock<IUserService> _mockUserService;
         CreateRequestTokenResponseModel _createRequestTokenResponse;
-        LoginResponseModel _loginResponse;
+        LoginResponseModelDto _loginResponse;
 
         UserController _controller;
 
@@ -37,7 +37,7 @@ namespace MovieApiTest.Controllers
 
             //dependencies (mock) + spy
             _createRequestTokenResponse = new CreateRequestTokenResponseModel();
-            _loginResponse = new LoginResponseModel();
+            _loginResponse = new LoginResponseModelDto();
             _mockUserService = new Mock<IUserService>();
 
             MockController();

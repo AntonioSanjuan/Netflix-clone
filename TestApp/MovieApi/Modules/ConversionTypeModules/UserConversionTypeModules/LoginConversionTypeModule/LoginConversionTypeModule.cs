@@ -9,9 +9,9 @@ namespace MovieApi.Modules.ConversionTypeModules.LoginConversionTypeModule
 {
     public static class LoginConversionTypeModule
     {
-        public static LoginResponseModel Sucess(CreateRequestTokenResponseModel createRequestTokenResponse)
+        public static LoginResponseModelDto Sucess(CreateRequestTokenResponseModel createRequestTokenResponse)
         {
-            LoginResponseModel output = new LoginResponseModel()
+            LoginResponseModelDto output = new LoginResponseModelDto()
             {
                 Notification = CommonConversionTypeModule.CommonConversionTypeModule.CreateSuccessNotification(),
                 ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(UserServiceMethodNames.Login),
@@ -24,9 +24,9 @@ namespace MovieApi.Modules.ConversionTypeModules.LoginConversionTypeModule
             return output;
         }
 
-        public static LoginResponseModel Failure()
+        public static LoginResponseModelDto Failure()
         {
-            LoginResponseModel output = new LoginResponseModel()
+            LoginResponseModelDto output = new LoginResponseModelDto()
             {
                 Notification = CommonConversionTypeModule.CommonConversionTypeModule.CreateFailureNotification(),
                 ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(UserServiceMethodNames.Login),

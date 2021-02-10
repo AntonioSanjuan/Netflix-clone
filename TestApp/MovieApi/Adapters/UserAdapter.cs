@@ -24,7 +24,7 @@ namespace MovieApi.adapters
             return createRequestTokenResponse;
         }
 
-        public async Task<LoginResponseModel> ToLoginResponse(HttpResponseMessage response)
+        public async Task<LoginResponseModelDto> ToLoginResponse(HttpResponseMessage response)
         {
             var responseAsString = await response.Content.ReadAsStringAsync();
             var options = new JsonSerializerOptions
@@ -38,7 +38,7 @@ namespace MovieApi.adapters
                 LoginConversionTypeModule.Failure();
         }
 
-        public LoginResponseModel ToLoginErrorResponse()
+        public LoginResponseModelDto ToLoginErrorResponse()
         {
             return LoginConversionTypeModule.Failure();
         }

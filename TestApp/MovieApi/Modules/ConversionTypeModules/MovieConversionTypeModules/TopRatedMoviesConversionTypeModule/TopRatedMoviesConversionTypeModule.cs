@@ -9,9 +9,9 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.TopR
 {
     public static class TopRatedMoviesConversionTypeModule
     {
-        public static TopRatedMoviesResponseModel Failure()
+        public static TopRatedMoviesResponseModelDto Failure()
         {
-            TopRatedMoviesResponseModel output = new TopRatedMoviesResponseModel()
+            TopRatedMoviesResponseModelDto output = new TopRatedMoviesResponseModelDto()
             {
                 Notification = CommonConversionTypeModule.CommonConversionTypeModule.CreateFailureNotification(),
                 ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(MovieServiceMethodNames.GetTopRatedMovies),
@@ -26,9 +26,9 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.TopR
             return output;
         }
 
-        public static TopRatedMoviesResponseModel Success(GetTopRatedMoviesResponseModel topRatedMoviesResponseModel, List<MovieImageResponseModel> topRatedImageMovies)
+        public static TopRatedMoviesResponseModelDto Success(GetTopRatedMoviesResponseModel topRatedMoviesResponseModel, List<MovieImageResponseModel> topRatedImageMovies)
         {
-            TopRatedMoviesResponseModel output = new TopRatedMoviesResponseModel()
+            TopRatedMoviesResponseModelDto output = new TopRatedMoviesResponseModelDto()
             {
                 Notification = CommonConversionTypeModule.CommonConversionTypeModule.CreateSuccessNotification(),
                 ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(MovieServiceMethodNames.GetTopRatedMovies),

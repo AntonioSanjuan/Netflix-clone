@@ -26,11 +26,11 @@ namespace MovieApi.Controllers
         }
 
         [HttpPost("Login")]
-        [ProducesResponseType(typeof(LoginResponseModel), 200)]
+        [ProducesResponseType(typeof(LoginResponseModelDto), 200)]
         [ProducesResponseType(typeof(CommonResponseErrorModel), 500)]
         public async Task<IActionResult> Login([FromBody] LoginRequestModelDto loginRequest)
         {
-            LoginResponseModel loginResponse;
+            LoginResponseModelDto loginResponse;
             loginResponse = await _userService.Login(loginRequest);
             return Ok(loginResponse);
         }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MovieApi.Models.Movie.GetTopTatedMovies.Response
 {
-    public class TopRatedMoviesResponseModel : CommonResponseModel<TopRatedMoviesResponseContent> { }
+    public class TopRatedMoviesResponseModelDto : CommonResponseModel<TopRatedMoviesResponseContent> { }
 
     //provisional
     public class TopRatedMoviesResponseContent

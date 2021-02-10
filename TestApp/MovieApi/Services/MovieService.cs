@@ -33,7 +33,7 @@ namespace MovieApi.services
             _serviceNameModule = new MovieServiceNameModule(_theMoviedbSettings);
         }
 
-        public async Task<TopRatedMoviesResponseModel> GetTopRatedMovies(TopRatedMoviesRequestModelDto request)
+        public async Task<TopRatedMoviesResponseModelDto> GetTopRatedMovies(TopRatedMoviesRequestModelDto request)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace MovieApi.services
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 });
                 List<MovieImageResponseModel> topRatedImageMovies = await GetTopRatedMovieImages(getTopRatedMoviesResponse);
-                TopRatedMoviesResponseModel topRatedMoviesResponse = _movieAdapter.ToTopRatedMoviesResponse(getTopRatedMoviesResponse, topRatedImageMovies);
+                TopRatedMoviesResponseModelDto topRatedMoviesResponse = _movieAdapter.ToTopRatedMoviesResponse(getTopRatedMoviesResponse, topRatedImageMovies);
 
                 return topRatedMoviesResponse;
             }

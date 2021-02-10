@@ -25,7 +25,7 @@ namespace MovieApiTest.Services
         Mock<IOptions<TheMoviedbSettingsModel>> _theMovieSettings;
 
 
-        TopRatedMoviesResponseModel _topRatedMoviesResponse;
+        TopRatedMoviesResponseModelDto _topRatedMoviesResponse;
         string _toBase64MovieImageResponse;
         TheMoviedbSettingsModel _theMovieSettingsResponse;
         HttpResponseMessage _httpMessageResponse;
@@ -63,7 +63,7 @@ namespace MovieApiTest.Services
             _mockMovieAdapter = new Mock<IMovieAdapter>();
             _theMovieSettings = new Mock<IOptions<TheMoviedbSettingsModel>>();
 
-            _topRatedMoviesResponse = new TopRatedMoviesResponseModel();
+            _topRatedMoviesResponse = new TopRatedMoviesResponseModelDto();
             _toBase64MovieImageResponse = string.Empty;
             _theMovieSettingsResponse = new TheMoviedbSettingsModel();
             _httpMessageResponse = new HttpResponseMessage();

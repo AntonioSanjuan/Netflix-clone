@@ -7,7 +7,7 @@ namespace MovieApi.services.interfaces
 {
     public interface IUserService
     {
-         Task<LoginResponseModel> Login(LoginRequestModelDto loginRequest);
+         Task<LoginResponseModelDto> Login(LoginRequestModelDto loginRequest);
         Task<CreateRequestTokenResponseModel> CreateRequestToken();
 
 

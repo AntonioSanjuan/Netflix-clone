@@ -9,6 +9,6 @@ namespace MovieApi.services.interfaces
 {
     public interface IMovieService
     {
-        Task<TopRatedMoviesResponseModel> GetTopRatedMovies(TopRatedMoviesRequestModelDto request);
+        Task<TopRatedMoviesResponseModelDto> GetTopRatedMovies(TopRatedMoviesRequestModelDto request);
     }
 }

@@ -25,7 +25,7 @@ namespace MovieApiTest.Services
 
 
         CreateRequestTokenResponseModel _createRequestTokenResponse;
-        LoginResponseModel _loginResponse;
+        LoginResponseModelDto _loginResponse;
         TheMoviedbSettingsModel _theMovieSettingsResponse;
         HttpResponseMessage _httpMessageResponse;
 
@@ -64,7 +64,7 @@ namespace MovieApiTest.Services
             _theMovieSettings = new Mock<IOptions<TheMoviedbSettingsModel>>();
 
             _createRequestTokenResponse = new CreateRequestTokenResponseModel();
-            _loginResponse = new LoginResponseModel();
+            _loginResponse = new LoginResponseModelDto();
             _theMovieSettingsResponse = new TheMoviedbSettingsModel();
             _httpMessageResponse = new HttpResponseMessage();
 

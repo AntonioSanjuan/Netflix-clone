@@ -25,11 +25,11 @@ namespace MovieApi.Controllers
         }
         
         [HttpPost("TopRatedMovies")]
-        [ProducesResponseType(typeof(TopRatedMoviesResponseModel), 200)]
+        [ProducesResponseType(typeof(TopRatedMoviesResponseModelDto), 200)]
         [ProducesResponseType(typeof(CommonResponseErrorModel), 500)]
         public async Task<IActionResult> GetTopRatedMovies([FromBody] TopRatedMoviesRequestModelDto topRatedMoviesRequest)
         {
-            TopRatedMoviesResponseModel topRatedMoviesResponse;
+            TopRatedMoviesResponseModelDto topRatedMoviesResponse;
             topRatedMoviesResponse = await _movieService.GetTopRatedMovies(topRatedMoviesRequest);
             return Ok(topRatedMoviesResponse);
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MovieApi.Models.User.Login.Response
 {
-    public class LoginResponseModel : CommonResponseModel<LoginResponseContent>{}
+    public class LoginResponseModelDto : CommonResponseModel<LoginResponseContent>{}
 
     public class LoginResponseContent
     {

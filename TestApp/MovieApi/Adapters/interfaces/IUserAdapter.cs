@@ -7,9 +7,9 @@ namespace MovieApi.adapters.interfaces
 {
     public interface IUserAdapter
     {
-        Task<LoginResponseModel> ToLoginResponse(HttpResponseMessage response);
+        Task<LoginResponseModelDto> ToLoginResponse(HttpResponseMessage response);
         Task<CreateRequestTokenResponseModel> ToRequestTokenResponse(HttpResponseMessage response);
-        LoginResponseModel ToLoginErrorResponse();
+        LoginResponseModelDto ToLoginErrorResponse();
 
     }
 }

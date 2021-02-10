@@ -11,9 +11,9 @@ namespace MovieApi.adapters.interfaces
 {
     public interface IMovieAdapter
     {
-        TopRatedMoviesResponseModel ToTopRatedMoviesResponse(GetTopRatedMoviesResponseModel response, List<MovieImageResponseModel> topRatedImageMovies);
+        TopRatedMoviesResponseModelDto ToTopRatedMoviesResponse(GetTopRatedMoviesResponseModel response, List<MovieImageResponseModel> topRatedImageMovies);
         string ToBase64MovieImage(Byte[] bytes, string imageUrl);
-        TopRatedMoviesResponseModel TopTopRatedMoviesErrorResponse();
+        TopRatedMoviesResponseModelDto TopTopRatedMoviesErrorResponse();
 
     }
 }

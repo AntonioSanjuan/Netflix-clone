@@ -15,7 +15,7 @@ namespace MovieApi.adapters
     {
         public MovieAdapter() {}
 
-        public TopRatedMoviesResponseModel ToTopRatedMoviesResponse(GetTopRatedMoviesResponseModel getTopRatedMoviesResponse, List<MovieImageResponseModel> topRatedImageMovies)
+        public TopRatedMoviesResponseModelDto ToTopRatedMoviesResponse(GetTopRatedMoviesResponseModel getTopRatedMoviesResponse, List<MovieImageResponseModel> topRatedImageMovies)
         {
             return (IsSuccessResponse(getTopRatedMoviesResponse)) ?
                 TopRatedMoviesConversionTypeModule.Success(getTopRatedMoviesResponse, topRatedImageMovies) :
@@ -37,7 +37,7 @@ namespace MovieApi.adapters
             return $"data:image/{imageFormat};base64,{_sb.ToString()}";
         }
 
-        public TopRatedMoviesResponseModel TopTopRatedMoviesErrorResponse()
+        public TopRatedMoviesResponseModelDto TopTopRatedMoviesErrorResponse()
         {
             return TopRatedMoviesConversionTypeModule.Failure();
         }

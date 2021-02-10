@@ -17,7 +17,7 @@ namespace MovieApiTest.Controllers
         private void MockController()
         {
             TopRatedMoviesRequestModelDto loginRequest = null;
-            TopRatedMoviesResponseModel loginResponse = null;
+            TopRatedMoviesResponseModelDto loginResponse = null;
 
             _mockMovieService.Setup(repo => repo.GetTopRatedMovies(loginRequest))
                 .ReturnsAsync(loginResponse);
