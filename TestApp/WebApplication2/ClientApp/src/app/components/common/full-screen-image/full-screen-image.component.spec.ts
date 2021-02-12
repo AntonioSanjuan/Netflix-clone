@@ -14,7 +14,6 @@ describe('FullScreenImageComponent', () => {
   let MAT_DIALOG_DATAStub: string;
 
   beforeEach(() => {
-
     matDialogRefStub = {
       close: jest.fn(() => {})
     }
@@ -38,4 +37,12 @@ describe('FullScreenImageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('onNoClick() should call dialogRef close', () => {
+    // spy
+    const matDialogSpy = jest.spyOn(matDialogRefStub, 'close');
+    component.onNoClick();
+    expect(matDialogSpy).toHaveBeenCalled();
+  });
+
 });
