@@ -36,7 +36,6 @@ export class TopRatedMovieSearchComponent implements OnInit, OnDestroy {
   }
 
   public fetchTopRatedPage(page: number) {
-    console.log(page);
     this.fetchTopRatedMovies(page);
 
   }

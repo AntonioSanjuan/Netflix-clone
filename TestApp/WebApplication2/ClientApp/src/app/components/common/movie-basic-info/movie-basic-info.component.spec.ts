@@ -5,6 +5,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 
 import { MovieBasicInfoComponent } from './movie-basic-info.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('MovieBasicInfoComponent', () => {
   let component: MovieBasicInfoComponent;
@@ -14,7 +15,8 @@ describe('MovieBasicInfoComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ MovieBasicInfoComponent ],
       imports: [
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatDialogModule
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })

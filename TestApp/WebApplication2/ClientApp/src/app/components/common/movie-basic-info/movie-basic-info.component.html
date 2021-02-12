@@ -1,7 +1,7 @@
 <div class="MovieBasicInfo_MainContainer" fxLayout="column" fxLayoutAlign="start center" fxFlex="100">
   <div class="MovieBasicInfo_SubContainer" fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
     <div class="MovieBasicInfo_ImageContainer app-border" fxLayoutAlign="center center" fxFlex="15">
-      <img class="MovieBasicInfo_Image" src="{{base64Image}}" alt="{{tittle}}">
+      <img class="MovieBasicInfo_Image" (click)="openDialog()" src="{{base64Image}}" alt="{{tittle}}">
     </div>
     <div class="MovieBasicInfo_Content" fxLayout="row" fxLayoutAlign="start center" fxFlex="75">
       <div class="MovieBasicInfo_ContentContainer" fxLayout="column" fxLayoutAlign="start center" fxFlex="100">
