@@ -19,9 +19,8 @@ export class MovieBasicInfoComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(FullScreenImageComponent, {
-      height: '100vh',
+      height: '90vh',
       width: 'fit-content',
-      panelClass: 'full-screen-modal',
       data: this.base64BigImage
     });
 
