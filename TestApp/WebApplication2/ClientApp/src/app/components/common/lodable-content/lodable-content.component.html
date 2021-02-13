@@ -1,0 +1,9 @@
+<div class="LodableContent_MainContainer"  fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
+  {{isLoading}}
+  <div class="LodableContent_Spinner"  *ngIf="isLoading">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+  <div class="LodableContent_Content"  fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
+    <ng-content></ng-content>
+  </div>
+</div>

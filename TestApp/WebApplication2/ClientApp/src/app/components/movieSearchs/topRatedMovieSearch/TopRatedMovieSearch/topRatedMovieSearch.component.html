@@ -1,18 +1,27 @@
 <div class="TopRatedMovieSearch_MainContainer" fxLayout="column" fxLayoutAlign="start center" fxFlex="100">
-  <div class="TopRatedMovieSearch_MovieBasicInfoElemet" *ngFor="let fetchedTopRatedMovie of fetchedTopRatedMovies?.content?.movies" fxLayout="column" fxLayoutAlign="start center"fxFlex="10">
-    <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
-      <app-movie-basic-info
-        [tittle] = "fetchedTopRatedMovie.title"
-        [description] = "fetchedTopRatedMovie.overview"
-        [base64Image] = "fetchedTopRatedMovie.images.backdropImageToBase64"
-        [base64BigImage] = "fetchedTopRatedMovie.images.posterImageToBase64"
-      ></app-movie-basic-info>
-    </div>
-  </div>
-  <app-paginator *ngIf="fetchedTopRatedMovies?.content"
+  <div class="TopRatedMovieSearch_MovieBasicInfo" fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
+    <app-lodable-content
+    [isLoading]="isLoading"
+    [changeEvent]="changeDetectorEvent.asObservable()">
+      {{isLoading}}
+      <div class="TopRatedMovieSearch_MovieBasicInfoElemet" *ngFor="let fetchedTopRatedMovie of fetchedTopRatedMovies?.content?.movies" fxLayout="column" fxLayoutAlign="start center"fxFlex="10">
+        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+          <app-movie-basic-info
+            [tittle] = "fetchedTopRatedMovie.title"
+            [description] = "fetchedTopRatedMovie.overview"
+            [base64Image] = "fetchedTopRatedMovie.images.backdropImageToBase64"
+            [base64BigImage] = "fetchedTopRatedMovie.images.posterImageToBase64"
+          ></app-movie-basic-info>
+        </div>
+      </div>
+
+    </app-lodable-content>
+    <app-paginator *ngIf="fetchedTopRatedMovies?.content"
     [pagesToShow] = "5"
     [numberOfPages] = "fetchedTopRatedMovies.content.total_pages"
     [selectedPage] = "fetchedTopRatedMovies.content.page"
     (pageSelectionEvent)="fetchTopRatedPage($event)"
   ></app-paginator>
+
+  </div>
 </div>

@@ -7,6 +7,7 @@ import { MovieDBService } from 'src/app/services/data-supplier/movieDB-fetch.ser
 import { MovieBasicInfoComponent } from 'src/app/components/common/movie-basic-info/movie-basic-info.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChangeDetectorRef, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { LodableContentComponent } from 'src/app/components/common/lodable-content/lodable-content.component';
 
 describe('topRatedMovieSearchComponent', () => {
   let component: TopRatedMovieSearchComponent;
@@ -26,7 +27,7 @@ describe('topRatedMovieSearchComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [ TopRatedMovieSearchComponent, MovieBasicInfoComponent ],
+      declarations: [ TopRatedMovieSearchComponent, MovieBasicInfoComponent, LodableContentComponent ],
       imports: [
         ReactiveFormsModule
       ],
