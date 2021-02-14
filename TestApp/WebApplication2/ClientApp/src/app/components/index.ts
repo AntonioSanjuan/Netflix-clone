@@ -1,5 +1,4 @@
 import { LodableContentComponent } from './common/lodable-content/lodable-content.component';
-import { LoadingSpinnerComponent } from './common/lodable-content/loading-spinner/loading-spinner.component';
 import { MovieBasicInfoComponent } from './common/movie-basic-info/movie-basic-info.component';
 import { PaginatorComponent } from './common/paginator/paginator.component';
 import { TopRatedMovieSearchComponent } from './movieSearchs/topRatedMovieSearch/topRatedMovieSearch/topRatedMovieSearch.component';
@@ -12,6 +11,5 @@ export const COMPONENTS: any[] = [
     TopRatedMovieSearchComponent,
     MovieBasicInfoComponent,
     PaginatorComponent,
-    LoadingSpinnerComponent,
     LodableContentComponent
 ];

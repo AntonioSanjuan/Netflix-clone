@@ -3,7 +3,6 @@
     <app-lodable-content
     [isLoading]="isLoading"
     [changeEvent]="changeDetectorEvent.asObservable()">
-      {{isLoading}}
       <div class="TopRatedMovieSearch_MovieBasicInfoElemet" *ngFor="let fetchedTopRatedMovie of fetchedTopRatedMovies?.content?.movies" fxLayout="column" fxLayoutAlign="start center"fxFlex="10">
         <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
           <app-movie-basic-info

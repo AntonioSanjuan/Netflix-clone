@@ -6,36 +6,8 @@ import { Observable, Subscription } from 'rxjs';
   templateUrl: './lodable-content.component.html',
   styleUrls: ['./lodable-content.component.scss']
 })
-export class LodableContentComponent implements OnInit, OnDestroy {
+export class LodableContentComponent {
   @Input() isLoading = false;
-  @Input() changeEvent: Observable<void>;
 
-  private changeEventSubscription: Subscription;
-
-  constructor(
-    private cdRef: ChangeDetectorRef
-  ) { }
-
-  ngOnInit() {
-    this.initialize();
-  }
-
-  ngOnDestroy() {
-    this.unsubscribeAll();
-  }
-
-  initialize() {
-    this.changeEventSubscription = this.changeEvent.subscribe(() => {
-      this.changeDetectorRequest();
-    })
-  };
-
-  unsubscribeAll() {
-    this.changeEventSubscription.unsubscribe();
-  }
-
-  changeDetectorRequest() {
-    console.log("mierda");
-    this.cdRef.markForCheck();
-  }
+  constructor() { }
 }

@@ -3,7 +3,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { LodableContentComponent } from './lodable-content.component';
-import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 describe('LodableContentComponent', () => {
   let component: LodableContentComponent;
@@ -11,7 +10,7 @@ describe('LodableContentComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ LodableContentComponent, LoadingSpinnerComponent ],
+      declarations: [ LodableContentComponent ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 
     })

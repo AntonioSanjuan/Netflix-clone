@@ -2,10 +2,28 @@
   height: 100%;
 }
 
-.LodableContent_Spinner {
+.LodableContent_Content {
+  height: 100%;
+}
+
+.Blurred {
+  -webkit-filter: blur(10px);         // Chrome 19+, Safari 6+, Safari 6+ iOS
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);                // IE6-9
+
+  transition: filter 2s ease-in-out;
 
 }
 
-.LodableContent_Content {
-  height: 100%;
+.NoBlurred {
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
+
+  transition: filter 2s ease-in-out;
+
 }
