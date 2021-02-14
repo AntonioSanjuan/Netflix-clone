@@ -23,10 +23,6 @@ export class MovieBasicInfoComponent implements OnInit {
       width: 'fit-content',
       data: this.base64BigImage
     });
-
-    dialogRef.afterClosed().subscribe(_ => {
-      console.log('The dialog was closed');
-    });
   }
 
 }
