@@ -6,7 +6,7 @@
   height: 100%;
 }
 
-.Blurred {
+.ShowBlur {
   -webkit-filter: blur(10px);         // Chrome 19+, Safari 6+, Safari 6+ iOS
   -moz-filter: blur(10px);
   -o-filter: blur(10px);
@@ -18,7 +18,7 @@
   pointer-events: none;
 }
 
-.NoBlurred {
+.HideBlur {
   -webkit-filter: blur(0px);
   -moz-filter: blur(0px);
   -o-filter: blur(0px);
