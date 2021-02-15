@@ -17,6 +17,7 @@
 }
 
 .MovieBasicInfo_MainContainer{
+  overflow: hidden;
   border-radius: 2em;
   border: thin;
   border-style: solid;
@@ -42,6 +43,7 @@
 }
 
 .MovieBasicInfo_ImageContainer{
+  max-width: fit-content !important;
   margin-left: 1%;
   border-radius: 20%;
   height: 90%;
@@ -69,6 +71,7 @@
 }
 
 .MovieBasicInfo_ContentDescData{
+  text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
   height: 100%;
