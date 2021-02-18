@@ -1,27 +1,25 @@
-<div class="Home_MainContainer" fxLayout="column" fxLayoutAlign="start center" fxFlex="100">
-  <div class="Home_ModuleSelector" fxLayoutAlign="space-around center" fxLayout="column">
-    <div fxLayoutAlign="space-around center" fxLayout="row" fxFlex="100">
-      <div class="searchSelector" fxLayoutAlign="center center" fxLayout="column" fxFlex="33">
+<div class="Home_MainContainer">
+  <div class="Home_ModuleSelectorContainer">
+    <div class="Home_ModuleSelectors">
+      <div class="Home_SearchSelector">
         <button mat-raised-button class="app-button app-border">Filter Search</button>
       </div>
-      <div class="searchSelector" fxLayoutAlign="center center" fxLayout="row" fxFlex="33">
+      <div class="Home_SearchSelector">
         <button mat-raised-button class="app-button app-border">Top Rated Movies</button>
       </div>
-      <div class="searchSelector" fxLayoutAlign="center center" fxLayout="row" fxFlex="33">
+      <div class="Home_SearchSelector">
         <button  mat-raised-button class="app-button app-border">Top Movies</button>
       </div>
     </div>
   </div>
   <mat-divider class=""></mat-divider>
-  <div class="Home_ModuleContent" fxLayoutAlign="start center" fxLayout="column">
-    <div [ngSwitch]="selectedSearch" fxLayoutAlign="start center" fxLayout="column">
-      <div class="searchContent" *ngSwitchCase="0" fxLayoutAlign="start center" fxLayout="column">
-      </div>
-      <div class="searchContent" *ngSwitchCase="1" fxLayoutAlign="start center" fxLayout="row">
-        <app-topRatedMovieSearch></app-topRatedMovieSearch>
-      </div>
-      <div class="searchContent" *ngSwitchCase="2" fxLayoutAlign="start center" fxLayout="row">
-      </div>
+  <div class="Home_ModuleContent" [ngSwitch]="selectedSearch" fxLayoutAlign="start center" fxLayout="column">
+    <div class="Home_SearchContent" *ngSwitchCase="0">
+    </div>
+    <div class="Home_SearchContent" *ngSwitchCase="1">
+      <app-topRatedMovieSearch></app-topRatedMovieSearch>
+    </div>
+    <div class="Home_SearchContent" *ngSwitchCase="2">
     </div>
   </div>
 </div>

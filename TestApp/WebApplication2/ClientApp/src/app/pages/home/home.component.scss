@@ -1,0 +1,67 @@
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+.Home_MainContainer {
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  place-content: flex-start;
+  align-items: center;
+  flex: 1 1 100%;
+}
+
+.Home_ModuleContent {
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  place-content: flex-start;
+  align-items: center;
+
+  margin-top: 1%;
+  height: 100%;
+}
+
+.Home_ModuleSelectorContainer {
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  place-content: space-around;
+  align-items: center;
+  flex: 1 1 100%;
+
+  margin-top: 1%;
+  width: 100%;
+}
+
+.Home_ModuleSelectors {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: space-around;
+  align-items: center;
+  flex: 1 1 100%;
+}
+
+.Home_SearchSelector {
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  flex: 1 1 33%;
+
+  text-align: center;
+}
+
+.Home_SearchContent {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: flex-start;
+  align-items: center;
+
+  overflow: hidden;
+  width: 100%;
+}
