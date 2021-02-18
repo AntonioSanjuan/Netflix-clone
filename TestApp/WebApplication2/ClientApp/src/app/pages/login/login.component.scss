@@ -1,0 +1,61 @@
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+
+.Login_MainContainer {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: space-around;
+  align-items: center;
+  flex: 1 1 100%;
+
+  height: 100%;
+}
+
+.Login_SubContainer {
+  margin-left: 40%;
+  flex: 1 1 100%;
+  box-sizing: border-box;
+  max-width: 20%;
+
+  min-width: 50vh;
+}
+
+.Login_FormContainer {
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  place-content: space-around;
+  align-items: center;
+  flex: 1 1 100%;
+}
+
+.Login_FormSubContainer {
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  place-content: space-around;
+  align-items: center;
+  flex: 1 1 70%;
+}
+
+.Login_FormError {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  flex: 1 1 15%;
+}
+
+.Login_FormActions {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: space-around;
+  align-items: center;
+  flex: 1 1 15%;
+}
