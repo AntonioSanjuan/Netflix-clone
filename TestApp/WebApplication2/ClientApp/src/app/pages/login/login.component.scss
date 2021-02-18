@@ -16,10 +16,12 @@
 }
 
 .Login_SubContainer {
-  margin-left: 40%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  place-content: space-around;
   flex: 1 1 100%;
   box-sizing: border-box;
-  max-width: 20%;
 
   min-width: 50vh;
 }
