@@ -1,9 +1,9 @@
-<div class="TopRatedMovieSearch_MainContainer" fxLayout="column" fxLayoutAlign="start center" fxFlex="100">
-  <div class="TopRatedMovieSearch_MovieBasicInfo" fxLayout="column" fxLayoutAlign="center center" fxFlex="100">
-    <app-lodable-content
+<div class="TopRatedMovieSearch_MainContainer">
+  <div class="TopRatedMovieSearch_MovieBasicInfo">
+    <app-lodable-content class="TopRatedMovieSearch_LodableContent"
     [isLoading]="isLoading">
-      <div class="TopRatedMovieSearch_MovieBasicInfoElemet" *ngFor="let fetchedTopRatedMovie of fetchedTopRatedMovies?.content?.movies" fxLayout="column" fxLayoutAlign="start center"fxFlex="10">
-        <div fxLayout="row" fxLayoutAlign="start center" fxFlex="100">
+      <div class="TopRatedMovieSearch_MovieBasicInfoElement" *ngFor="let fetchedTopRatedMovie of fetchedTopRatedMovies?.content?.movies">
+        <div class="TopRatedMovieSearch_MovieBasicInfoSingleElement">
           <app-movie-basic-info
             [tittle] = "fetchedTopRatedMovie.title"
             [description] = "fetchedTopRatedMovie.overview"

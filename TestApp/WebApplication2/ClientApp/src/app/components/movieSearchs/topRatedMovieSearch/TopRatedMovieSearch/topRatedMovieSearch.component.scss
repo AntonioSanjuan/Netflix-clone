@@ -5,14 +5,35 @@
 
 .TopRatedMovieSearch_MainContainer {
   height: 100%;
+  flex-direction: row;
+  display: flex;
+  place-content: flex-start;
+  align-items: center;
+  flex: 1 1 100%;
 }
 
-.TopRatedMovieSearch_MovieBasicInfoElemet {
-  height: 100 vh;
+.TopRatedMovieSearch_MovieBasicInfoElement {
+  width: 50%;
   margin-top: 0.5%;
   margin-bottom: 0.5%;
 }
 
+.TopRatedMovieSearch_MovieBasicInfoSingleElement{
+  
+}
+
 .TopRatedMovieSearch_MovieBasicInfo{
   height: 100%;
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  flex: 1 1 100%;
+}
+
+.TopRatedMovieSearch_LodableContent{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }

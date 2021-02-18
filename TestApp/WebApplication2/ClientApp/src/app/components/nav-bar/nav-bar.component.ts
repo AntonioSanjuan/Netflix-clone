@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/user/Auth/auth.service';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit, OnDestroy {
   isAuthenticated: boolean;

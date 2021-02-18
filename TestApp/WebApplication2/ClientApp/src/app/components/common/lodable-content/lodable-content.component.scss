@@ -1,9 +1,22 @@
 .LodableContent_MainContainer {
   height: 100%;
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  flex: 1 1 100%;
 }
 
 .LodableContent_Content {
   height: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  flex: 1 1 100%;
 }
 
 .ShowBlur {
@@ -26,5 +39,4 @@
   filter: blur(0px);
 
   transition: filter 2s ease-in-out;
-
 }

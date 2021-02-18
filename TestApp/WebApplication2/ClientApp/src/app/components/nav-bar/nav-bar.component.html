@@ -1,13 +1,13 @@
-<div class="NavBar_MainContainer" fxLayout="row" fxLayoutAlign="space-around center" fxFlex="100">
-    <div class="leftNavBar" fxLayoutAlign="start center" fxFlex="20">
+<div class="NavBar_MainContainer">
+    <div class="leftNavBar">
         <app-nav-menu *ngIf="isAuthenticated"></app-nav-menu>
     </div>
-    <div class="centralNavBar" fxLayoutAlign="center center" fxFlex="60" >
+    <div class="centralNavBar">
       <h1 class="NavBar_AppName app-textHeader" (click)="goToHomePage()">
         RecoMovies
       </h1>
     </div>
-    <div class="rightNavBar" fxLayoutAlign="end center" fxFlex="20">
+    <div class="rightNavBar">
         <button *ngIf="!isAuthenticated" (click)="goToLoginPage()" mat-raised-button class="app-primary-accent-button-colour app-border">Login</button>
     </div>
 </div>
