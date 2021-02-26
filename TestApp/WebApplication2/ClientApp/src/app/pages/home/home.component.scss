@@ -24,7 +24,7 @@
 }
 
 .Home_ModuleSelectorContainer {
-  flex-direction: column;
+  flex-direction: row;
   box-sizing: border-box;
   display: flex;
   place-content: space-around;
@@ -35,21 +35,7 @@
   width: 100%;
 }
 
-.Home_ModuleSelectors {
-  flex-direction: row;
-  box-sizing: border-box;
-  display: flex;
-  place-content: space-around;
-  align-items: center;
-  flex: 1 1 100%;
-}
-
 .Home_SearchSelector {
-  flex-direction: column;
-  box-sizing: border-box;
-  display: flex;
-  place-content: center;
-  align-items: center;
   flex: 1 1 33%;
 
   text-align: center;
@@ -64,4 +50,8 @@
 
   overflow: hidden;
   width: 100%;
+}
+
+.Home_ModuleDivider{
+  
 }

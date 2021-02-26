@@ -1,19 +1,17 @@
 <div class="Home_MainContainer">
   <div class="Home_ModuleSelectorContainer">
-    <div class="Home_ModuleSelectors">
-      <div class="Home_SearchSelector">
-        <button mat-raised-button class="app-button app-border">Filter Search</button>
-      </div>
-      <div class="Home_SearchSelector">
-        <button mat-raised-button class="app-button app-border">Top Rated Movies</button>
-      </div>
-      <div class="Home_SearchSelector">
-        <button  mat-raised-button class="app-button app-border">Top Movies</button>
-      </div>
+    <div class="Home_SearchSelector">
+      <button mat-raised-button class="app-button app-border">Filter Search</button>
+    </div>
+    <div class="Home_SearchSelector">
+      <button mat-raised-button class="app-button app-border">Top Rated Movies</button>
+    </div>
+    <div class="Home_SearchSelector">
+      <button  mat-raised-button class="app-button app-border">Top Movies</button>
     </div>
   </div>
-  <mat-divider class=""></mat-divider>
-  <div class="Home_ModuleContent" [ngSwitch]="selectedSearch" fxLayoutAlign="start center" fxLayout="column">
+  <mat-divider class="Home_ModuleDivider"></mat-divider>
+  <div class="Home_ModuleContent" [ngSwitch]="selectedSearch">
     <div class="Home_SearchContent" *ngSwitchCase="0">
     </div>
     <div class="Home_SearchContent" *ngSwitchCase="1">
