@@ -46,10 +46,8 @@
 }
 
 .MovieBasicInfo_Image {
-  width: fit-content;
-  height: fit-content;
-  max-width: 200px;
-  max-height: 200px;
+  width: 100%;
+  height: 100%;
 }
 
 .MovieBasicInfo_ActionsContainer {
@@ -183,8 +181,6 @@
   .MovieBasicInfo_Image {
     height: initial;
     width: initial;
-    max-width:none;
-    max-height: none;
   }
 
   .MovieBasicInfo_ActionsContainer {
