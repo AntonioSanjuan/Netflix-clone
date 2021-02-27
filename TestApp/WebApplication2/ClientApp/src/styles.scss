@@ -8,24 +8,25 @@ html{
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
   }
+
   .app-textHeader{
     color: var(--text-tittle-colour);
     font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
-    font-size: 1em;
+    font-size: 90%;
   }
   .app-text-big{
     font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
-    font-size:0.9em;
+    font-size:80%;
   }
 
   .app-text-normal{
     font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
-    font-size:0.8em;
+    font-size:70%;
   }
 
   .app-text-small{
     font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
-    font-size:0.7em;
+    font-size:60%;
   }
 
   .app-button{

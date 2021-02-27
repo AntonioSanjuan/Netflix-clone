@@ -10,6 +10,7 @@ import { FullScreenImageComponent } from '../full-screen-image/full-screen-image
 export class MovieBasicInfoComponent implements OnInit {
   @Input() tittle: string;
   @Input() description: string;
+  @Input() voteAverage: number;
   @Input() base64Image: string;
   @Input() base64BigImage: string;
 
@@ -17,7 +18,7 @@ export class MovieBasicInfoComponent implements OnInit {
 
   ngOnInit() {}
 
-  openDialog(): void {
+  openImageDialog(): void {
     const dialogRef = this.dialog.open(FullScreenImageComponent, {
       height: '90vh',
       width: 'fit-content',

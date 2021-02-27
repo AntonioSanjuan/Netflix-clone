@@ -134,20 +134,21 @@
   display: flex;
   place-content: flex-start;
   align-items: flex-start;
-  max-width: 100%;
+  flex: 1 1 50%;
+  // max-width: 100%;
 
-  height: fit-content;
+  overflow: auto;
+  height: 100%;
 }
 
-.MovieBasicInfo_ContentDescData {
-  flex-direction: column;
+.MovieBasicInfo_ContentInfo {
+  flex-direction: row;
   box-sizing: border-box;
   display: flex;
-  place-content: flex-start;
-  align-items: center;
+  place-content: space-around;
+  align-items: flex-end;
+  flex: 1 1 50%;
   
-  text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  text-align: start;
   height: 100%;
 }

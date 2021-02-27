@@ -44,7 +44,7 @@ describe('MovieBasicInfoComponent', () => {
     .and
     .returnValue({afterClosed: () => EMPTY});
 
-    component.openDialog();
+    component.openImageDialog();
     expect(matDialogSpy).toHaveBeenCalled();
   });
 });
