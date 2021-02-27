@@ -129,7 +129,7 @@
   flex-direction: column;
   box-sizing: border-box;
   display: flex;
-  place-content: flex-start;
+  place-content: center;
   align-items: flex-start;
   flex: 1 1 50%;
   // max-width: 100%;
@@ -148,4 +148,85 @@
   
   text-align: start;
   height: 100%;
+}
+
+.MovieBasicInfo_ContentRate {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: flex-start;
+  align-items: center;
+  flex: 1 1 50%;
+  
+  text-align: start;
+  height: 100%;
+}
+
+.MovieBasicInfo_ContentExpand {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: flex-start;
+  align-items: center;
+  flex: 1 1 50%;
+  
+  text-align: start;
+  height: 100%;
+}
+
+@media (max-width: 600px) {
+  .MovieBasicInfo_ImageContainer {
+    margin-left: 0%;
+    align-items: stretch;  
+    place-content: center;
+  }
+  .MovieBasicInfo_Image {
+    height: initial;
+    width: initial;
+    max-width:none;
+    max-height: none;
+  }
+
+  .MovieBasicInfo_ActionsContainer {
+    flex-direction: row;
+  }
+
+  .MovieBasicInfo_Content {
+    flex: 1 1 15%;
+  }
+
+  .MovieBasicInfo_MainContainer {
+    width: 20em;
+    height: 35em;
+  }
+
+  .MovieBasicInfo_ContentTitleData {
+    align-items: center;
+  }
+
+  .MovieBasicInfo_SubContainer {
+    flex-direction: column;
+  }
+
+  .MovieBasicInfo_Content {
+    order: 1;
+  }
+
+  .MovieBasicInfo_Actions {
+    order: 3;
+  }
+
+  .MovieBasicInfo_ImageContainer {
+    order: 2;
+  }
+
+  .MovieBasicInfo_ContentExpand {
+    flex: 1 1 45%;
+    place-content: flex-end;
+  }
+
+  .MovieBasicInfo_ContentRate {
+    flex: 1 1 55%;
+    place-content: flex-end;
+  }
 }
