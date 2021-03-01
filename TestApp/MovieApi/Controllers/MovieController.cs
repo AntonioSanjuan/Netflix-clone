@@ -35,7 +35,7 @@ namespace MovieApi.Controllers
             return Ok(topRatedMoviesResponse);
         }
 
-        [HttpPost("TopRatedMovies")]
+        [HttpPost("GetMovieInfo")]
         [ProducesResponseType(typeof(MovieInfoResponseModelDto), 200)]
         [ProducesResponseType(typeof(CommonResponseErrorModel), 500)]
         public async Task<IActionResult> GetMovieInfo([FromBody] GetMovieInfoRequestModelDto movieInfoRequest)
