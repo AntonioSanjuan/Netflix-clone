@@ -5,9 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\TheMoviedb\Movies\TopRatedMovies\Request\**" />
+    <Content Remove="Models\TheMoviedb\Movies\TopRatedMovies\Request\**" />
+    <EmbeddedResource Remove="Models\TheMoviedb\Movies\TopRatedMovies\Request\**" />
+    <None Remove="Models\TheMoviedb\Movies\TopRatedMovies\Request\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\Movie\GetMovieImages\Request\" />
     <Folder Include="Models\TheMoviedb\Auth\CreateRequestToken\Request\" />
-    <Folder Include="Models\TheMoviedb\Movies\TopRatedMovies\Request\" />
   </ItemGroup>
 
   <ItemGroup>
