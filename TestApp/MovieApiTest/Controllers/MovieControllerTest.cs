@@ -1,5 +1,6 @@
 ﻿using Moq;
 using MovieApi.Controllers;
+using MovieApi.Models.Movie.GetMovieInfo.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Response;
 using MovieApi.Models.User.Login.Request;
@@ -40,6 +41,16 @@ namespace MovieApiTest.Controllers
 
             //assert
             _mockMovieService.Verify(spy => spy.GetTopRatedMovies(getTopRatedMoviesRequest), Times.Once());
+        }
+
+        [Test]
+        public async Task MovieInfo()
+        {
+            GetMovieInfoRequestModelDto getMovieInfoRequest = new GetMovieInfoRequestModelDto();
+            await _controller.GetMovieInfo(getMovieInfoRequest);
+
+            //assert
+            _mockMovieService.Verify(spy => spy.GetMovieInfo(getMovieInfoRequest), Times.Once());
         }
     }
 }
