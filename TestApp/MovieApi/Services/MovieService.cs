@@ -2,8 +2,10 @@
 using MovieApi.adapters.interfaces;
 using MovieApi.Models.AppSettings;
 using MovieApi.Models.Movie.GetMovieImages.Response;
+using MovieApi.Models.Movie.GetMovieInfo.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Response;
+using MovieApi.Models.TheMoviedb.Movies.MovieInfo.Response;
 using MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response;
 using MovieApi.Modules.ServiceNameModules.MovieServiceNameModule;
 using MovieApi.services.interfaces;
@@ -51,7 +53,7 @@ namespace MovieApi.services
             }
             catch (Exception)
             {
-                return _movieAdapter.TopTopRatedMoviesErrorResponse();
+                return _movieAdapter.ToTopRatedMoviesErrorResponse();
             }
         }
 
@@ -83,6 +85,27 @@ namespace MovieApi.services
             catch (Exception)
             {
                 return new List<MovieImageResponseModel>();
+            }
+        }
+
+        public async Task<MovieInfoResponseModelDto> GetMovieInfo(GetMovieInfoRequestModelDto request)
+        {
+            try
+            {
+                string url = _serviceNameModule.CreateMovieInfoUrl(request);
+                HttpResponseMessage response = _httpClient.GetAsync(url).Result;
+                var responseAsString = await response.Content.ReadAsStringAsync();
+                GetMovieInfoResponseModel getMovieInfoResponse = JsonSerializer.Deserialize<GetMovieInfoResponseModel>(responseAsString, new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                });
+                MovieInfoResponseModelDto topRatedMoviesResponse = _movieAdapter.ToMovieInfoResponse(getMovieInfoResponse);
+
+                return topRatedMoviesResponse;
+            }
+            catch (Exception)
+            {
+                return _movieAdapter.ToMovieInfoErrorResponse();
             }
         }
     }
