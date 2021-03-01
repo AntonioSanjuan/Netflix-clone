@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Movie\GetMovieImages\Request\" />
+    <Folder Include="Models\Dtos\Movie\GetMovieImages\Request\" />
     <Folder Include="Models\TheMoviedb\Auth\CreateRequestToken\Request\" />
   </ItemGroup>
 
