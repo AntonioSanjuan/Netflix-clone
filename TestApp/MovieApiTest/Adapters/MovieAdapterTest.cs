@@ -1,5 +1,6 @@
 ﻿using MovieApi.adapters;
 using MovieApi.Models.Movie.GetMovieImages.Response;
+using MovieApi.Models.TheMoviedb.Movies.MovieInfo.Response;
 using MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response;
 using NUnit.Framework;
 using System;
@@ -51,13 +52,53 @@ namespace MovieApiTest.Adapters
         [Test]
         public void TopTopRatedMoviesErrorResponse()
         {
-            var actual = _adapter.TopTopRatedMoviesErrorResponse();
+            var actual = _adapter.ToTopRatedMoviesErrorResponse();
 
             Assert.AreEqual(1, actual.Content.Page);
             Assert.AreEqual(1, actual.Content.Total_pages);
             Assert.AreEqual(0, actual.Content.Total_results);
             Assert.IsNull(actual.Content.Movies);
             Assert.AreEqual("GetTopRatedMovies", actual.ResponseSchema.ResponseMethod);
+        }
+
+        [Test]
+        public void ToMovieInfoResponseWithStatusCodeSuccess()
+        {
+            GetMovieInfoResponseModel getTopRatedMoviesResponseRequestParam = new GetMovieInfoResponseModel() { Status_code = 0,
+            };
+            
+
+            MockAdapter();
+            var actual = _adapter.ToMovieInfoResponse(getTopRatedMoviesResponseRequestParam);
+            Assert.IsEmpty(actual.Content.Genres);
+            Assert.IsEmpty(actual.Content.Videos);
+            Assert.AreEqual("GetMovieInfo", actual.ResponseSchema.ResponseMethod);
+        }
+
+        [Test]
+        public void ToMovieInfoResponseWithStatusCodeFailure()
+        {
+            GetMovieInfoResponseModel getTopRatedMoviesResponseRequestParam = new GetMovieInfoResponseModel() { Success = false, Status_code = 34, Status_message = "Something goes wrong" };
+
+            MockAdapter();
+            var actual = _adapter.ToMovieInfoResponse(getTopRatedMoviesResponseRequestParam);
+            Assert.IsNull(actual.Content.Genres);
+            Assert.IsNull(actual.Content.Videos);
+            Assert.AreEqual("GetMovieInfo", actual.ResponseSchema.ResponseMethod);
+        }
+
+        [Test]
+        public void TopMovieInfoErrorResponse()
+        {
+            var actual = _adapter.ToMovieInfoErrorResponse();
+
+            Assert.AreEqual(0, actual.Content.MovieId);
+            Assert.AreEqual(string.Empty, actual.Content.ImdbId);
+            Assert.AreEqual(string.Empty, actual.Content.Homepage);
+            Assert.AreEqual(string.Empty, actual.Content.ReleaseDate);
+            Assert.IsNull(actual.Content.Genres);
+            Assert.IsNull(actual.Content.Videos);
+            Assert.AreEqual("GetMovieInfo", actual.ResponseSchema.ResponseMethod);
         }
     }
 }
