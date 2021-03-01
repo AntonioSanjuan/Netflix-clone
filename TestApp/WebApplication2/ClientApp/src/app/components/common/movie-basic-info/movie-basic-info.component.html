@@ -1,19 +1,19 @@
 <div class="MovieBasicInfo_MainContainer">
   <div class="MovieBasicInfo_SubContainer">
     <div class="MovieBasicInfo_ImageContainer app-border">
-      <img class="MovieBasicInfo_Image" (click)="openImageDialog()" src="{{base64Image}}" alt="{{tittle}}">
+      <img class="MovieBasicInfo_Image" (click)="openImageDialog()" src="{{movie?.images?.backdropImageToBase64}}">
     </div>
     <div class="MovieBasicInfo_Content">
       <div class="MovieBasicInfo_ContentContainer">
         <div class="MovieBasicInfo_ContentTitleData app-textHeader">
-          {{tittle}}
+          {{movie?.title}}
         </div >
         <div class="MovieBasicInfo_ContentInfo">
           <div class="MovieBasicInfo_ContentRate">
-            <mat-icon class="app-button">star_rate</mat-icon> {{voteAverage}}
+            <mat-icon class="app-button">star_rate</mat-icon> {{movie?.voteAverage}}
           </div>
           <div class="MovieBasicInfo_ContentExpand">
-            <button mat-icon-button>
+            <button (click)="openMovieInfoDialog()" mat-icon-button>
               <mat-icon class="app-button">info</mat-icon>
             </button>
           </div>

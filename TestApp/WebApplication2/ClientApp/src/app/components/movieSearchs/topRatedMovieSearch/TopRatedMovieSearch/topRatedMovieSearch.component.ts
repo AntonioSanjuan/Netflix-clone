@@ -39,7 +39,6 @@ export class TopRatedMovieSearchComponent implements OnInit {
   private async fetchTopRatedMovies(pageNumber: number) {
     this.isLoading = true;
     await this.movieDBService.getTopRatedMovies(pageNumber).then((topRatedMoviesResponse) => {
-      console.log(topRatedMoviesResponse);
       this.fetchedTopRatedMovies = {...topRatedMoviesResponse};
       this.fetchedPage = pageNumber;
 

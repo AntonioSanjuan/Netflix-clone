@@ -6,8 +6,13 @@ export class MovieDBServiceNameModule {
 
   constructor(baseUrl: string) {
     this.baseUrl = baseUrl + this.controllerSuburl;
- }
+  }
+
   getTopRatedMoviesUrl(): string {
     return this.baseUrl + MovieDBServicesEnumNames.GetTopRatedMovies;
- }
+  }
+
+  getMovieInfoUrl(): string {
+      return this.baseUrl + MovieDBServicesEnumNames.GetMovieInfo;
+  }
 }

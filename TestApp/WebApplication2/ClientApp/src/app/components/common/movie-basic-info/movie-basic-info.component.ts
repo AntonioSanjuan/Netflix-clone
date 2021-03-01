@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { TopRatedMovie } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
 import { FullScreenImageComponent } from '../full-screen-image/full-screen-image.component';
+import { MovieAdvancedInfoComponent } from '../movie-advanced-info/movie-advanced-info.component';
 
 @Component({
   selector: 'app-movie-basic-info',
@@ -8,21 +10,25 @@ import { FullScreenImageComponent } from '../full-screen-image/full-screen-image
   styleUrls: ['./movie-basic-info.component.scss']
 })
 export class MovieBasicInfoComponent implements OnInit {
-  @Input() tittle: string;
-  @Input() description: string;
-  @Input() voteAverage: number;
-  @Input() base64Image: string;
-  @Input() base64BigImage: string;
+  @Input() movie: TopRatedMovie;
 
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {}
 
   openImageDialog(): void {
-    const dialogRef = this.dialog.open(FullScreenImageComponent, {
+    const dialogImageRef = this.dialog.open(FullScreenImageComponent, {
       height: '90vh',
       width: 'fit-content',
-      data: this.base64BigImage
+      data: this.movie.images.posterImageToBase64
+    });
+  }
+
+  openMovieInfoDialog(): void {
+    const dialogInfoRef = this.dialog.open(MovieAdvancedInfoComponent, {
+      height: '90vh',
+      width: 'fit-content',
+      data: this.movie
     });
   }
 

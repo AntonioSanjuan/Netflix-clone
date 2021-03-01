@@ -4,11 +4,7 @@
     
     <div class="TopRatedMovieSearch_MovieBasicInfoElement" *ngFor="let fetchedTopRatedMovie of fetchedTopRatedMovies?.content?.movies">
       <app-movie-basic-info
-        [tittle] = "fetchedTopRatedMovie.title"
-        [description] = "fetchedTopRatedMovie.overview"
-        [voteAverage] = "fetchedTopRatedMovie.voteAverage"
-        [base64Image] = "fetchedTopRatedMovie.images.backdropImageToBase64"
-        [base64BigImage] = "fetchedTopRatedMovie.images.posterImageToBase64"
+        [movie] = "fetchedTopRatedMovie"
       ></app-movie-basic-info>
     </div>
 

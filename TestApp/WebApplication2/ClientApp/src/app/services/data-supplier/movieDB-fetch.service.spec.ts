@@ -8,6 +8,8 @@ import { MovieDBService } from './movieDB-fetch.service';
 
 describe('[IntegrationTest] MovieDBService', () => {
   const topRatedMoviesUrl = 'https://localhost:44339/api/Movie/TopRatedMovies';
+  const movieInfoUrl = 'https://localhost:44339/api/Movie/GetMovieInfo';
+
   let sut: MovieDBService;
 
   // dependencies
@@ -18,13 +20,17 @@ describe('[IntegrationTest] MovieDBService', () => {
   let responseValidatorStub = {} as ResponseValidator;
   let isLoginResponseValidMock = true;
   let isGetTopRatedMoviesResponseValidMock = true;
+  let isGetMovieInfoResponseValidMock = true;
+
 
   beforeEach(() => {
     isLoginResponseValidMock = true;
     isGetTopRatedMoviesResponseValidMock = true;
 
     responseValidatorStub = { isLoginResponseValid : jest.fn(() => isLoginResponseValidMock),
-                              isGetTopRatedMoviesResponseValid: jest.fn(() => isGetTopRatedMoviesResponseValidMock) };
+                              isGetTopRatedMoviesResponseValid: jest.fn(() => isGetTopRatedMoviesResponseValidMock),
+                              isGetMovieInfoResponseValid: jest.fn(() => isGetMovieInfoResponseValidMock) 
+                            };
     validatorStub = { responseValidator : responseValidatorStub };
     utilServiceStub = { validator: validatorStub };
 
@@ -57,6 +63,18 @@ describe('[IntegrationTest] MovieDBService', () => {
 
   });
 
+  it('getMovieInfo() should call http POST method for the given route',  () => {
+    sut.getMovieInfo(0).then(
+      async () => {
+      }
+    );
+
+    const req = httpMock.expectOne(movieInfoUrl);
+    expect(req.request.method).toBe('POST');
+    req.flush({});
+  });
+
+
   it('getTopRatedMovies() getTopRatedMoviesResponse should be checked via ValidatorModule', () => {
     // spy
     const isTopRatedMoviesResponseValidSpy = jest.spyOn(responseValidatorStub, 'isGetTopRatedMoviesResponseValid');
@@ -69,5 +87,19 @@ describe('[IntegrationTest] MovieDBService', () => {
     req.flush({});
 
     expect(isTopRatedMoviesResponseValidSpy).toHaveBeenCalled();
+  });
+
+  it('getMovieInfo() getMovieInfoResponse should be checked via ValidatorModule', () => {
+    // spy
+    const isMovieInfoResponseValidSpy = jest.spyOn(responseValidatorStub, 'isGetMovieInfoResponseValid');
+
+    sut.getMovieInfo(0).then(
+      async () => {
+      }
+    );
+    const req = httpMock.expectOne(movieInfoUrl);
+    req.flush({});
+
+    expect(isMovieInfoResponseValidSpy).toHaveBeenCalled();
   });
 });
