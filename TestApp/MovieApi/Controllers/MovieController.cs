@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using MovieApi.Models.AppSettings;
 using MovieApi.Models.Common;
+using MovieApi.Models.Movie.GetMovieInfo.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Response;
 using MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response;
@@ -31,6 +32,16 @@ namespace MovieApi.Controllers
         {
             TopRatedMoviesResponseModelDto topRatedMoviesResponse;
             topRatedMoviesResponse = await _movieService.GetTopRatedMovies(topRatedMoviesRequest);
+            return Ok(topRatedMoviesResponse);
+        }
+
+        [HttpPost("TopRatedMovies")]
+        [ProducesResponseType(typeof(MovieInfoResponseModelDto), 200)]
+        [ProducesResponseType(typeof(CommonResponseErrorModel), 500)]
+        public async Task<IActionResult> GetMovieInfo([FromBody] GetMovieInfoRequestModelDto movieInfoRequest)
+        {
+            MovieInfoResponseModelDto topRatedMoviesResponse;
+            topRatedMoviesResponse = await _movieService.GetMovieInfo(movieInfoRequest);
             return Ok(topRatedMoviesResponse);
         }
     }
