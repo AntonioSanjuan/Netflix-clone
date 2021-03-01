@@ -160,5 +160,51 @@ namespace MovieApiTest.Services
             _mockMovieAdapter.Verify(ToTopRatedMoviesSpy => ToTopRatedMoviesSpy.ToTopRatedMoviesResponse(null, null), Times.Never());
 
         }
+
+        [Test]
+        public async Task GetMoviesInfoWithValidUri()
+        {
+            TopRatedMoviesRequestModelDto getTopRatedMoviesRequest = new TopRatedMoviesRequestModelDto()
+            {
+                page = 1,
+                language = ""
+            };
+            const string baseUrl = "http://baseUrl";
+            const string imageBaseUrl = "http://imageBaseUrl";
+            const string apiKey = "apiKey";
+            const string subUrl = "subUrl";
+            var theMovieSettingsWithInvalidUri = new TheMoviedbSettingsModel()
+            {
+                Version = new TheMoviedbVersionSettingsModel()
+                {
+                    V3 = new TheMoviedbVersionSettingModel()
+                    {
+                        BaseUrl = baseUrl,
+                        ImageBaseUrl = imageBaseUrl,
+                        ApiKey = apiKey,
+                        SubUrls = new SubUrls()
+                        {
+                            getTopRatedMovies = subUrl
+                        }
+                    }
+                }
+            };
+            _theMovieSettingsResponse = theMovieSettingsWithInvalidUri;
+            MockService();
+            var actual = await _service.GetTopRatedMovies(getTopRatedMoviesRequest);
+
+            //assert
+            _mockHttpMessageHandler.Protected().Verify(
+               "SendAsync",
+               Times.Exactly(1),
+               ItExpr.Is<HttpRequestMessage>(req => req.Method == HttpMethod.Get &&
+                                                    req.RequestUri.IsAbsoluteUri &&
+                                                    req.RequestUri.AbsoluteUri.Contains(new Uri($"{baseUrl}{subUrl}").ToString())
+                                                ), ItExpr.IsAny<CancellationToken>()
+            );
+
+            _mockMovieAdapter.Verify(ToTopRatedMoviesSpy => ToTopRatedMoviesSpy.ToTopRatedMoviesResponse(null, null), Times.Never());
+
+        }
     }
 }
