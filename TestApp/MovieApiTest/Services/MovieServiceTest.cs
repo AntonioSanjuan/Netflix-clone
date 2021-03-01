@@ -4,6 +4,7 @@ using Moq.Protected;
 using MovieApi.adapters.interfaces;
 using MovieApi.Models.AppSettings;
 using MovieApi.Models.Movie.GetMovieImages.Response;
+using MovieApi.Models.Movie.GetMovieInfo.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Response;
 using MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response;
@@ -164,13 +165,12 @@ namespace MovieApiTest.Services
         [Test]
         public async Task GetMoviesInfoWithValidUri()
         {
-            TopRatedMoviesRequestModelDto getTopRatedMoviesRequest = new TopRatedMoviesRequestModelDto()
+            GetMovieInfoRequestModelDto getMovieInfoRequest = new GetMovieInfoRequestModelDto()
             {
-                page = 1,
+                movieId = 0,
                 language = ""
             };
             const string baseUrl = "http://baseUrl";
-            const string imageBaseUrl = "http://imageBaseUrl";
             const string apiKey = "apiKey";
             const string subUrl = "subUrl";
             var theMovieSettingsWithInvalidUri = new TheMoviedbSettingsModel()
@@ -180,18 +180,17 @@ namespace MovieApiTest.Services
                     V3 = new TheMoviedbVersionSettingModel()
                     {
                         BaseUrl = baseUrl,
-                        ImageBaseUrl = imageBaseUrl,
                         ApiKey = apiKey,
                         SubUrls = new SubUrls()
                         {
-                            getTopRatedMovies = subUrl
+                            getMovieInfo = subUrl
                         }
                     }
                 }
             };
             _theMovieSettingsResponse = theMovieSettingsWithInvalidUri;
             MockService();
-            var actual = await _service.GetTopRatedMovies(getTopRatedMoviesRequest);
+            var actual = await _service.GetMovieInfo(getMovieInfoRequest);
 
             //assert
             _mockHttpMessageHandler.Protected().Verify(
@@ -203,8 +202,49 @@ namespace MovieApiTest.Services
                                                 ), ItExpr.IsAny<CancellationToken>()
             );
 
-            _mockMovieAdapter.Verify(ToTopRatedMoviesSpy => ToTopRatedMoviesSpy.ToTopRatedMoviesResponse(null, null), Times.Never());
+            _mockMovieAdapter.Verify(ToTopRatedMoviesSpy => ToTopRatedMoviesSpy.ToMovieInfoResponse(null), Times.Never());
 
+        }
+
+        [Test]
+        public async Task GetMoviesInfoWithInvalidUri()
+        {
+            GetMovieInfoRequestModelDto getMovieInfoRequest = new GetMovieInfoRequestModelDto()
+            {
+                movieId = 0,
+                language = ""
+            };
+            const string baseUrl = "baseUrl";
+            const string apiKey = "apiKey";
+            const string subUrl = "subUrl";
+            var theMovieSettingsWithInvalidUri = new TheMoviedbSettingsModel()
+            {
+                Version = new TheMoviedbVersionSettingsModel()
+                {
+                    V3 = new TheMoviedbVersionSettingModel()
+                    {
+                        BaseUrl = baseUrl,
+                        ApiKey = apiKey,
+                        SubUrls = new SubUrls()
+                        {
+                            getMovieInfo = subUrl
+                        }
+                    }
+                }
+            };
+            _theMovieSettingsResponse = theMovieSettingsWithInvalidUri;
+            MockService();
+            var actual = await _service.GetMovieInfo(getMovieInfoRequest);
+
+            //assert
+            _mockHttpMessageHandler.Protected().Verify(
+               "SendAsync",
+               Times.Exactly(0),
+               ItExpr.IsAny<HttpRequestMessage>(),
+               ItExpr.IsAny<CancellationToken>()
+            );
+
+            _mockMovieAdapter.Verify(ToTopRatedMoviesSpy => ToTopRatedMoviesSpy.ToMovieInfoResponse(null), Times.Never());
         }
     }
 }
