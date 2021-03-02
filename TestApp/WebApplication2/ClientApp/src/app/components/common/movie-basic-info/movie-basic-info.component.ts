@@ -27,7 +27,7 @@ export class MovieBasicInfoComponent implements OnInit {
   openMovieInfoDialog(): void {
     const dialogInfoRef = this.dialog.open(MovieAdvancedInfoComponent, {
       height: '90vh',
-      width: 'fit-content',
+      width: '80vh',
       data: this.movie
     });
   }

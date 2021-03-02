@@ -1,7 +1,11 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
+import { mixinInitialized } from '@angular/material/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { IGetMovieInfoResponseDto } from 'src/app/models/dataSupplier-models/GetMovieInfo/GetMovieInfoResponse.model';
 import { TopRatedMovie } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
+import { VideoProviderTypes } from 'src/app/models/internal-types/common/videoProviderTypes/videoProviderTypes.model';
+import { VideoTypes } from 'src/app/models/internal-types/common/videoTypes/videoTypes.model';
 import { MovieDBService } from 'src/app/services/data-supplier/movieDB-fetch.service';
 
 @Component({
@@ -11,16 +15,34 @@ import { MovieDBService } from 'src/app/services/data-supplier/movieDB-fetch.ser
 })
 export class MovieAdvancedInfoComponent implements OnInit {
   movieInfo: IGetMovieInfoResponseDto;
+  iframeUrl: SafeResourceUrl;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: TopRatedMovie,
+    private sanitizer: DomSanitizer,
     private movieDBService: MovieDBService
   ) { }
 
   ngOnInit() {
     this.movieDBService.getMovieInfo(this.data.movieId).then((getMovieInfoResponse: IGetMovieInfoResponseDto) => {
+      console.log(getMovieInfoResponse)
       this.movieInfo = getMovieInfoResponse;
+      this.initialize();
     })
+  }
+
+  initialize(){
+    this.movieInfo.content.videos.forEach((video) => {
+      console.log(video);
+
+      if(video.videoType === VideoTypes.Trailer){
+        console.log(video.site);
+        if(video.site === VideoProviderTypes.Youtube){
+          let url = `https://www.youtube.com/embed/${video.videoKey}`
+          this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+        }
+      }
+    });
   }
 
 }

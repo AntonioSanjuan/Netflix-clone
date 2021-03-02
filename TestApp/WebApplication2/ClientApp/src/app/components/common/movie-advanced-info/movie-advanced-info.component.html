@@ -1,4 +1,19 @@
 <div class="MovieAdvancedInfo_MainContainer">
-  <div class="MovieAdvancedInfo_SubContainer">
+  <div class="MovieAdvancedInfo_IframeContainer">
+    <iframe *ngIf="iframeUrl" class="MovieAdvancedInfo_Iframe"
+      title="Inline Frame Example"
+      [src]="iframeUrl"
+      frameborder="0"
+      autoplay
+      gyroscope
+      allowfullscreen>
+  </iframe>
+
   </div>
+  <mat-divider></mat-divider>
+  <div class="MovieAdvancedInfo_DescriptionContainer">
+    {{data?.overview}}
+  </div>
+  <mat-divider></mat-divider>
+
 </div>

@@ -1,0 +1,49 @@
+:host {
+    height: 100%;
+  }
+
+  .MovieAdvancedInfo_MainContainer {
+    height: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    place-content: flex-start;
+    align-items: center;
+    flex: 1 1 100%;
+  }
+  
+  .MovieAdvancedInfo_IframeContainer {
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    place-content: flex-start;
+    align-items: center;
+    flex: 1 1 50%;
+  
+    overflow: hidden;
+  }
+
+  .MovieAdvancedInfo_DescriptionContainer {
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    place-content: flex-start;
+    align-items: center;
+    flex: 1 1 50%;
+  
+    overflow: hidden;
+  }
+
+  .MovieAdvancedInfo_Iframe {
+    height: 100%;
+    width: 100%;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center;
+    align-items: center;
+    flex: 1 1 100%;
+  
+    overflow: hidden;
+  }
+  
