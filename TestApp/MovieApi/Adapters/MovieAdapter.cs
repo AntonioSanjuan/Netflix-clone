@@ -5,8 +5,7 @@ using MovieApi.Models.Movie.GetTopTatedMovies.Response;
 using MovieApi.Models.TheMoviedb;
 using MovieApi.Models.TheMoviedb.Movies.MovieInfo.Response;
 using MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response;
-using MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.MovieInfoConversionTypeModule;
-using MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.TopRatedMoviesConversionTypeModule;
+using MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.MovieConversionType;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +17,10 @@ namespace MovieApi.adapters
     {
         public MovieAdapter() {}
 
-        public MovieInfoResponseModelDto ToMovieInfoResponse(GetMovieInfoResponseModel getMovieInfoResponse)
+        public MovieInfoResponseModelDto ToMovieInfoResponse(GetMovieInfoResponseModel getMovieInfoResponse, List<MovieImageResponseModel> similarImageMovies)
         {
             return (IsSuccessResponse(getMovieInfoResponse)) ?
-                MovieInfoConversionTypeModule.Success(getMovieInfoResponse) :
+                MovieInfoConversionTypeModule.Success(getMovieInfoResponse, similarImageMovies) :
             MovieInfoConversionTypeModule.Failure();
         }
 

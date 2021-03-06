@@ -202,7 +202,7 @@ namespace MovieApiTest.Services
                                                 ), ItExpr.IsAny<CancellationToken>()
             );
 
-            _mockMovieAdapter.Verify(ToTopRatedMoviesSpy => ToTopRatedMoviesSpy.ToMovieInfoResponse(null), Times.Never());
+            _mockMovieAdapter.Verify(ToTopRatedMoviesSpy => ToTopRatedMoviesSpy.ToMovieInfoResponse(null, null), Times.Never());
 
         }
 
@@ -244,7 +244,7 @@ namespace MovieApiTest.Services
                ItExpr.IsAny<CancellationToken>()
             );
 
-            _mockMovieAdapter.Verify(ToTopRatedMoviesSpy => ToTopRatedMoviesSpy.ToMovieInfoResponse(null), Times.Never());
+            _mockMovieAdapter.Verify(ToTopRatedMoviesSpy => ToTopRatedMoviesSpy.ToMovieInfoResponse(null, null), Times.Never());
         }
     }
 }

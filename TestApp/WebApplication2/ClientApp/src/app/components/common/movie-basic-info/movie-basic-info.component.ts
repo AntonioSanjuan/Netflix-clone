@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { TopRatedMovie } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
+import { Movie } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
 import { FullScreenImageComponent } from '../full-screen-image/full-screen-image.component';
 import { MovieAdvancedInfoComponent } from '../movie-advanced-info/movie-advanced-info.component';
 
@@ -10,7 +10,7 @@ import { MovieAdvancedInfoComponent } from '../movie-advanced-info/movie-advance
   styleUrls: ['./movie-basic-info.component.scss']
 })
 export class MovieBasicInfoComponent implements OnInit {
-  @Input() movie: TopRatedMovie;
+  @Input() movie: Movie;
 
   constructor(private dialog: MatDialog) { }
 

@@ -66,10 +66,11 @@ namespace MovieApiTest.Adapters
         {
             GetMovieInfoResponseModel getTopRatedMoviesResponseRequestParam = new GetMovieInfoResponseModel() { Status_code = 0,
             };
-            
+            List<MovieImageResponseModel> similarImageMoviesRequestParam = new List<MovieImageResponseModel>() { };
+
 
             MockAdapter();
-            var actual = _adapter.ToMovieInfoResponse(getTopRatedMoviesResponseRequestParam);
+            var actual = _adapter.ToMovieInfoResponse(getTopRatedMoviesResponseRequestParam, similarImageMoviesRequestParam);
             Assert.IsEmpty(actual.Content.Genres);
             Assert.IsEmpty(actual.Content.Videos);
             Assert.AreEqual("GetMovieInfo", actual.ResponseSchema.ResponseMethod);
@@ -79,9 +80,10 @@ namespace MovieApiTest.Adapters
         public void ToMovieInfoResponseWithStatusCodeFailure()
         {
             GetMovieInfoResponseModel getTopRatedMoviesResponseRequestParam = new GetMovieInfoResponseModel() { Success = false, Status_code = 34, Status_message = "Something goes wrong" };
+            List<MovieImageResponseModel> similarImageMoviesRequestParam = new List<MovieImageResponseModel>() { };
 
             MockAdapter();
-            var actual = _adapter.ToMovieInfoResponse(getTopRatedMoviesResponseRequestParam);
+            var actual = _adapter.ToMovieInfoResponse(getTopRatedMoviesResponseRequestParam, similarImageMoviesRequestParam);
             Assert.IsNull(actual.Content.Genres);
             Assert.IsNull(actual.Content.Videos);
             Assert.AreEqual("GetMovieInfo", actual.ResponseSchema.ResponseMethod);

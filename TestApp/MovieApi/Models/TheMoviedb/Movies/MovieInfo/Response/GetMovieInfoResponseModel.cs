@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -33,6 +34,7 @@ namespace MovieApi.Models.TheMoviedb.Movies.MovieInfo.Response
         public double vote_average { get; set; }
         public int vote_count { get; set; }
         public Videos videos { get; set; }
+        public GetTopRatedMoviesResponseModel similar { get; set; }
     }
     public class BelongsToCollection
     {
@@ -69,7 +71,7 @@ namespace MovieApi.Models.TheMoviedb.Movies.MovieInfo.Response
         public string name { get; set; }
     }
 
-    public class Result
+    public class MovieVideo
     {
         public string id { get; set; }
         public string iso_639_1 { get; set; }
@@ -83,6 +85,7 @@ namespace MovieApi.Models.TheMoviedb.Movies.MovieInfo.Response
 
     public class Videos
     {
-        public List<Result> results { get; set; }
+        public List<MovieVideo> results { get; set; }
     }
+
 }

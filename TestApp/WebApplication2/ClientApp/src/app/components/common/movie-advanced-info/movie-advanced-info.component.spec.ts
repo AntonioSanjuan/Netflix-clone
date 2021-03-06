@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MovieAdvancedInfoComponent } from './movie-advanced-info.component';
 import { MovieDBService } from 'src/app/services/data-supplier/movieDB-fetch.service';
 import { IGetMovieInfoResponseDto } from 'src/app/models/dataSupplier-models/GetMovieInfo/GetMovieInfoResponse.model';
-import { TopRatedMovie } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
+import { Movie } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 describe('MovieAdvancedInfoComponent', () => {
@@ -45,7 +45,7 @@ describe('MovieAdvancedInfoComponent', () => {
     const movie = {
       movieId: -1,
     };  
-    matDialogDataStub = movie as TopRatedMovie;
+    matDialogDataStub = movie as Movie;
     fixture.detectChanges();
   });
 

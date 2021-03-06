@@ -7,7 +7,7 @@ import { MovieBasicInfoComponent } from './movie-basic-info.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { EMPTY } from 'rxjs';
-import { TopRatedImages, TopRatedMovie } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
+import { TopRatedImages, Movie } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
 import { stringify } from '@angular/compiler/src/util';
 
 describe('MovieBasicInfoComponent', () => {
@@ -50,7 +50,7 @@ describe('MovieBasicInfoComponent', () => {
         movieId: 0
       }
     };  
-    component.movie = movie as TopRatedMovie;
+    component.movie = movie as Movie;
 
 
     const matDialogSpy = spyOn(matdialog, 'open')

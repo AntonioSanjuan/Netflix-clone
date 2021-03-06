@@ -1,4 +1,5 @@
 ﻿using MovieApi.Models.Common;
+using MovieApi.Models.Movie.GetTopTatedMovies.Response;
 using MovieApi.Models.TheMoviedb.Movies.MovieInfo.Response;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace MovieApi.Models.Movie.GetMovieInfo.Request
         public List<MovieInfoGenres> Genres { get; set; }
         public string ReleaseDate { get; set; }
         public List<MovieInfoVideos> Videos { get; set; }
+        public List<TopRatedMoviesResponseContentMovies> Similar { get; set; }
     }
     public class MovieInfoGenres
     {

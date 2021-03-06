@@ -4,12 +4,12 @@ export interface IGetTopRatedMoviesResponseDto extends ICommonResponse<IGetTopRa
 
 export interface IGetTopRatedMoviesResponseContent {
   page: number;
-  movies: TopRatedMovie[];
+  movies: Movie[];
   total_results: number;
   total_pages: number;
 }
 
-export interface TopRatedMovie {
+export interface Movie {
   images: TopRatedImages;
   overview: string;
   releaseDate: string;

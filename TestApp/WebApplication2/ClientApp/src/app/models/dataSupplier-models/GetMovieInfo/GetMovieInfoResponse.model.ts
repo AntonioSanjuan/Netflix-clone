@@ -1,4 +1,5 @@
 import { ICommonResponse } from "../../common/commonResponse.model";
+import { Movie } from "../GetTopRatedMovies/GetTopRatedMoviesResponse.model";
 
 export interface IGetMovieInfoResponseDto extends ICommonResponse<IGetMovieInfoResponseContent> {}
 
@@ -9,6 +10,7 @@ export interface IGetMovieInfoResponseContent {
   genres: MovieInfoGenres[]
   releaseDate: string
   videos: MovieInfoVideos[]
+  similar: Movie[]
 }
 
 export interface MovieInfoGenres {

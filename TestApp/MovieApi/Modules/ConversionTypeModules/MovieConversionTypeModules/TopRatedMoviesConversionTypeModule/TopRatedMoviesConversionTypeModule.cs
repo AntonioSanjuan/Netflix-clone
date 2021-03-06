@@ -5,7 +5,7 @@ using MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.TopRatedMoviesConversionTypeModule
+namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.MovieConversionType
 {
     public static class TopRatedMoviesConversionTypeModule
     {
@@ -35,7 +35,7 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.TopR
                 Content = new TopRatedMoviesResponseContent()
                 {
                     Page = topRatedMoviesResponseModel.Page,
-                    Movies = ConvertTopRatedMovies(topRatedMoviesResponseModel.Results, topRatedImageMovies),
+                    Movies = MovieConversionTypeModule.ConvertMovies(topRatedMoviesResponseModel.Results, topRatedImageMovies),
                     Total_pages = topRatedMoviesResponseModel.Total_pages,
                     Total_results = topRatedMoviesResponseModel.Total_results,
                 }
@@ -43,27 +43,6 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.TopR
             return output;
         }
 
-        private static List<TopRatedMoviesResponseContentMovies> ConvertTopRatedMovies(List<GetTopRatedMovie> input, List<MovieImageResponseModel> inputImages)
-        {
-            List<TopRatedMoviesResponseContentMovies> output = new List<TopRatedMoviesResponseContentMovies>();
-            foreach(GetTopRatedMovie singleInput in input)
-            {
-                MovieImageResponseModel singleImage = inputImages.Where(movie => movie.MovieId == singleInput.Id).FirstOrDefault();
-                output.Add(new TopRatedMoviesResponseContentMovies()
-                {
-                    MovieId = singleInput.Id,
-                    Images = singleImage,
-                    VoteAverage = singleInput.Vote_average,
-                    OriginalLanguage = singleInput.Original_language,
-                    OriginalTitle = singleInput.Original_title,
-                    Overview = singleInput.Overview,
-                    Popularity = singleInput.Popularity,
-                    ReleaseDate = singleInput.Release_date,
-                    Title = singleInput.Title,
-                    VoteCount = singleInput.Vote_count,
-                });
-            }
-            return output;
-        }
+
     }
 }

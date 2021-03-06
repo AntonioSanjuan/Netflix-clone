@@ -1,4 +1,5 @@
 ﻿using MovieApi.Models.Movie;
+using MovieApi.Models.Movie.GetMovieImages.Response;
 using MovieApi.Models.Movie.GetMovieInfo.Request;
 using MovieApi.Models.TheMoviedb.Movies.MovieInfo.Response;
 using System;
@@ -6,11 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.MovieInfoConversionTypeModule
+namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.MovieConversionType
 {
     public static class MovieInfoConversionTypeModule
     {
-        public static MovieInfoResponseModelDto Success(GetMovieInfoResponseModel getMovieInfoResponseModel)
+        public static MovieInfoResponseModelDto Success(GetMovieInfoResponseModel getMovieInfoResponseModel, List<MovieImageResponseModel> topRatedImageMovies)
         {
             MovieInfoResponseModelDto output = new MovieInfoResponseModelDto()
             {
@@ -23,7 +24,8 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.Movi
                     Homepage = getMovieInfoResponseModel.homepage,
                     ReleaseDate = getMovieInfoResponseModel.release_date,
                     Genres = ConverGenres(getMovieInfoResponseModel.genres),
-                    Videos = ConvertVideos(getMovieInfoResponseModel.videos)
+                    Videos = ConvertVideos(getMovieInfoResponseModel.videos),
+                    Similar = MovieConversionTypeModule.ConvertMovies(getMovieInfoResponseModel.similar.Results, topRatedImageMovies)
                 }
             };
             return output;
@@ -46,7 +48,6 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.Movi
             };
             return output;
         }
-
         public static List<MovieInfoGenres> ConverGenres(List<Genre> genres)
         {
             List<MovieInfoGenres> output = new List<MovieInfoGenres>();
@@ -71,7 +72,7 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.Movi
             List<MovieInfoVideos> output = new List<MovieInfoVideos>();
             if (videos != null)
             {
-                foreach (Result video in videos.results)
+                foreach (MovieVideo video in videos.results)
                 {
                     output.Add(new MovieInfoVideos()
                     {

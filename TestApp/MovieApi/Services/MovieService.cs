@@ -99,7 +99,8 @@ namespace MovieApi.services
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 });
-                MovieInfoResponseModelDto topRatedMoviesResponse = _movieAdapter.ToMovieInfoResponse(getMovieInfoResponse);
+                List<MovieImageResponseModel> topRatedImageMovies = await GetTopRatedMovieImages(getMovieInfoResponse.similar);
+                MovieInfoResponseModelDto topRatedMoviesResponse = _movieAdapter.ToMovieInfoResponse(getMovieInfoResponse, topRatedImageMovies);
 
                 return topRatedMoviesResponse;
             }
