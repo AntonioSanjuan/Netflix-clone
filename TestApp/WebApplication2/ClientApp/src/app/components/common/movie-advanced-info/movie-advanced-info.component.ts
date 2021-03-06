@@ -33,10 +33,8 @@ export class MovieAdvancedInfoComponent implements OnInit {
 
   initialize(){
     this.movieInfo.content.videos.forEach((video) => {
-      console.log(video);
 
       if(video.videoType === VideoTypes.Trailer){
-        console.log(video.site);
         if(video.site === VideoProviderTypes.Youtube){
           let url = `https://www.youtube.com/embed/${video.videoKey}`
           this.iframeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);

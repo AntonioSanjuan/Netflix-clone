@@ -1,7 +1,9 @@
 :host {
     height: 100%;
   }
-
+  .MovieAdvancedInfo_TitleContainer {
+    text-align: center;
+  }
   .MovieAdvancedInfo_MainContainer {
     height: 100%;
     flex-direction: column;
@@ -18,7 +20,43 @@
     display: flex;
     place-content: flex-start;
     align-items: center;
-    flex: 1 1 50%;
+    flex: 1 1 40%;
+  
+    overflow: hidden;
+  }
+
+  .MovieAdvancedInfo_DataContainer {
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    place-content: flex-start;
+    align-items: center;
+    flex: 1 1 60%;
+  
+    overflow: hidden;
+  }
+
+  .MovieAdvancedInfo_GenreContainer {
+    flex-direction: row;
+    box-sizing: border-box;
+    flex-wrap: wrap;    
+    display: flex;
+    place-content: center;
+    align-items: center;
+    // flex: 1 1 10%;
+  }
+
+  .MovieAdvancedInfo_Genre {
+    width: 100%;
+  }
+
+  .MovieAdvancedInfo_DataSubContainer {
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center;
+    align-items: center;
+    // flex: 1 1 100%;
   
     overflow: hidden;
   }
@@ -29,21 +67,30 @@
     display: flex;
     place-content: flex-start;
     align-items: center;
+    flex: 1 1 80%;
+  }
+
+  .MovieAdvancedInfo_ActionContainer {
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    place-content: flex-start;
+    align-items: center;
+    flex: 1 1 20%;
+  }
+
+  .MovieAdvancedInfo_Action {
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    place-content: flex-start;
+    align-items: center;
     flex: 1 1 50%;
-  
-    overflow: hidden;
   }
 
   .MovieAdvancedInfo_Iframe {
     height: 100%;
     width: 100%;
-    flex-direction: row;
-    box-sizing: border-box;
-    display: flex;
-    place-content: center;
-    align-items: center;
-    flex: 1 1 100%;
-  
     overflow: hidden;
   }
   
