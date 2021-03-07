@@ -43,7 +43,14 @@
     display: flex;
     place-content: center;
     align-items: center;
-    // flex: 1 1 10%;
+  }
+
+  .MovieAdvancedInfo_SimilarMoviesContainer {
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    place-content: center;
+    align-items: center;
   }
 
   .MovieAdvancedInfo_Genre {
@@ -56,7 +63,6 @@
     display: flex;
     place-content: center;
     align-items: center;
-    // flex: 1 1 100%;
   
     overflow: hidden;
   }

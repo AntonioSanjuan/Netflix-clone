@@ -1,0 +1,16 @@
+.MovieMinifiedInfo_MainContainer {
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  flex: 1 1 100%;
+
+  width: 30em;
+  height: 7em;
+  
+  overflow: hidden;
+  border-radius: 2em;
+  border: thin;
+  border-style: solid;
+}

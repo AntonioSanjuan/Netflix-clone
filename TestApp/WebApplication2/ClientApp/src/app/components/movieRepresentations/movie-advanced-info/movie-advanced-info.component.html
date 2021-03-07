@@ -50,7 +50,10 @@
     <mat-divider class="app-divider"></mat-divider>
 
     <div class="MovieAdvancedInfo_SimilarMoviesContainer">
+      <app-movie-minified-info
+        [movie] = "movieInfo?.content?.similar[0]">
 
+      </app-movie-minified-info>
     </div>
   </div>
 </div>

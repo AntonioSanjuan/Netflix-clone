@@ -1,15 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Movie } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
-import { FullScreenImageComponent } from '../full-screen-image/full-screen-image.component';
+import { Movie } from 'src/app/models/dataSupplier-models/Common/Movie.model';
+import { FullScreenImageComponent } from '../../common/full-screen-image/full-screen-image.component';
 import { MovieAdvancedInfoComponent } from '../movie-advanced-info/movie-advanced-info.component';
 
 @Component({
-  selector: 'app-movie-basic-info',
-  templateUrl: './movie-basic-info.component.html',
-  styleUrls: ['./movie-basic-info.component.scss']
+  selector: 'app-movie-minified-info',
+  templateUrl: './movie-minified-info.component.html',
+  styleUrls: ['./movie-minified-info.component.scss']
 })
-export class MovieBasicInfoComponent implements OnInit {
+export class MovieMinifiedInfoComponent implements OnInit {
   @Input() movie: Movie;
 
   constructor(private dialog: MatDialog) { }

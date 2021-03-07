@@ -1,9 +1,8 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
-import { mixinInitialized } from '@angular/material/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Movie } from 'src/app/models/dataSupplier-models/Common/Movie.model';
 import { IGetMovieInfoResponseDto } from 'src/app/models/dataSupplier-models/GetMovieInfo/GetMovieInfoResponse.model';
-import { Movie } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
 import { VideoProviderTypes } from 'src/app/models/internal-types/common/videoProviderTypes/videoProviderTypes.model';
 import { VideoTypes } from 'src/app/models/internal-types/common/videoTypes/videoTypes.model';
 import { MovieDBService } from 'src/app/services/data-supplier/movieDB-fetch.service';

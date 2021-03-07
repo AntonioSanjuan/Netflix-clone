@@ -1,5 +1,5 @@
 import { ICommonResponse } from "../../common/commonResponse.model";
-import { Movie } from "../GetTopRatedMovies/GetTopRatedMoviesResponse.model";
+import { Movie } from "../Common/Movie.model";
 
 export interface IGetMovieInfoResponseDto extends ICommonResponse<IGetMovieInfoResponseContent> {}
 
