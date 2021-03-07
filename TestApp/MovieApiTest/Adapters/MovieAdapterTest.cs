@@ -64,15 +64,15 @@ namespace MovieApiTest.Adapters
         [Test]
         public void ToMovieInfoResponseWithStatusCodeSuccess()
         {
-            GetMovieInfoResponseModel getTopRatedMoviesResponseRequestParam = new GetMovieInfoResponseModel() { Status_code = 0,
-            };
-            List<MovieImageResponseModel> similarImageMoviesRequestParam = new List<MovieImageResponseModel>() { };
+            GetMovieInfoResponseModel getTopRatedMoviesResponseRequestParam = new GetMovieInfoResponseModel() { Status_code = 0, similar = new GetTopRatedMoviesResponseModel() { Results = new List<GetTopRatedMovie>() } };
+            List<MovieImageResponseModel> similarImageMoviesRequestParam = new List<MovieImageResponseModel>() {  };
 
 
             MockAdapter();
             var actual = _adapter.ToMovieInfoResponse(getTopRatedMoviesResponseRequestParam, similarImageMoviesRequestParam);
             Assert.IsEmpty(actual.Content.Genres);
             Assert.IsEmpty(actual.Content.Videos);
+            Assert.IsEmpty(actual.Content.Similar);
             Assert.AreEqual("GetMovieInfo", actual.ResponseSchema.ResponseMethod);
         }
 
@@ -86,6 +86,8 @@ namespace MovieApiTest.Adapters
             var actual = _adapter.ToMovieInfoResponse(getTopRatedMoviesResponseRequestParam, similarImageMoviesRequestParam);
             Assert.IsNull(actual.Content.Genres);
             Assert.IsNull(actual.Content.Videos);
+            Assert.IsNull(actual.Content.Similar);
+
             Assert.AreEqual("GetMovieInfo", actual.ResponseSchema.ResponseMethod);
         }
 
@@ -100,6 +102,8 @@ namespace MovieApiTest.Adapters
             Assert.AreEqual(string.Empty, actual.Content.ReleaseDate);
             Assert.IsNull(actual.Content.Genres);
             Assert.IsNull(actual.Content.Videos);
+            Assert.IsNull(actual.Content.Similar);
+
             Assert.AreEqual("GetMovieInfo", actual.ResponseSchema.ResponseMethod);
         }
     }
