@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 
 import { MovieDBService } from 'src/app/services/data-supplier/movieDB-fetch.service';
-import { IGetTopRatedMoviesResponseDto } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
+import { IGetTopRatedMoviesResponseDto } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/getTopRatedMoviesResponse.model';
 // tslint:disable-next-line: component-selector
 import { Subject } from 'rxjs';
 

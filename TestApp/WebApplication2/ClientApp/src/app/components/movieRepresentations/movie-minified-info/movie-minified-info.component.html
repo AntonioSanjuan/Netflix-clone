@@ -1,3 +1,23 @@
-<div class="MovieMinifiedInfo_MainContainer">
-
+<div class="MovieMinifiedInfo_MainContainer" [style.backgroundImage]="getComponentBackGround()">
+    <div class="MovieMinifiedInfo_Header app-text-highContrast">
+        {{movie?.title}}
+    </div>
+    <div class="MovieMinifiedInfo_Content">
+    </div>
+    <div class="MovieMinifiedInfo_Footer">
+        <div class="MovieMinifiedInfo_FooterRate">
+            <div class="MovieBasicInfo_ContentRate app-text-highContrast">
+                <mat-icon class="app-button">star_rate</mat-icon> {{movie?.voteAverage}}
+            </div>
+        </div>    
+        <div class="MovieMinifiedInfo_FooterFullScreenAction">
+            <button mat-icon-button>
+                <mat-icon class="app-button app-text-highContrast">info_outline</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon class="app-button app-text-highContrast">bookmark_border</mat-icon>
+              </button>
+        </div>
+    </div>
+            
 </div>

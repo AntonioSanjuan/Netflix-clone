@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Movie } from 'src/app/models/dataSupplier-models/Common/Movie.model';
+import { Movie } from 'src/app/models/dataSupplier-models/Common/movie.model';
 import { FullScreenImageComponent } from '../../common/full-screen-image/full-screen-image.component';
 import { MovieAdvancedInfoComponent } from '../movie-advanced-info/movie-advanced-info.component';
 

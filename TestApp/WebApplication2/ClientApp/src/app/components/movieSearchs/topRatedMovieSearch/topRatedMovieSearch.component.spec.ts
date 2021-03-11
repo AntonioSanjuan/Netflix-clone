@@ -1,10 +1,10 @@
-import { IGetTopRatedMoviesResponseDto } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/GetTopRatedMoviesResponse.model';
+import { IGetTopRatedMoviesResponseDto } from 'src/app/models/dataSupplier-models/GetTopRatedMovies/getTopRatedMoviesResponse.model';
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TopRatedMovieSearchComponent } from './topRatedMovieSearch.component';
 import { MovieDBService } from 'src/app/services/data-supplier/movieDB-fetch.service';
-import { MovieBasicInfoComponent } from 'src/app/components/common/movie-basic-info/movie-basic-info.component';
+import { MovieBasicInfoComponent } from 'src/app/components/movieRepresentations/movie-basic-info/movie-basic-info.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChangeDetectorRef, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { LodableContentComponent } from 'src/app/components/common/lodable-content/lodable-content.component';

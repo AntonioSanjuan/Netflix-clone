@@ -7,7 +7,7 @@ import { MovieBasicInfoComponent } from './movie-basic-info.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { EMPTY } from 'rxjs';
-import { Movie } from 'src/app/models/dataSupplier-models/Common/Movie.model';
+import { Movie } from 'src/app/models/dataSupplier-models/Common/movie.model';
 
 describe('MovieBasicInfoComponent', () => {
   let component: MovieBasicInfoComponent;

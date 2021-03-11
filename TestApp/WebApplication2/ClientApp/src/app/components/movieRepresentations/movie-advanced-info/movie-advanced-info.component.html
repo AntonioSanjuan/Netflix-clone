@@ -2,20 +2,6 @@
   <div class="MovieAdvancedInfo_TitleContainer app-textHeader">
     {{data?.title}}
   </div>
-
-  <mat-divider class="app-divider"></mat-divider>
-
-  <div class="MovieAdvancedInfo_IframeContainer">
-    <iframe *ngIf="iframeUrl" class="MovieAdvancedInfo_Iframe"
-      title="Inline Frame Example"
-      [src]="iframeUrl"
-      frameborder="0"
-      autoplay
-      gyroscope
-      allowfullscreen>
-  </iframe>
-
-  </div>
   
   <mat-divider class="app-divider"></mat-divider>
 
@@ -38,19 +24,33 @@
       </div>
     </div>
 
+    <mat-divider class="app-divider"></mat-divider>
+
+    <div class="MovieAdvancedInfo_IframeContainer">
+      <iframe *ngIf="iframeUrl" class="MovieAdvancedInfo_Iframe"
+        title="Inline Frame Example"
+        [src]="iframeUrl"
+        frameborder="0"
+        autoplay
+        gyroscope
+        allowfullscreen>
+      </iframe>
+    </div>
   
     <mat-divider class="app-divider"></mat-divider>
 
     <div class="MovieAdvancedInfo_GenreContainer">
-      <mat-button-toggle-group>
-        <mat-button-toggle *ngFor="let genre of movieInfo?.content?.genres" value="genre.id">{{genre.name}}</mat-button-toggle>
-      </mat-button-toggle-group>
+      <div *ngFor="let genre of movieInfo?.content?.genres" class="MovieAdvancedInfo_Genre">
+        <button  mat-raised-button class="app-button app-border">
+          {{genre.name}}
+        </button>
+      </div>
     </div>
 
     <mat-divider class="app-divider"></mat-divider>
 
     <div class="MovieAdvancedInfo_SimilarMoviesContainer">
-      <app-movie-minified-info
+      <app-movie-minified-info *ngIf="movieInfo?.content?.similar.length > 0"
         [movie] = "movieInfo?.content?.similar[0]">
 
       </app-movie-minified-info>

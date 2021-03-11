@@ -12,11 +12,6 @@
           <div class="MovieBasicInfo_ContentRate">
             <mat-icon class="app-button">star_rate</mat-icon> {{movie?.voteAverage}}
           </div>
-          <div class="MovieBasicInfo_ContentExpand">
-            <button (click)="openMovieInfoDialog()" mat-icon-button>
-              <mat-icon class="app-button">info</mat-icon>
-            </button>
-          </div>
         </div >
       </div>
     </div>
@@ -28,8 +23,8 @@
           </button>
         </div>
         <div class="MovieBasicInfo_Action">
-          <button mat-icon-button>
-            <mat-icon class="app-button">check_circle_outline</mat-icon>
+          <button (click)="openMovieInfoDialog()" mat-icon-button>
+            <mat-icon class="app-button">info_outline</mat-icon>
           </button>
         </div>
       </div>
