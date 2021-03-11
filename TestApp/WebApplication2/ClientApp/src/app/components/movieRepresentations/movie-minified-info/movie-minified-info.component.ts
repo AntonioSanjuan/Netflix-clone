@@ -21,4 +21,11 @@ export class MovieMinifiedInfoComponent implements OnInit {
     return output;
   }
 
+  openMovieInfoDialog(): void {
+    const dialogInfoRef = this.dialog.open(MovieAdvancedInfoComponent, {
+      height: '90vh',
+      width: '80vh',
+      data: this.movie
+    });
+  }
 }
