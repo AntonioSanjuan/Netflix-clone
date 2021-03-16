@@ -17,7 +17,7 @@ export class MovieMinifiedInfoComponent implements OnInit {
   ngOnInit() {}
 
   getComponentBackGround(){
-    var output = `url(${this.movie.images.backdropImageToBase64})`;
+    let output = `url(${this.movie.images.backdropImageToBase64})`;
     return output;
   }
 

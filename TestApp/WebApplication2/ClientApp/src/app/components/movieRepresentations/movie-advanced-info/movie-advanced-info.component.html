@@ -26,8 +26,8 @@
 
     <mat-divider class="app-divider"></mat-divider>
 
-    <div class="MovieAdvancedInfo_IframeContainer">
-      <iframe *ngIf="iframeUrl" class="MovieAdvancedInfo_Iframe"
+    <div class="MovieAdvancedInfo_IframeContainer" *ngIf="movieInfo?.content">
+      <iframe class="MovieAdvancedInfo_Iframe"
         title="Inline Frame Example"
         [src]="iframeUrl"
         frameborder="0"
@@ -49,11 +49,14 @@
 
     <mat-divider class="app-divider"></mat-divider>
 
-    <div class="MovieAdvancedInfo_SimilarMoviesContainer">
-      <app-movie-minified-info *ngIf="movieInfo?.content?.similar.length > 0"
-        [movie] = "movieInfo?.content?.similar[0]">
-
-      </app-movie-minified-info>
+    <div class="MovieAdvancedInfo_SimilarMoviesContainer" *ngIf="movieInfo?.content">
+      <app-carrousel
+          [movies]= "movieInfo?.content?.similar"
+      >
+      </app-carrousel>
     </div>
+
+    <mat-divider class="app-divider"></mat-divider>
+
   </div>
 </div>

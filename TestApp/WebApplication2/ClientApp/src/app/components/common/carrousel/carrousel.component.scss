@@ -1,0 +1,43 @@
+:host {
+  width: 100%;
+}
+
+.Carrousel_MainContainer {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: space-around;
+  align-items: center;
+  flex: 1 1 100%;
+}
+.Carrousel_ActionsContainer {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  flex: 1 1 100%;
+}
+
+.Carrousel_MoviesContainer {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  flex: 1 1 100%;
+}
+
+.rightTransition {
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%); /** Chrome & Safari **/
+  -o-transform: translateX(100%); /** Opera **/
+  -moz-transform: translateX(100%); /** Firefox **/
+}
+
+.leftTransition {
+  transform: translateX(-100%);
+  -webkit-transform: translateX(-100%); /** Chrome & Safari **/
+  -o-transform: translateX(-100%); /** Opera **/
+  -moz-transform: translateX(-100%); /** Firefox **/
+}

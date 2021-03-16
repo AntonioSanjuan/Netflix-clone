@@ -12,6 +12,7 @@ import { PAGES } from './pages';
 import { COMPONENTS } from './components';
 import { RoutingModule } from './routing.module';
 import { RequestInterceptor } from './interceptors/httpError.interceptor';
+import { CommonModule } from '@angular/common';
 
 const staticImports: any[] = [
   FlexLayoutModule,
@@ -30,7 +31,8 @@ const routesImports: any[] = [
   imports: [
     staticImports,
     routesImports,
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    CommonModule,
+    BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

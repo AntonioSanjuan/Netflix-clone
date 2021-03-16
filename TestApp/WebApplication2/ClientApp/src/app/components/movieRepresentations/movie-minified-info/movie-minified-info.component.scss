@@ -15,7 +15,6 @@
 
   height: 11em;
   
-  //overflow: hidden;
   border-radius: 1em;
   border: thin;
   border-style: solid;
@@ -29,6 +28,7 @@
   .MovieMinifiedInfo_FooterFullScreenAction{
     display: flex;
   }
+  transform-origin: left;
   transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 

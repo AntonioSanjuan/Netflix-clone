@@ -6,6 +6,7 @@ import { PaginatorComponent } from './common/paginator/paginator.component';
 import { TopRatedMovieSearchComponent } from './movieSearchs/topRatedMovieSearch/topRatedMovieSearch.component';
 import { NavMenuComponent } from './nav-bar/components/nav-menu/nav-menu.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { CarrouselComponent } from './common/carrousel/carrousel.component';
 
 export const COMPONENTS: any[] = [
     NavBarComponent,
@@ -15,5 +16,6 @@ export const COMPONENTS: any[] = [
     MovieMinifiedInfoComponent,
     MovieAdvancedInfoComponent,
     PaginatorComponent,
+    CarrouselComponent,
     LodableContentComponent
 ];
