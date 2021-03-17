@@ -29,7 +29,7 @@
     align-items: center;
     flex: 1 1 95%;
 
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
   }
 
@@ -66,6 +66,16 @@
 
   .MovieAdvancedInfo_Genre {
     width: 100%;
+  }
+
+  .lodableContent {
+    height: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+    display: flex;
+    place-content: flex-start;
+    align-items: center;
+    flex: 1 1 100%;
   }
 
   .MovieAdvancedInfo_DataSubContainer {

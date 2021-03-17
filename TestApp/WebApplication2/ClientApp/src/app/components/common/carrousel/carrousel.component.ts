@@ -13,7 +13,7 @@ export class CarrouselComponent implements AfterViewInit  {
   private carrouselTranslated = 0;
 
   // hardcoded?
-  private carrouselStep = 70;
+  private carrouselStep = 65;
 
   @ViewChild('carrouselIdentifier')
     carrouselIdentifier: ElementRef;

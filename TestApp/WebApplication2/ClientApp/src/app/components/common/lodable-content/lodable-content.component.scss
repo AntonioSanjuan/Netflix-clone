@@ -1,3 +1,8 @@
+:host {
+  height: 100%;
+  width: 100%;
+}
+
 .LodableContent_MainContainer {
   height: 100%;
   flex-direction: column;
@@ -14,7 +19,7 @@
   flex-wrap: wrap;
   box-sizing: border-box;
   display: flex;
-  place-content: center;
+  place-content: flex-start;
   align-items: center;
   flex: 1 1 100%;
 }

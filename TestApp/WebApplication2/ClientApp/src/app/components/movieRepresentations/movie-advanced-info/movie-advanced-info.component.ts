@@ -16,6 +16,7 @@ export class MovieAdvancedInfoComponent implements OnInit {
   movieInfo: IGetMovieInfoResponseDto;
   iframeUrl: SafeResourceUrl;
 
+  public isLoading = false;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Movie,
     private sanitizer: DomSanitizer,
@@ -23,14 +24,18 @@ export class MovieAdvancedInfoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.movieDBService.getMovieInfo(this.data.movieId).then((getMovieInfoResponse: IGetMovieInfoResponseDto) => {
-      console.log(getMovieInfoResponse)
-      this.movieInfo = getMovieInfoResponse;
-      this.initialize();
-    })
+    this.fetchMovieInfo();
   }
+  private fetchMovieInfo() {
+    this.isLoading = true;
+    this.movieDBService.getMovieInfo(this.data.movieId).then((getMovieInfoResponse: IGetMovieInfoResponseDto) => {
+      this.movieInfo = getMovieInfoResponse;
 
-  initialize(){
+      this.generateIframeData();
+      this.isLoading = false;
+    });
+  }
+  private generateIframeData(){
     this.movieInfo.content.videos.forEach((video) => {
 
       if(video.videoType === VideoTypes.Trailer){

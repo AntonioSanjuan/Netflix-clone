@@ -25,38 +25,43 @@
     </div>
 
     <mat-divider class="app-divider"></mat-divider>
+    <app-lodable-content
+      [isLoading]="isLoading">
 
-    <div class="MovieAdvancedInfo_IframeContainer" *ngIf="movieInfo?.content">
-      <iframe class="MovieAdvancedInfo_Iframe"
-        title="Inline Frame Example"
-        [src]="iframeUrl"
-        frameborder="0"
-        autoplay
-        gyroscope
-        allowfullscreen>
-      </iframe>
-    </div>
-  
-    <mat-divider class="app-divider"></mat-divider>
+      <div class="lodableContent">
+        <div class="MovieAdvancedInfo_IframeContainer" *ngIf="movieInfo?.content">
+          <iframe class="MovieAdvancedInfo_Iframe"
+            title="Inline Frame Example"
+            [src]="iframeUrl"
+            frameborder="0"
+            autoplay
+            gyroscope
+            allowfullscreen>
+          </iframe>
+        </div>
 
-    <div class="MovieAdvancedInfo_GenreContainer">
-      <div *ngFor="let genre of movieInfo?.content?.genres" class="MovieAdvancedInfo_Genre">
-        <button  mat-raised-button class="app-button app-border">
-          {{genre.name}}
-        </button>
+        <mat-divider class="app-divider"></mat-divider>
+
+        <div class="MovieAdvancedInfo_GenreContainer">
+          <div *ngFor="let genre of movieInfo?.content?.genres" class="MovieAdvancedInfo_Genre">
+            <button  mat-raised-button class="app-button app-border">
+              {{genre.name}}
+            </button>
+          </div>
+        </div>
+
+        <mat-divider class="app-divider"></mat-divider>
+
+        <div class="MovieAdvancedInfo_SimilarMoviesContainer" *ngIf="movieInfo?.content">
+          <app-carrousel
+              [movies]= "movieInfo?.content?.similar"
+          >
+          </app-carrousel>
+        </div>
+
+        <mat-divider class="app-divider"></mat-divider>
       </div>
-    </div>
-
-    <mat-divider class="app-divider"></mat-divider>
-
-    <div class="MovieAdvancedInfo_SimilarMoviesContainer" *ngIf="movieInfo?.content">
-      <app-carrousel
-          [movies]= "movieInfo?.content?.similar"
-      >
-      </app-carrousel>
-    </div>
-
-    <mat-divider class="app-divider"></mat-divider>
-
+      
+    </app-lodable-content>
   </div>
 </div>
