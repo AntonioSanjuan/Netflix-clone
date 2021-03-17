@@ -1,5 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Inject, Input, OnInit, ViewChild } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, ElementRef, Input, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Movie } from 'src/app/models/dataSupplier-models/Common/movie.model';
 
 @Component({
@@ -7,36 +6,42 @@ import { Movie } from 'src/app/models/dataSupplier-models/Common/movie.model';
   templateUrl: './carrousel.component.html',
   styleUrls: ['./carrousel.component.scss']
 })
-export class CarrouselComponent implements AfterViewInit  {
+export class CarrouselComponent  {
   @Input() public movies: Movie[];
   
   private carrouselTranslated = 0;
 
   // hardcoded?
-  private carrouselStep = 65;
+  private carrouselStep = 0;
 
-  @ViewChild('carrouselIdentifier')
-    carrouselIdentifier: ElementRef;
-  
+  @ViewChild('carrousel') carrousel: ElementRef;
+  @ViewChildren('carrouselMovies') carrouselMovies: QueryList<ElementRef>;
   constructor() {}
 
-  ngAfterViewInit() {
-  }
-
   public selectPrevPage() {
+    this.calculateCarrouselStep();
     this.carrouselTranslated += this.carrouselStep;
-    console.log(this.carrouselTranslated)
-    document.getElementById("Carrousel").style.transform = `translate(${this.carrouselTranslated}%)`;
+    this.translateCarrousel();
   }
 
   public selectNextPages() {
+    this.calculateCarrouselStep();
     this.carrouselTranslated -= this.carrouselStep;
-    console.log(this.carrouselTranslated)
-    document.getElementById("Carrousel").style.transform = `translate(${this.carrouselTranslated}%)`;
+    this.translateCarrousel();
   }
 
-  private getAvailableWidth() {
-    return this.carrouselIdentifier.nativeElement.offsetWidth;
+  private translateCarrousel() {
+    this.carrousel.nativeElement.style.transform = `translate(${this.carrouselTranslated}%)`;
   }
 
+  private calculateCarrouselStep() {
+    let movieOffsetWidth = this.carrouselMovies.first.nativeElement.offsetWidth;
+    let containerOffsetWidth = this.carrousel.nativeElement.offsetWidth;
+
+    if(movieOffsetWidth === containerOffsetWidth) {
+      this.carrouselStep = 100;
+    } else {
+      this.carrouselStep = 65;
+    }
+  }
 }

@@ -1,11 +1,11 @@
-<div class="Carrousel_MainContainer" #carrouselIdentifier>
+<div class="Carrousel_MainContainer">
     <div class="Carrousel_ActionsContainer">
       <button class="leftTransition" (click)="selectPrevPage()" mat-icon-button>
         <mat-icon class="app-button app-text-highContrast">navigate_before</mat-icon>
       </button>
-      <div class="Carrousel_CarrouselMoviesContainer carrusel_Button" id="Carrousel">
-        <div *ngFor="let movie of movies" class="Carrousel_MoviesContainer">
-          <app-movie-minified-info
+      <div class="Carrousel_CarrouselMoviesContainer carrusel_Button" #carrousel>
+        <div *ngFor="let movie of movies" class="Carrousel_MoviesContainer" #carrouselMovies>
+          <app-movie-minified-info 
             [movie] = "movie">
           </app-movie-minified-info>
         </div>
