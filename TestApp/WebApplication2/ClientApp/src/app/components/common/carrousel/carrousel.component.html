@@ -1,15 +1,17 @@
 <div class="Carrousel_MainContainer" #carrouselIdentifier>
     <div class="Carrousel_ActionsContainer">
-      <button (click)="selectPrevPage()" mat-icon-button>
-        <mat-icon class="app-button">navigate_before</mat-icon>
+      <button class="leftTransition" (click)="selectPrevPage()" mat-icon-button>
+        <mat-icon class="app-button app-text-highContrast">navigate_before</mat-icon>
       </button>
-      <div *ngFor="let movie of moviesToShow" class="Carrousel_MoviesContainer">
-        <app-movie-minified-info
-          [movie] = "movie">
-        </app-movie-minified-info>
+      <div class="Carrousel_CarrouselMoviesContainer carrusel_Button" id="Carrousel">
+        <div *ngFor="let movie of movies" class="Carrousel_MoviesContainer">
+          <app-movie-minified-info
+            [movie] = "movie">
+          </app-movie-minified-info>
+        </div>
       </div>
-      <button (click)="selectNextPages()" mat-icon-button>
-        <mat-icon class="app-button">navigate_next</mat-icon>
+      <button class="rightTransition" (click)="selectNextPages()" mat-icon-button>
+        <mat-icon class="app-button app-text-highContrast">navigate_next</mat-icon>
       </button>
     </div>
 </div>
