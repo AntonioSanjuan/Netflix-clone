@@ -4,7 +4,6 @@ import { HttpClientTestingModule, HttpTestingController  } from '@angular/common
 import { AuthService } from './auth.service';
 import { UtilService } from '../../util/utils.service';
 import { Validator } from '../../util/modules/validators/validatorModule';
-import { ResponseValidator } from '../../util/modules/validators/responses/responseValidatorModule';
 
 describe('[IntegrationTest] AuthService', () => {
   const loginUrl = 'https://localhost:44339/api/User/Login';
@@ -15,7 +14,7 @@ describe('[IntegrationTest] AuthService', () => {
 
   let utilServiceStub = {} as UtilService;
   let validatorStub = {} as Validator;
-  let responseValidatorStub = {} as ResponseValidator;
+  let responseValidatorStub;
   let isLoginResponseValidMock = true;
   let isGetTopRatedMoviesResponseValidMock = true;
 
@@ -23,7 +22,7 @@ describe('[IntegrationTest] AuthService', () => {
     isLoginResponseValidMock = true;
     responseValidatorStub = { isLoginResponseValid : jest.fn(() => isLoginResponseValidMock),
       isGetTopRatedMoviesResponseValid: jest.fn(() => isGetTopRatedMoviesResponseValidMock) };
-    validatorStub = { responseValidator : responseValidatorStub };
+    validatorStub = { responseValidator  : responseValidatorStub };
     utilServiceStub = { validator: validatorStub };
 
     TestBed.configureTestingModule({

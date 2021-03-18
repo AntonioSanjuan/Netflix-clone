@@ -1,10 +1,9 @@
 /* tslint:disable:no-unused-variable */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { CarrouselComponent } from './carrousel.component';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MovieMinifiedInfoComponent } from '../../movieRepresentations/movie-minified-info/movie-minified-info.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('CarrouselComponent', () => {
   let component: CarrouselComponent;
@@ -12,9 +11,9 @@ describe('CarrouselComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ CarrouselComponent ],
-      providers: [
-      ]
+      declarations: [ CarrouselComponent, MovieMinifiedInfoComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+
     })
     .compileComponents();
   });
@@ -28,6 +27,5 @@ describe('CarrouselComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 
 });
