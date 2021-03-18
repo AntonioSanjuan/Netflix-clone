@@ -1,4 +1,6 @@
 export enum MovieDBServicesEnumNames {
   GetTopRatedMovies = 'TopRatedMovies',
-  GetMovieInfo = 'GetMovieInfo'
+  GetMovieInfo = 'GetMovieInfo',
+  GetMovieGenres = 'GetMovieGenres',
+  GetMoviesByGenre = 'GetMoviesByGenre'
 }

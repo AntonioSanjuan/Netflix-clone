@@ -17,6 +17,18 @@ export class HomeComponent  implements OnInit {
   }
 
   private initialize() {
-    this.selectedSearch = SearchType.TopRatedMoviesSearch;
+    this.selectedSearch = SearchType.TopRatedMovieSearch;
+  }
+
+  public loadTopRatedMovieSearch(){
+    this.selectedSearch = SearchType.TopRatedMovieSearch;
+  }
+
+  public loadGenreMovieSearch(){
+    this.selectedSearch = SearchType.GenreMovieSearch;
+  }
+
+  public loadFilterMovieSearch(){
+    this.selectedSearch = SearchType.FilterSearch;
   }
 }

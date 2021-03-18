@@ -7,11 +7,13 @@ import { TopRatedMovieSearchComponent } from './movieSearchs/topRatedMovieSearch
 import { NavMenuComponent } from './nav-bar/components/nav-menu/nav-menu.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { CarrouselComponent } from './common/carrousel/carrousel.component';
+import { GenreMovieSearchComponent } from './movieSearchs/genreMovieSearch/genreMovieSearch.component';
 
 export const COMPONENTS: any[] = [
     NavBarComponent,
     NavMenuComponent,
     TopRatedMovieSearchComponent,
+    GenreMovieSearchComponent,
     MovieBasicInfoComponent,
     MovieMinifiedInfoComponent,
     MovieAdvancedInfoComponent,

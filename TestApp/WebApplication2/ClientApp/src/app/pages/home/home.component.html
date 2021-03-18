@@ -1,13 +1,13 @@
 <div class="Home_MainContainer">
   <div class="Home_ModuleSelectorContainer">
     <div class="Home_SearchSelector">
-      <button mat-raised-button class="app-button app-border">Filter Search</button>
+      <button mat-raised-button class="app-button app-border" (click)="loadFilterMovieSearch()">Filter Search</button>
     </div>
     <div class="Home_SearchSelector">
-      <button mat-raised-button class="app-button app-border">Top Rated Movies</button>
+      <button mat-raised-button class="app-button app-border" (click)="loadTopRatedMovieSearch()">Top Rated Movies</button>
     </div>
     <div class="Home_SearchSelector">
-      <button  mat-raised-button class="app-button app-border">Top Movies</button>
+      <button  mat-raised-button class="app-button app-border" (click)="loadGenreMovieSearch()">Genre Movies</button>
     </div>
   </div>
   <mat-divider class="app-divider"></mat-divider>
@@ -18,6 +18,7 @@
       <app-topRatedMovieSearch></app-topRatedMovieSearch>
     </div>
     <div class="Home_SearchContent" *ngSwitchCase="2">
+      <app-genreMovieSearch></app-genreMovieSearch>
     </div>
   </div>
 </div>

@@ -9,6 +9,8 @@ import { MovieDBService } from './movieDB-fetch.service';
 describe('[IntegrationTest] MovieDBService', () => {
   const topRatedMoviesUrl = 'https://localhost:44339/api/Movie/TopRatedMovies';
   const movieInfoUrl = 'https://localhost:44339/api/Movie/GetMovieInfo';
+  const movieGenresUrl = 'https://localhost:44339/api/Movie/GetMovieGenres';
+  const moviesByGenreUrl = 'https://localhost:44339/api/Movie/GetMoviesByGenre';
 
   let sut: MovieDBService;
 
@@ -21,7 +23,8 @@ describe('[IntegrationTest] MovieDBService', () => {
   let isLoginResponseValidMock = true;
   let isGetTopRatedMoviesResponseValidMock = true;
   let isGetMovieInfoResponseValidMock = true;
-
+  let isGetMovieGenresResponseValidMock = true;
+  let isGetMoviesByGenreResponseValidMock = true;
 
   beforeEach(() => {
     isLoginResponseValidMock = true;
@@ -29,7 +32,9 @@ describe('[IntegrationTest] MovieDBService', () => {
 
     responseValidatorStub = { isLoginResponseValid : jest.fn(() => isLoginResponseValidMock),
                               isGetTopRatedMoviesResponseValid: jest.fn(() => isGetTopRatedMoviesResponseValidMock),
-                              isGetMovieInfoResponseValid: jest.fn(() => isGetMovieInfoResponseValidMock) 
+                              isGetMovieInfoResponseValid: jest.fn(() => isGetMovieInfoResponseValidMock),
+                              isGetMovieGenresResponseValid: jest.fn(() => isGetMovieGenresResponseValidMock),
+                              isGetMoviesByGenreResponseValid: jest.fn(() => isGetMoviesByGenreResponseValidMock)
                             };
     validatorStub = { responseValidator : responseValidatorStub };
     utilServiceStub = { validator: validatorStub };
@@ -74,6 +79,27 @@ describe('[IntegrationTest] MovieDBService', () => {
     req.flush({});
   });
 
+  it('getMovieGenres() should call http POST method for the given route',  () => {
+    sut.getMovieGenres().then(
+      async () => {
+      }
+    );
+
+    const req = httpMock.expectOne(movieGenresUrl);
+    expect(req.request.method).toBe('POST');
+    req.flush({});
+  });
+
+  it('getMoviesByGenre() should call http POST method for the given route',  () => {
+    sut.GetMoviesByGenre(1,'0').then(
+      async () => {
+      }
+    );
+
+    const req = httpMock.expectOne(moviesByGenreUrl);
+    expect(req.request.method).toBe('POST');
+    req.flush({});
+  });
 
   it('getTopRatedMovies() getTopRatedMoviesResponse should be checked via ValidatorModule', () => {
     // spy
@@ -98,6 +124,34 @@ describe('[IntegrationTest] MovieDBService', () => {
       }
     );
     const req = httpMock.expectOne(movieInfoUrl);
+    req.flush({});
+
+    expect(isMovieInfoResponseValidSpy).toHaveBeenCalled();
+  });
+
+  it('getMovieGenres() getMovieGenresResponse should be checked via ValidatorModule', () => {
+    // spy
+    const isMovieInfoResponseValidSpy = jest.spyOn(responseValidatorStub, 'isGetMovieGenresResponseValid');
+
+    sut.getMovieGenres().then(
+      async () => {
+      }
+    );
+    const req = httpMock.expectOne(movieGenresUrl);
+    req.flush({});
+
+    expect(isMovieInfoResponseValidSpy).toHaveBeenCalled();
+  });
+
+  it('getMoviesByGenre() getMoviesByGenreResponse should be checked via ValidatorModule', () => {
+    // spy
+    const isMovieInfoResponseValidSpy = jest.spyOn(responseValidatorStub, 'isGetMoviesByGenreResponseValid');
+
+    sut.GetMoviesByGenre(1, '').then(
+      async () => {
+      }
+    );
+    const req = httpMock.expectOne(moviesByGenreUrl);
     req.flush({});
 
     expect(isMovieInfoResponseValidSpy).toHaveBeenCalled();

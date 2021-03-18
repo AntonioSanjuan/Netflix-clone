@@ -53,10 +53,10 @@ namespace MovieApi.Controllers
             return Ok(movieGenresResponse);
         }
 
-        [HttpPost("GetMoviesByGenres")]
+        [HttpPost("GetMoviesByGenre")]
         [ProducesResponseType(typeof(MoviesByGenreResponseModelDto), 200)]
         [ProducesResponseType(typeof(CommonResponseErrorModel), 500)]
-        public async Task<IActionResult> GetMoviesByGenres([FromBody] MoviesByGenreRequestModelDto moviesByGenreRequestModel)
+        public async Task<IActionResult> GetMoviesByGenre([FromBody] MoviesByGenreRequestModelDto moviesByGenreRequestModel)
         {
             MoviesByGenreResponseModelDto moviesByGenreResponse;
             moviesByGenreResponse = await _movieService.GetMoviesByGenre(moviesByGenreRequestModel);

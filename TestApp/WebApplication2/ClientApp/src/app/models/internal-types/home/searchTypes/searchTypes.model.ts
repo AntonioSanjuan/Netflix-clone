@@ -1,5 +1,5 @@
 export enum SearchType {
   FilterSearch = 0,
-  TopRatedMoviesSearch = 1,
-  TopMoviesSearch = 2
+  TopRatedMovieSearch = 1,
+  GenreMovieSearch = 2
 }

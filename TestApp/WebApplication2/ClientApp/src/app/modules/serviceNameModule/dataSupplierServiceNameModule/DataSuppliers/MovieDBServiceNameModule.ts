@@ -15,4 +15,12 @@ export class MovieDBServiceNameModule {
   getMovieInfoUrl(): string {
       return this.baseUrl + MovieDBServicesEnumNames.GetMovieInfo;
   }
+  
+  getMovieGenresUrl(): string {
+    return this.baseUrl + MovieDBServicesEnumNames.GetMovieGenres;
+  }
+
+  getMoviesByGenreUrl(): string {
+    return this.baseUrl + MovieDBServicesEnumNames.GetMoviesByGenre;
+  }
 }
