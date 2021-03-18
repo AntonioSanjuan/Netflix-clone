@@ -69,7 +69,7 @@ namespace MovieApiTest.Controllers
         public async Task MoviesByGenre()
         {
             MoviesByGenreRequestModelDto moviesByGenreRequest = new MoviesByGenreRequestModelDto();
-            await _controller.GetMoviesByGenres(moviesByGenreRequest);
+            await _controller.GetMoviesByGenre(moviesByGenreRequest);
 
             //assert
             _mockMovieService.Verify(spy => spy.GetMoviesByGenre(moviesByGenreRequest), Times.Once());

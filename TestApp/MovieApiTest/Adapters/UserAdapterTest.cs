@@ -26,7 +26,7 @@ namespace MovieApiTest.Adapters
         }
 
         [Test]
-        public async Task ToRequestTokenResponseWithoutContentThrowException()
+        public void ToRequestTokenResponseWithoutContentThrowException()
         {
             HttpResponseMessage ToRequestTokenResponseRequest = new HttpResponseMessage()
             {
