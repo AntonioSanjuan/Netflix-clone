@@ -1,15 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using MovieApi.Models.AppSettings;
 using MovieApi.Models.Common;
+using MovieApi.Models.Dtos.Movie.GetMovieGenres.Request;
+using MovieApi.Models.Dtos.Movie.GetMovieGenres.Response;
+using MovieApi.Models.Dtos.Movie.GetMoviesByGenre.Request;
+using MovieApi.Models.Dtos.Movie.GetMoviesByGenre.Response;
 using MovieApi.Models.Movie.GetMovieInfo.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Response;
-using MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response;
 using MovieApi.services.interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MovieApi.Controllers
@@ -43,6 +41,26 @@ namespace MovieApi.Controllers
             MovieInfoResponseModelDto topRatedMoviesResponse;
             topRatedMoviesResponse = await _movieService.GetMovieInfo(movieInfoRequest);
             return Ok(topRatedMoviesResponse);
+        }
+
+        [HttpPost("GetMovieGenres")]
+        [ProducesResponseType(typeof(MovieGenresResponseModelDto), 200)]
+        [ProducesResponseType(typeof(CommonResponseErrorModel), 500)]
+        public async Task<IActionResult> GetMovieGenres([FromBody] MovieGenresRequestModelDto movieGenresRequest)
+        {
+            MovieGenresResponseModelDto movieGenresResponse;
+            movieGenresResponse = await _movieService.GetMovieGenres(movieGenresRequest);
+            return Ok(movieGenresResponse);
+        }
+
+        [HttpPost("GetMoviesByGenres")]
+        [ProducesResponseType(typeof(MoviesByGenreResponseModelDto), 200)]
+        [ProducesResponseType(typeof(CommonResponseErrorModel), 500)]
+        public async Task<IActionResult> GetMoviesByGenres([FromBody] MoviesByGenreRequestModelDto moviesByGenreRequestModel)
+        {
+            MoviesByGenreResponseModelDto moviesByGenreResponse;
+            moviesByGenreResponse = await _movieService.GetMoviesByGenre(moviesByGenreRequestModel);
+            return Ok(moviesByGenreResponse);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MovieApi.Models.Movie.GetMovieImages.Response;
+﻿using MovieApi.Models.Dtos.Movie.Common.MoviesResponse;
+using MovieApi.Models.Movie.GetMovieImages.Response;
 using MovieApi.Models.Movie.GetTopTatedMovies.Response;
 using MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response;
 using System.Collections.Generic;
@@ -8,13 +9,13 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.Movi
 {
     public static class MovieConversionTypeModule
     {
-        public static List<TopRatedMoviesResponseContentMovies> ConvertMovies(List<GetTopRatedMovie> input, List<MovieImageResponseModel> inputImages)
+        public static List<MoviesResponseContentMovies> ConvertMovies(List<Movie> input, List<MovieImageResponseModel> inputImages)
         {
-            List<TopRatedMoviesResponseContentMovies> output = new List<TopRatedMoviesResponseContentMovies>();
-            foreach (GetTopRatedMovie singleInput in input)
+            List<MoviesResponseContentMovies> output = new List<MoviesResponseContentMovies>();
+            foreach (Movie singleInput in input)
             {
                 MovieImageResponseModel singleImage = inputImages.Where(movie => movie.MovieId == singleInput.Id).FirstOrDefault();
-                output.Add(new TopRatedMoviesResponseContentMovies()
+                output.Add(new MoviesResponseContentMovies()
                 {
                     MovieId = singleInput.Id,
                     Images = singleImage,

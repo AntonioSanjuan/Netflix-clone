@@ -29,6 +29,8 @@ namespace MovieApi.Models.AppSettings
         public string createRequestToken { get; set; }
         public string getTopRatedMovies { get; set; }
         public string getMovieInfo { get; set; }
+        public string getMovieGenres { get; set; }
+        public string getMoviesByGenre { get; set; }
 
     }
 }

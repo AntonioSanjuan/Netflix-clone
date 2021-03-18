@@ -1,10 +1,8 @@
 ﻿using MovieApi.Models.Common;
-using MovieApi.Models.Movie.GetTopTatedMovies.Response;
-using MovieApi.Models.TheMoviedb.Movies.MovieInfo.Response;
-using System;
+using MovieApi.Models.Dtos.Movie.Common.MoviesResponse;
+using MovieApi.Models.Dtos.Movie.GetMovieGenres.Response;
+using MovieApi.Models.TheMoviedb.Movies.MovieGenres.Response;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MovieApi.Models.Movie.GetMovieInfo.Request
 {
@@ -17,15 +15,10 @@ namespace MovieApi.Models.Movie.GetMovieInfo.Request
         public int MovieId { get; set; }
         public string ImdbId { get; set; }
         public string Homepage { get; set; }
-        public List<MovieInfoGenres> Genres { get; set; }
+        public List<GenreDto> Genres { get; set; }
         public string ReleaseDate { get; set; }
         public List<MovieInfoVideos> Videos { get; set; }
-        public List<TopRatedMoviesResponseContentMovies> Similar { get; set; }
-    }
-    public class MovieInfoGenres
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public List<MoviesResponseContentMovies> Similar { get; set; }
     }
 
     public class MovieInfoVideos

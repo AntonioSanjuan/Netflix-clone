@@ -34,7 +34,7 @@ namespace MovieApi.Models.TheMoviedb.Movies.MovieInfo.Response
         public double vote_average { get; set; }
         public int vote_count { get; set; }
         public Videos videos { get; set; }
-        public GetTopRatedMoviesResponseModel similar { get; set; }
+        public MoviesResponseModel similar { get; set; }
     }
     public class BelongsToCollection
     {

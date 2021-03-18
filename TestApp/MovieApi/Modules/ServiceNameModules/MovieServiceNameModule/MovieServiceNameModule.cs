@@ -1,4 +1,6 @@
 ﻿using MovieApi.Models.AppSettings;
+using MovieApi.Models.Dtos.Movie.GetMovieGenres.Request;
+using MovieApi.Models.Dtos.Movie.GetMoviesByGenre.Request;
 using MovieApi.Models.Movie.GetMovieInfo.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Request;
 using System;
@@ -44,6 +46,28 @@ namespace MovieApi.Modules.ServiceNameModules.MovieServiceNameModule
             output = output.Replace("<<api_key>>", v3Settings.ApiKey);
             output = output.Replace("<<language>>", request.language);
             output = output.Replace("<<movie_id>>", request.movieId.ToString());
+            return output;
+        }
+
+        public string CreateMoviesByGenresUrl(MoviesByGenreRequestModelDto request)
+        {
+            var v3Settings = _theMoviedbSettings.Version.V3;
+            string output = v3Settings.BaseUrl + v3Settings.SubUrls.getMoviesByGenre;
+            output = output.Replace("<<api_key>>", v3Settings.ApiKey);
+            output = output.Replace("<<language>>", request.language);
+            output = output.Replace("<<page>>", request.page.ToString());
+            output = output.Replace("<<with_genres>>", request.genre.ToString());
+
+            
+            return output;
+        }
+        public string CreateMovieGenresUrl(MovieGenresRequestModelDto request)
+        {
+            var v3Settings = _theMoviedbSettings.Version.V3;
+            string output = v3Settings.BaseUrl + v3Settings.SubUrls.getMovieGenres;
+            output = output.Replace("<<api_key>>", v3Settings.ApiKey);
+            output = output.Replace("<<language>>", request.language);
+
             return output;
         }
     }

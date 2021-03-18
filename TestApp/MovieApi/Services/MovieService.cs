@@ -1,16 +1,22 @@
 ﻿using Microsoft.Extensions.Options;
 using MovieApi.adapters.interfaces;
 using MovieApi.Models.AppSettings;
+using MovieApi.Models.Dtos.Movie.GetMovieGenres.Request;
+using MovieApi.Models.Dtos.Movie.GetMovieGenres.Response;
+using MovieApi.Models.Dtos.Movie.GetMoviesByGenre.Request;
+using MovieApi.Models.Dtos.Movie.GetMoviesByGenre.Response;
 using MovieApi.Models.Movie.GetMovieImages.Response;
 using MovieApi.Models.Movie.GetMovieInfo.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Response;
+using MovieApi.Models.TheMoviedb.Movies.MovieGenres.Response;
 using MovieApi.Models.TheMoviedb.Movies.MovieInfo.Response;
 using MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response;
 using MovieApi.Modules.ServiceNameModules.MovieServiceNameModule;
 using MovieApi.services.interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -42,7 +48,7 @@ namespace MovieApi.services
                 string url = _serviceNameModule.CreateTopRatedMoviesUrl(request);
                 HttpResponseMessage response = _httpClient.GetAsync(url).Result;
                 var responseAsString = await response.Content.ReadAsStringAsync();
-                GetTopRatedMoviesResponseModel getTopRatedMoviesResponse = JsonSerializer.Deserialize<GetTopRatedMoviesResponseModel>(responseAsString, new JsonSerializerOptions
+                MoviesResponseModel getTopRatedMoviesResponse = JsonSerializer.Deserialize<MoviesResponseModel>(responseAsString, new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 });
@@ -57,7 +63,51 @@ namespace MovieApi.services
             }
         }
 
-        private async Task<List<MovieImageResponseModel>> GetTopRatedMovieImages(GetTopRatedMoviesResponseModel getTopRatedMovies)
+        public async Task<MovieGenresResponseModelDto> GetMovieGenres(MovieGenresRequestModelDto request)
+        {
+            try
+            {
+                string url = _serviceNameModule.CreateMovieGenresUrl(request);
+                HttpResponseMessage response = _httpClient.GetAsync(url).Result;
+                var responseAsString = await response.Content.ReadAsStringAsync();
+                MovieGenresResponseModel movieGenresResponse = JsonSerializer.Deserialize<MovieGenresResponseModel>(responseAsString, new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                });
+                MovieGenresResponseModelDto movieGenres = _movieAdapter.ToMovieGenresResponse(movieGenresResponse);
+
+                return movieGenres;
+            }
+            catch (Exception)
+            {
+                return _movieAdapter.ToMovieGenresErrorResponse();
+            }
+        }
+
+        public async Task<MoviesByGenreResponseModelDto> GetMoviesByGenre(MoviesByGenreRequestModelDto request)
+
+        {
+            try
+            {
+                string url = _serviceNameModule.CreateMoviesByGenresUrl(request);
+                HttpResponseMessage response = _httpClient.GetAsync(url).Result;
+                var responseAsString = await response.Content.ReadAsStringAsync();
+                MoviesResponseModel getTopRatedMoviesResponse = JsonSerializer.Deserialize<MoviesResponseModel>(responseAsString, new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                });
+                List<MovieImageResponseModel> movieByGenresImages = await GetTopRatedMovieImages(getTopRatedMoviesResponse);
+                MoviesByGenreResponseModelDto movieByGenresResponse = _movieAdapter.ToMoviesByGenreResponse(getTopRatedMoviesResponse, movieByGenresImages);
+
+                return movieByGenresResponse;
+            }
+            catch (Exception)
+            {
+                return _movieAdapter.ToMoviesByGenreErrorResponse();
+            }
+        }
+
+        private async Task<List<MovieImageResponseModel>> GetTopRatedMovieImages(MoviesResponseModel getTopRatedMovies)
         {
             try
             {

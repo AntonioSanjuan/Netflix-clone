@@ -1,21 +1,24 @@
 ﻿using MovieApi.Models.Dtos.Movie.Common.MoviesResponse;
+using MovieApi.Models.Dtos.Movie.GetMoviesByGenre.Response;
 using MovieApi.Models.Movie;
 using MovieApi.Models.Movie.GetMovieImages.Response;
-using MovieApi.Models.Movie.GetTopTatedMovies.Response;
 using MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response;
+using MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.MovieConversionType;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
-namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.MovieConversionType
+namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.MovieByGenresTypeModule
 {
-    public static class TopRatedMoviesConversionTypeModule
+    public class MovieByGenresConversionTypeModule
     {
-        public static TopRatedMoviesResponseModelDto Failure()
+        public static MoviesByGenreResponseModelDto Failure()
         {
-            TopRatedMoviesResponseModelDto output = new TopRatedMoviesResponseModelDto()
+            MoviesByGenreResponseModelDto output = new MoviesByGenreResponseModelDto()
             {
                 Notification = CommonConversionTypeModule.CommonConversionTypeModule.CreateFailureNotification(),
-                ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(MovieServiceMethodNames.GetTopRatedMovies),
+                ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(MovieServiceMethodNames.GetMoviesByGenre),
                 Content = new MoviesResponseContent()
                 {
                     Page = 1,
@@ -27,12 +30,12 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.Movi
             return output;
         }
 
-        public static TopRatedMoviesResponseModelDto Success(MoviesResponseModel topRatedMoviesResponseModel, List<MovieImageResponseModel> topRatedImageMovies)
+        public static MoviesByGenreResponseModelDto Success(MoviesResponseModel topRatedMoviesResponseModel, List<MovieImageResponseModel> topRatedImageMovies)
         {
-            TopRatedMoviesResponseModelDto output = new TopRatedMoviesResponseModelDto()
+            MoviesByGenreResponseModelDto output = new MoviesByGenreResponseModelDto()
             {
                 Notification = CommonConversionTypeModule.CommonConversionTypeModule.CreateSuccessNotification(),
-                ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(MovieServiceMethodNames.GetTopRatedMovies),
+                ResponseSchema = CommonConversionTypeModule.CommonConversionTypeModule.CreateSchema(MovieServiceMethodNames.GetMoviesByGenre),
                 Content = new MoviesResponseContent()
                 {
                     Page = topRatedMoviesResponseModel.Page,
@@ -43,7 +46,5 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.Movi
             };
             return output;
         }
-
-
     }
 }

@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 
 namespace MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response
 {
-    public class GetTopRatedMoviesResponseModel : GetTopRatedMoviesErrorResponseModel
+    public class MoviesResponseModel : MoviesErrorResponseModel
     {
         public int Page { get; set; }
-        public List<GetTopRatedMovie> Results { get; set; }
+        public List<Movie> Results { get; set; }
         public int Total_results { get; set; }
         public int Total_pages { get; set; }
     }
 
-    public class GetTopRatedMovie
+    public class Movie
     {
         public string Poster_path { get; set; }
         public bool Adult { get; set; }

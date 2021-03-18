@@ -1,11 +1,16 @@
 ﻿using MovieApi.adapters.interfaces;
+using MovieApi.Models.Dtos.Movie.GetMovieGenres.Response;
+using MovieApi.Models.Dtos.Movie.GetMoviesByGenre.Response;
 using MovieApi.Models.Movie.GetMovieImages.Response;
 using MovieApi.Models.Movie.GetMovieInfo.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Response;
 using MovieApi.Models.TheMoviedb;
+using MovieApi.Models.TheMoviedb.Movies.MovieGenres.Response;
 using MovieApi.Models.TheMoviedb.Movies.MovieInfo.Response;
 using MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response;
+using MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.MovieByGenresTypeModule;
 using MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.MovieConversionType;
+using MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.MovieGenresTypeModule;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +21,14 @@ namespace MovieApi.adapters
     public class MovieAdapter : IMovieAdapter
     {
         public MovieAdapter() {}
+        public MovieGenresResponseModelDto ToMovieGenresResponse(MovieGenresResponseModel response)
+        {
+            return (IsSuccessResponse(response)) ?
+                MovieGenresConversionTypeModule.Success(response) :
+                MovieGenresConversionTypeModule.Failure();
+
+
+        }
 
         public MovieInfoResponseModelDto ToMovieInfoResponse(GetMovieInfoResponseModel getMovieInfoResponse, List<MovieImageResponseModel> similarImageMovies)
         {
@@ -24,14 +37,26 @@ namespace MovieApi.adapters
             MovieInfoConversionTypeModule.Failure();
         }
 
-        public TopRatedMoviesResponseModelDto ToTopRatedMoviesResponse(GetTopRatedMoviesResponseModel getTopRatedMoviesResponse, List<MovieImageResponseModel> topRatedImageMovies)
+        public TopRatedMoviesResponseModelDto ToTopRatedMoviesResponse(MoviesResponseModel getTopRatedMoviesResponse, List<MovieImageResponseModel> topRatedImageMovies)
         {
             return (IsSuccessResponse(getTopRatedMoviesResponse)) ?
                 TopRatedMoviesConversionTypeModule.Success(getTopRatedMoviesResponse, topRatedImageMovies) :
             TopRatedMoviesConversionTypeModule.Failure();
         }
 
-        private bool IsSuccessResponse(GetTopRatedMoviesResponseModel getTopRatedMoviesResponse)
+        public MoviesByGenreResponseModelDto ToMoviesByGenreResponse(MoviesResponseModel movieByGenres, List<MovieImageResponseModel> topRatedImageMovies)
+        {
+            return (IsSuccessResponse(movieByGenres)) ?
+                MovieByGenresConversionTypeModule.Success(movieByGenres, topRatedImageMovies) :
+            MovieByGenresConversionTypeModule.Failure();
+        }
+
+        private bool IsSuccessResponse(MovieGenresResponseModel movieGenresResponse)
+        {
+            return (movieGenresResponse.Status_code == (int)MoviedbStatusCodes.Success);
+        }
+
+        private bool IsSuccessResponse(MoviesResponseModel getTopRatedMoviesResponse)
         {
             return (getTopRatedMoviesResponse.Errors == null && getTopRatedMoviesResponse.Status_code == (int)MoviedbStatusCodes.Success);
         }
@@ -49,7 +74,14 @@ namespace MovieApi.adapters
         {
             return TopRatedMoviesConversionTypeModule.Failure();
         }
-
+        public MoviesByGenreResponseModelDto ToMoviesByGenreErrorResponse()
+        {
+            return MovieByGenresConversionTypeModule.Failure();
+        }
+        public MovieGenresResponseModelDto ToMovieGenresErrorResponse()
+        {
+            return MovieGenresConversionTypeModule.Failure();
+        }
 
         public string ToBase64MovieImage(Byte[] bytes, string imageUrl)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response
 {
-    public class GetTopRatedMoviesErrorResponseModel : CreateRequestTokenErrorResponseModel
+    public class MoviesErrorResponseModel : CreateRequestTokenErrorResponseModel
     {
         public List<string> Errors { get; set; }
         public bool Success { get; set; }

@@ -5,10 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\TheMoviedb\Movies\TopRatedMovies\Request\**" />
-    <Content Remove="Models\TheMoviedb\Movies\TopRatedMovies\Request\**" />
-    <EmbeddedResource Remove="Models\TheMoviedb\Movies\TopRatedMovies\Request\**" />
-    <None Remove="Models\TheMoviedb\Movies\TopRatedMovies\Request\**" />
+    <Compile Remove="Models\TheMoviedb\Movies\Movies\Request\**" />
+    <Content Remove="Models\TheMoviedb\Movies\Movies\Request\**" />
+    <EmbeddedResource Remove="Models\TheMoviedb\Movies\Movies\Request\**" />
+    <None Remove="Models\TheMoviedb\Movies\Movies\Request\**" />
   </ItemGroup>
 
   <ItemGroup>

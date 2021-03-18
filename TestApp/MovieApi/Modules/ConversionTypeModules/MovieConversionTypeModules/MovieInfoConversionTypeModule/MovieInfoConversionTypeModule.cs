@@ -1,6 +1,8 @@
-﻿using MovieApi.Models.Movie;
+﻿using MovieApi.Models.Dtos.Movie.GetMovieGenres.Response;
+using MovieApi.Models.Movie;
 using MovieApi.Models.Movie.GetMovieImages.Response;
 using MovieApi.Models.Movie.GetMovieInfo.Request;
+using MovieApi.Models.TheMoviedb.Movies.MovieGenres.Response;
 using MovieApi.Models.TheMoviedb.Movies.MovieInfo.Response;
 using System;
 using System.Collections.Generic;
@@ -48,15 +50,15 @@ namespace MovieApi.Modules.ConversionTypeModules.MovieConversionTypeModules.Movi
             };
             return output;
         }
-        public static List<MovieInfoGenres> ConverGenres(List<Genre> genres)
+        public static List<GenreDto> ConverGenres(List<Genre> genres)
         {
-            List<MovieInfoGenres> output = new List<MovieInfoGenres>();
+            List<GenreDto> output = new List<GenreDto>();
 
             if (genres != null)
             {
                 foreach (Genre genre in genres)
                 {
-                    output.Add(new MovieInfoGenres()
+                    output.Add(new GenreDto()
                     {
                         Id = genre.id,
                         Name = genre.name
