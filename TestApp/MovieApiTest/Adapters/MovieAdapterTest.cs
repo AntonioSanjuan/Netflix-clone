@@ -1,5 +1,6 @@
 ﻿using MovieApi.adapters;
 using MovieApi.Models.Movie.GetMovieImages.Response;
+using MovieApi.Models.TheMoviedb.Movies.MovieGenres.Response;
 using MovieApi.Models.TheMoviedb.Movies.MovieInfo.Response;
 using MovieApi.Models.TheMoviedb.Movies.TopRatedMovies.Response;
 using NUnit.Framework;
@@ -28,7 +29,7 @@ namespace MovieApiTest.Adapters
         [Test]
         public void ToTopRatedMoviesResponseWithStatusCodeSuccess()
         {
-            GetTopRatedMoviesResponseModel getTopRatedMoviesResponseRequestParam = new GetTopRatedMoviesResponseModel() { Status_code = 0, Total_results = 0, Results = new List<GetTopRatedMovie>(), Page = 1, Total_pages = 1, Success = true};
+            MoviesResponseModel getTopRatedMoviesResponseRequestParam = new MoviesResponseModel() { Status_code = 0, Total_results = 0, Results = new List<Movie>(), Page = 1, Total_pages = 1, Success = true};
             List<MovieImageResponseModel> topRatedImageMoviesRequestParam = new List<MovieImageResponseModel>() { };
 
             MockAdapter();
@@ -40,7 +41,7 @@ namespace MovieApiTest.Adapters
         [Test]
         public void ToTopRatedMoviesResponseWithStatusCodeFailure()
         {
-            GetTopRatedMoviesResponseModel getTopRatedMoviesResponseRequestParam = new GetTopRatedMoviesResponseModel() { Status_code = 1 };
+            MoviesResponseModel getTopRatedMoviesResponseRequestParam = new MoviesResponseModel() { Status_code = 1 };
             List<MovieImageResponseModel> topRatedImageMoviesRequestParam = new List<MovieImageResponseModel>() {  };
 
             MockAdapter();
@@ -64,7 +65,7 @@ namespace MovieApiTest.Adapters
         [Test]
         public void ToMovieInfoResponseWithStatusCodeSuccess()
         {
-            GetMovieInfoResponseModel getTopRatedMoviesResponseRequestParam = new GetMovieInfoResponseModel() { Status_code = 0, similar = new GetTopRatedMoviesResponseModel() { Results = new List<GetTopRatedMovie>() } };
+            GetMovieInfoResponseModel getTopRatedMoviesResponseRequestParam = new GetMovieInfoResponseModel() { Status_code = 0, similar = new MoviesResponseModel() { Results = new List<Movie>() } };
             List<MovieImageResponseModel> similarImageMoviesRequestParam = new List<MovieImageResponseModel>() {  };
 
 
@@ -105,6 +106,74 @@ namespace MovieApiTest.Adapters
             Assert.IsNull(actual.Content.Similar);
 
             Assert.AreEqual("GetMovieInfo", actual.ResponseSchema.ResponseMethod);
+        }
+
+        [Test]
+        public void ToMovieGenresResponseWithStatusCodeSuccess()
+        {
+            MovieGenresResponseModel movieGenresResponseRequestParam = new MovieGenresResponseModel() { Status_code = 0 };
+
+
+            MockAdapter();
+            var actual = _adapter.ToMovieGenresResponse(movieGenresResponseRequestParam);
+            Assert.IsEmpty(actual.Content.Genres);
+            Assert.AreEqual("GetMovieGenres", actual.ResponseSchema.ResponseMethod);
+        }
+
+        [Test]
+        public void ToMovieGenresResponseWithStatusCodeFailure()
+        {
+            MovieGenresResponseModel movieGenresResponseRequestParam = new MovieGenresResponseModel() { Success = false, Status_code = 34, Status_message = "Something goes wrong" };
+
+            MockAdapter();
+            var actual = _adapter.ToMovieGenresResponse(movieGenresResponseRequestParam);
+            Assert.IsNull(actual.Content.Genres);
+            Assert.AreEqual("GetMovieGenres", actual.ResponseSchema.ResponseMethod);
+        }
+
+        [Test]
+        public void TopMovieGenresErrorResponse()
+        {
+            var actual = _adapter.ToMovieGenresErrorResponse();
+            Assert.IsNull(actual.Content.Genres);
+
+            Assert.AreEqual("GetMovieGenres", actual.ResponseSchema.ResponseMethod);
+        }
+
+        [Test]
+        public void ToMovieByGenreResponseWithStatusCodeSuccess()
+        {
+            MoviesResponseModel moviesByGenreResponseRequestParam = new MoviesResponseModel() { Status_code = 0, Results = new List<Movie>() { } };
+            List<MovieImageResponseModel> similarImageMoviesRequestParam = new List<MovieImageResponseModel>() { };
+
+            MockAdapter();
+            var actual = _adapter.ToMoviesByGenreResponse(moviesByGenreResponseRequestParam, similarImageMoviesRequestParam);
+            Assert.IsEmpty(actual.Content.Movies);
+            Assert.AreEqual("GetMoviesByGenre", actual.ResponseSchema.ResponseMethod);
+        }
+
+        [Test]
+        public void ToMovieByGenreResponseWithStatusCodeFailure()
+        {
+            MoviesResponseModel moviesByGenreResponseRequestParam = new MoviesResponseModel() { Success = false, Status_code = 34, Status_message = "Something goes wrong" };
+            List<MovieImageResponseModel> similarImageMoviesRequestParam = new List<MovieImageResponseModel>() { };
+
+            MockAdapter();
+            var actual = _adapter.ToMoviesByGenreResponse(moviesByGenreResponseRequestParam, similarImageMoviesRequestParam);
+            Assert.IsNull(actual.Content.Movies);
+            Assert.AreEqual("GetMoviesByGenre", actual.ResponseSchema.ResponseMethod);
+        }
+
+        [Test]
+        public void TopMovieByGenreErrorResponse()
+        {
+            var actual = _adapter.ToMoviesByGenreErrorResponse();
+            Assert.AreEqual(1, actual.Content.Page);
+            Assert.AreEqual(1, actual.Content.Total_pages);
+            Assert.AreEqual(0, actual.Content.Total_results);
+            Assert.IsNull(actual.Content.Movies);
+
+            Assert.AreEqual("GetMoviesByGenre", actual.ResponseSchema.ResponseMethod);
         }
     }
 }

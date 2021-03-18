@@ -9,7 +9,9 @@ using MovieApi.Models.User.Login.Response;
 using MovieApi.services;
 using NUnit.Framework;
 using System;
+using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -111,6 +113,8 @@ namespace MovieApiTest.Services
             );
 
             _mockUserAdapter.Verify(ToLoginResponseSpy => ToLoginResponseSpy.ToLoginResponse(_httpMessageResponse), Times.Never());
+            _mockUserAdapter.Verify(ToLoginResponseSpy => ToLoginResponseSpy.ToLoginErrorResponse(), Times.Once());
+
         }
 
         [Test]
@@ -141,6 +145,13 @@ namespace MovieApiTest.Services
                 }
             };
             _theMovieSettingsResponse = theMovieSettingsWithInvalidUri;
+
+            _httpMessageResponse = new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new StringContent("{ \"status_code\" :0 }", Encoding.UTF8, "application/json"),
+            };
+
             MockService();
             await _service.Login(loginRequest);
 

@@ -1,5 +1,7 @@
 ﻿using Moq;
 using MovieApi.Controllers;
+using MovieApi.Models.Dtos.Movie.GetMovieGenres.Request;
+using MovieApi.Models.Dtos.Movie.GetMoviesByGenre.Request;
 using MovieApi.Models.Movie.GetMovieInfo.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Request;
 using MovieApi.Models.Movie.GetTopTatedMovies.Response;
@@ -51,6 +53,26 @@ namespace MovieApiTest.Controllers
 
             //assert
             _mockMovieService.Verify(spy => spy.GetMovieInfo(getMovieInfoRequest), Times.Once());
+        }
+
+        [Test]
+        public async Task MovieGenres()
+        {
+            MovieGenresRequestModelDto movieGenresRequest = new MovieGenresRequestModelDto();
+            await _controller.GetMovieGenres(movieGenresRequest);
+
+            //assert
+            _mockMovieService.Verify(spy => spy.GetMovieGenres(movieGenresRequest), Times.Once());
+        }
+
+        [Test]
+        public async Task MoviesByGenre()
+        {
+            MoviesByGenreRequestModelDto moviesByGenreRequest = new MoviesByGenreRequestModelDto();
+            await _controller.GetMoviesByGenres(moviesByGenreRequest);
+
+            //assert
+            _mockMovieService.Verify(spy => spy.GetMoviesByGenre(moviesByGenreRequest), Times.Once());
         }
     }
 }
