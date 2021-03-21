@@ -8,8 +8,10 @@ import { NavMenuComponent } from './nav-bar/components/nav-menu/nav-menu.compone
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { CarrouselComponent } from './common/carrousel/carrousel.component';
 import { GenreMovieSearchComponent } from './movieSearchs/genreMovieSearch/genreMovieSearch.component';
+import { MovieLibraryComponent } from './movieLibrary/movieLibrary.component';
 
 export const COMPONENTS: any[] = [
+    MovieLibraryComponent,
     NavBarComponent,
     NavMenuComponent,
     TopRatedMovieSearchComponent,
