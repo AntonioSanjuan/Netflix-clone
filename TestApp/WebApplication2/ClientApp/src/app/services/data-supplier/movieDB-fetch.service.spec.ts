@@ -91,7 +91,7 @@ describe('[IntegrationTest] MovieDBService', () => {
   });
 
   it('getMoviesByGenre() should call http POST method for the given route',  () => {
-    sut.GetMoviesByGenre(1,'0').then(
+    sut.GetMoviesByGenre(1, 0 ).then(
       async () => {
       }
     );
@@ -147,7 +147,7 @@ describe('[IntegrationTest] MovieDBService', () => {
     // spy
     const isMovieInfoResponseValidSpy = jest.spyOn(responseValidatorStub, 'isGetMoviesByGenreResponseValid');
 
-    sut.GetMoviesByGenre(1, '').then(
+    sut.GetMoviesByGenre(1, 0).then(
       async () => {
       }
     );
