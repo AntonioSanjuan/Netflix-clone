@@ -1,3 +1,20 @@
 <div class="GenreMovieSearch_MainContainer">
-    <p>holaaaa</p>
+    <div class="GenreMovieSearch_GenreContainer" *ngFor="let genre of fetchedMovieGenres?.content?.genres">
+        <app-lodable-content
+            [isLoading]="!isGenreFilled(genre)">
+            <div class="GenreMovieSearch_Genre">
+                <div class="GenreMovieSearch_GenreName app-textHeader">
+                    {{genre.name}}
+                </div>        
+                <div class="GenreMovieSearch_GenreCarrousel" *ngIf="isGenreFilled(genre)">
+                    <app-carrousel
+                        [movies]= "getMoviesByGenre(genre)">
+                    </app-carrousel>
+                </div>
+                <mat-divider class="app-divider"></mat-divider>
+            </div>
+        </app-lodable-content>
+
+
+    </div>
 </div>
