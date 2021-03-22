@@ -11,8 +11,8 @@ export class CarrouselComponent  {
   
   private firstMovieShownIndex = 0;
 
-  public isPrevPageAvailable: boolean;
-  public isNextPageAvailable: boolean;
+  public isPrevPageAvailable: boolean = false;
+  public isNextPageAvailable: boolean = true;
 
   @ViewChild('carrousel') carrousel: ElementRef;
   @ViewChildren('carrouselMovies') carrouselMovies: QueryList<ElementRef>;
@@ -21,11 +21,13 @@ export class CarrouselComponent  {
   public selectPrevPage() {
     this.calculatePrevCarrouselStep();
     this.translateCarrousel();
+    this.calculatePageAvailability();
   }
 
   public selectNextPages() {
     this.calculateNextCarrouselStep();
     this.translateCarrousel();
+    this.calculatePageAvailability();
   }
 
   private translateCarrousel() {
@@ -54,6 +56,12 @@ export class CarrouselComponent  {
     return this.firstMovieShownIndex * this.getMovieWidth();
   }
 
+  private calculatePageAvailability() {
+    let carrouselMoviesTranslation = this.getCarrouselMoviesTranslation();
+    this.isPrevPageAvailable = !(this.firstMovieShownIndex === 0)
+    this.isNextPageAvailable = !(this.firstMovieShownIndex + carrouselMoviesTranslation > this.movies.length - carrouselMoviesTranslation)
+  }
+  
   private getCarrouselMoviesTranslation() {
     let movieWidth = this.getMovieWidth();
     let containerWidth = this.getCarrouselWidth();

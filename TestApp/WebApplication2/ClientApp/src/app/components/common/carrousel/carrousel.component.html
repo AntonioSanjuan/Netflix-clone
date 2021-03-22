@@ -1,6 +1,6 @@
 <div class="Carrousel_MainContainer">
     <div class="Carrousel_ActionsContainer">
-      <button class="leftTransition" (click)="selectPrevPage()" mat-icon-button>
+      <button class="leftTransition" (click)="selectPrevPage()" [hidden]="!isPrevPageAvailable" mat-icon-button>
         <mat-icon class="app-text-highContrast">navigate_before</mat-icon>
       </button>
       <div class="Carrousel_CarrouselMoviesContainer carrusel_Button" #carrousel>
@@ -10,7 +10,7 @@
           </app-movie-minified-info>
         </div>
       </div>
-      <button class="rightTransition" (click)="selectNextPages()" mat-icon-button>
+      <button class="rightTransition" (click)="selectNextPages()" [hidden]="!isNextPageAvailable" mat-icon-button>
         <mat-icon class="app-text-highContrast">navigate_next</mat-icon>
       </button>
     </div>
