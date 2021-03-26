@@ -2,7 +2,9 @@
     <div class="container_header">
       <app-nav-bar></app-nav-bar>
     </div>
-    <div class="container_body" fxLayoutAlign="center center">
-      <router-outlet></router-outlet>
+    <div class="container_body">
+      <app-sidenav-menu>
+        <router-outlet></router-outlet>
+      </app-sidenav-menu>
     </div>
   </div>

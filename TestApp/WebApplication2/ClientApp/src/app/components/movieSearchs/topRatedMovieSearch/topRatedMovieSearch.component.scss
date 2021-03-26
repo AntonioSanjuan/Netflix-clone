@@ -15,7 +15,7 @@
 }
 
 .TopRatedMovieSearch_MovieBasicInfoElement {
-  width: 100%;
+  width: fit-content;
   margin-top: 0.5%;
   margin-bottom: 0.5%;
 
@@ -23,9 +23,18 @@
   place-content: center;
 }
 
+.TopRatedMovieSearch_MoviesContainer {
+  height: 100%;
+  flex-wrap: wrap;
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: space-around;
+  flex: 1 1 100%;
+}
+
 @media (min-width: 1000px) {
   .TopRatedMovieSearch_MovieBasicInfoElement {
-    width: 49%;
     margin-left: 0.5%;
     margin-right: 0.5%;
   }

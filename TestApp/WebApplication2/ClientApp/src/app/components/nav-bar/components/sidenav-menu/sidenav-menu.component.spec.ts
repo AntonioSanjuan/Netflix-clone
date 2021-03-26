@@ -1,4 +1,4 @@
-describe('NavMenuComponent', () => {
+describe('SideNavMenuComponent', () => {
   beforeEach(() => {
   });
 

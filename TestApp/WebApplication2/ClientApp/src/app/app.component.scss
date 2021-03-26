@@ -52,8 +52,23 @@
     overflow-y: auto !important;
 }
 
+.container_header{
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  place-content: space-around;
+  align-items: center;
+  // flex: 1 1 10%;
+}
+
 .container_body{
-  height: 100%;
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: space-around;
+  align-items: center;
+  flex: 1 1 100%;
+  // height: 100%;
 }
 
 h1 {

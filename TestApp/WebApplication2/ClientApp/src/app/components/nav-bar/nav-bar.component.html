@@ -1,6 +1,9 @@
+
 <div class="NavBar_MainContainer">
     <div class="leftNavBar">
-        <app-nav-menu *ngIf="isAuthenticated"></app-nav-menu>
+        <button mat-icon-button *ngIf="isAuthenticated">
+          <mat-icon>more_vert</mat-icon>
+        </button>
     </div>
     <div class="centralNavBar">
       <h1 class="NavBar_AppName app-textHeader" (click)="goToHomePage()">

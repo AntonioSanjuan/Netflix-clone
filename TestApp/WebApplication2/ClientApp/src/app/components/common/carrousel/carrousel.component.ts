@@ -16,6 +16,7 @@ export class CarrouselComponent  {
 
   @ViewChild('carrousel') carrousel: ElementRef;
   @ViewChildren('carrouselMovies') carrouselMovies: QueryList<ElementRef>;
+
   constructor() {}
 
   public selectPrevPage() {
@@ -38,7 +39,7 @@ export class CarrouselComponent  {
     let carrouselMoviesTranslation = this.getCarrouselMoviesTranslation();
     if(this.firstMovieShownIndex + carrouselMoviesTranslation < this.movies.length - carrouselMoviesTranslation) {
       this.firstMovieShownIndex += carrouselMoviesTranslation;
-    }else{
+    } else {
       this.firstMovieShownIndex = this.movies.length - carrouselMoviesTranslation;
     }
   }
