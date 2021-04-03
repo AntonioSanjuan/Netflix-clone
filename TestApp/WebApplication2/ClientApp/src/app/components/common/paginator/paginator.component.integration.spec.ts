@@ -28,7 +28,7 @@ describe('PaginatorComponent', () => {
 
   it('selecPage() should emit event', () => {
     // spy
-    const getTopRatedMoviesSpy = spyOn(component.pageSelectionEvent, 'emit');
+    const getTopRatedMoviesSpy = jest.spyOn(component.pageSelectionEvent, 'emit');
     component.selecPage(2);
 
     expect(getTopRatedMoviesSpy).toHaveBeenCalledWith(2);

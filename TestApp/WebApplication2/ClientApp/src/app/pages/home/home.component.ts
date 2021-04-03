@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent  implements OnInit {
   selectedSearch: SearchType;
-
+  searchTypes = SearchType;
+  
   constructor() {
   }
 
@@ -18,17 +19,5 @@ export class HomeComponent  implements OnInit {
 
   private initialize() {
     this.selectedSearch = SearchType.TopRatedMovieSearch;
-  }
-
-  public loadTopRatedMovieSearch(){
-    this.selectedSearch = SearchType.TopRatedMovieSearch;
-  }
-
-  public loadGenreMovieSearch(){
-    this.selectedSearch = SearchType.GenreMovieSearch;
-  }
-
-  public loadFilterMovieSearch(){
-    this.selectedSearch = SearchType.FilterSearch;
   }
 }

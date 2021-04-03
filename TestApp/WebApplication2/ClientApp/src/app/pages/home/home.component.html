@@ -1,13 +1,14 @@
 <div class="Home_MainContainer">
   <div class="Home_ModuleSelectorContainer">
     <div class="Home_SearchSelector">
-      <button mat-raised-button class="app-button app-border" (click)="loadFilterMovieSearch()">Filter Search</button>
-    </div>
-    <div class="Home_SearchSelector">
-      <button mat-raised-button class="app-button app-border" (click)="loadTopRatedMovieSearch()">Top Rated Movies</button>
-    </div>
-    <div class="Home_SearchSelector">
-      <button  mat-raised-button class="app-button app-border" (click)="loadGenreMovieSearch()">Genre Movies</button>
+      <mat-form-field appearance="fill">
+        <mat-label>SearchType</mat-label>
+        <mat-select [(ngModel)]="selectedSearch" ngDefaultControl required>
+          <mat-option [value]="searchTypes.FilterSearch">Filter Search</mat-option>
+          <mat-option [value]="searchTypes.TopRatedMovieSearch">Top Rated Movies</mat-option>
+          <mat-option [value]="searchTypes.GenreMovieSearch">Genre Movies</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </div>
   <mat-divider class="app-divider"></mat-divider>

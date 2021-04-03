@@ -1,13 +1,13 @@
 import { RouterTestingModule } from '@angular/router/testing';
 import { TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { LoginComponent } from './login.component';
 import { routes } from 'src/app/routing.module';
 import { HomeComponent } from '../home/home.component';
-import { AuthService } from 'src/app/services/user/Auth/auth.service';
+import { AuthService } from 'src/app/services/user/auth/auth.service';
 import { ILoginResponse } from 'src/app/models/user-models/Login/LoginResponse.model';
 
 describe('LoginComponent', () => {
@@ -31,7 +31,8 @@ describe('LoginComponent', () => {
       declarations: [LoginComponent, HomeComponent],
       imports: [
           RouterTestingModule.withRoutes(routes),
-          ReactiveFormsModule
+          ReactiveFormsModule,
+          FormsModule
       ],
       providers: [
         {provide: AuthService, useValue: authServiceStub},

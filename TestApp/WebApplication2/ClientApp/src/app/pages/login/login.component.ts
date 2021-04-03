@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { IGenericError } from 'src/app/models/common/errors/genericError.model';
 import {  } from 'src/app/models/common/response/notification/notification.model';
 import { ILoginResponse, ILoginResponseContent } from 'src/app/models/user-models/Login/LoginResponse.model';
-import { AuthService } from 'src/app/services/user/Auth/auth.service';
+import { AuthService } from 'src/app/services/user/auth/auth.service';
 
 @Component({
   selector: 'app-login',

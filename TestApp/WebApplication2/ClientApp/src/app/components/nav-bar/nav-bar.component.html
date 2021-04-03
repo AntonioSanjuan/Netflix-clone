@@ -1,7 +1,7 @@
 
 <div class="NavBar_MainContainer">
     <div class="leftNavBar">
-        <button mat-icon-button *ngIf="isAuthenticated">
+        <button mat-icon-button *ngIf="isMobileDevice()" (click)="switchSideNav()">
           <mat-icon>more_vert</mat-icon>
         </button>
     </div>

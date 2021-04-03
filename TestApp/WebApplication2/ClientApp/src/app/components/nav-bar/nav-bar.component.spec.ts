@@ -4,13 +4,15 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { ILoginResponse } from 'src/app/models/user-models/Login/LoginResponse.model';
-import { UtilService } from 'src/app/services/util/utils.service';
 import { NavBarComponent } from './nav-bar.component';
 import { Router } from '@angular/router';
 import { LoginComponent } from 'src/app/pages/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from 'src/app/pages/home/home.component';
+import { SideNavService } from 'src/app/services/side-nav/side-nav.service';
+import { AuthService } from 'src/app/services/user/auth/auth.service';
+import { of } from 'rxjs';
+import { DeviceService } from 'src/app/services/user/device/device.service';
 
 describe('NavBarComponent', () => {
   let component: NavBarComponent;
@@ -18,26 +20,37 @@ describe('NavBarComponent', () => {
   let router: Router;
 
   let authServiceStub;
-  const loginMock = {} as ILoginResponse;
+  let sideNavServiceStub;
+  let deviceServiceStub;
+
   let isAuthenticatedValueMock = false;
-
+  let screenSizeTypeValueMock = undefined;
+  
   beforeEach(() => {
-    isAuthenticatedValueMock = false;
-
-    authServiceStub = {
-        login : jest.fn(() => new Promise((resolve, reject) => resolve({})).then(() => loginMock) ),
-        getIsAuthenticated : jest.fn(() => isAuthenticatedValueMock )
+    deviceServiceStub = {
+      getScreenSizeType: jest.fn(() => screenSizeTypeValueMock )
+    }
+    sideNavServiceStub = {
+      switchIsSideNavOpened: jest.fn(() => {})
     };
 
+    authServiceStub = {
+      getIsAuthenticated : jest.fn(() => isAuthenticatedValueMock ),
+      getIsAuthenticated$: jest.fn(() => of(isAuthenticatedValueMock))
+  };
+    
     TestBed.configureTestingModule({
       declarations: [NavBarComponent, LoginComponent, HomeComponent],
       imports: [
         HttpClientTestingModule,
         RouterTestingModule.withRoutes(routes),
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FormsModule
       ],
       providers: [
-        {provide: UtilService, useValue: authServiceStub},
+        {provide: AuthService, useValue: authServiceStub},
+        {provide: SideNavService, useValue: sideNavServiceStub},
+        {provide: DeviceService, useValue: deviceServiceStub}
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
   });
@@ -74,5 +87,19 @@ describe('NavBarComponent', () => {
     component.goToHomePage();
 
     expect(navigateSpy).toHaveBeenCalledWith(['home']);
+  });
+
+  it('initially getIsAuthenticated should be called', () => {
+    //spy 
+    const getIsAuthenticatedSpy = jest.spyOn(authServiceStub, 'getIsAuthenticated');
+
+    expect(getIsAuthenticatedSpy).toHaveBeenCalled();
+  });
+
+  it('initially getIsAuthenticated$ should be called', () => {
+    //spy 
+    const getIsAuthenticated$Spy = jest.spyOn(authServiceStub, 'getIsAuthenticated$');
+    
+    expect(getIsAuthenticated$Spy).toHaveBeenCalled();
   });
 });
