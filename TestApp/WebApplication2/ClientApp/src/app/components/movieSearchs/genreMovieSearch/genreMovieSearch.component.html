@@ -8,7 +8,8 @@
                 </div>        
                 <div class="GenreMovieSearch_GenreCarrousel" *ngIf="isGenreFilled(genre)">
                     <app-carrousel
-                        [movies]= "getMoviesByGenre(genre)">
+                        [movies]= "getMoviesByGenre(genre)"
+                        [hasShowMoreMovie] = true>
                     </app-carrousel>
                 </div>
                 <mat-divider class="app-divider"></mat-divider>

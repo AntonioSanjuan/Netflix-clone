@@ -1,22 +1,31 @@
 <div class="MovieMinifiedInfo_MainContainer" [style.backgroundImage]="getComponentBackGround()">
-    <div class="MovieMinifiedInfo_Header app-text-highContrast">
-        {{movie?.title}}
-    </div>
-    <div class="MovieMinifiedInfo_Content">
-    </div>
-    <div class="MovieMinifiedInfo_Footer">
-        <div class="MovieMinifiedInfo_FooterRate">
-            <div class="MovieBasicInfo_ContentRate app-text-highContrast">
-                <mat-icon>star_rate</mat-icon> {{movie?.voteAverage}}
-            </div>
-        </div>    
-        <div class="MovieMinifiedInfo_FooterFullScreenAction">
-            <button (click)="openMovieInfoDialog()" mat-icon-button>
-                <mat-icon class="app-text-highContrast">info_outline</mat-icon>
-            </button>
-            <button mat-icon-button>
-                <mat-icon class="app-text-highContrast">bookmark_border</mat-icon>
-              </button>
+    <ng-template [ngIf]="!isShowMoreMoviesByGenre" [ngIfElse]="isShowMoreMoviesByGenreTemplate">
+        <div class="MovieMinifiedInfo_Header app-text-highContrast">
+            {{movie?.title}}
         </div>
-    </div>
+        <div class="MovieMinifiedInfo_Content">
+        </div>
+        <div class="MovieMinifiedInfo_Footer">
+            <div class="MovieMinifiedInfo_FooterRate">
+                <div class="MovieBasicInfo_ContentRate app-text-highContrast">
+                    <mat-icon>star_rate</mat-icon> {{movie?.voteAverage}}
+                </div>
+            </div>    
+            <div class="MovieMinifiedInfo_FooterFullScreenAction">
+                <button (click)="openMovieInfoDialog()" mat-icon-button>
+                    <mat-icon class="app-text-highContrast">info_outline</mat-icon>
+                </button>
+                <button mat-icon-button>
+                    <mat-icon class="app-text-highContrast">bookmark_border</mat-icon>
+                  </button>
+            </div>
+        </div>
+      </ng-template>
 </div>
+
+
+<ng-template #isShowMoreMoviesByGenreTemplate>
+    <div class="MovieMinifiedInfo_ShowMoreMoviesByGenre" (click)="showMore()">
+        <mat-icon class="MovieMinifiedInfo_ShowMoreMoviesByGenreIcon"> add </mat-icon>
+    </div>
+</ng-template>

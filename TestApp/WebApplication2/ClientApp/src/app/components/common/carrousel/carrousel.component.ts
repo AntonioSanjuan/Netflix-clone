@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Movie } from 'src/app/models/dataSupplier-models/Common/movie.model';
 
 @Component({
@@ -6,9 +6,10 @@ import { Movie } from 'src/app/models/dataSupplier-models/Common/movie.model';
   templateUrl: './carrousel.component.html',
   styleUrls: ['./carrousel.component.scss']
 })
-export class CarrouselComponent  {
+export class CarrouselComponent implements OnInit {
   @Input() public movies: Movie[];
-  
+  @Input() public hasShowMoreMovie: boolean = false;
+
   private firstMovieShownIndex = 0;
 
   public isPrevPageAvailable: boolean = false;
@@ -18,6 +19,13 @@ export class CarrouselComponent  {
   @ViewChildren('carrouselMovies') carrouselMovies: QueryList<ElementRef>;
 
   constructor() {}
+
+  ngOnInit() {
+    if(this.hasShowMoreMovie) {
+      this.movies.push({} as Movie);
+      console.log('length', this.movies.length)
+    }
+  }
 
   public selectPrevPage() {
     this.calculatePrevCarrouselStep();
@@ -37,9 +45,12 @@ export class CarrouselComponent  {
 
   private calculateNextCarrouselStep() {
     let carrouselMoviesTranslation = this.getCarrouselMoviesTranslation();
+    console.log('carrouselMoviesTranslation', carrouselMoviesTranslation)
     if(this.firstMovieShownIndex + carrouselMoviesTranslation < this.movies.length - carrouselMoviesTranslation) {
+      console.log("if")
       this.firstMovieShownIndex += carrouselMoviesTranslation;
     } else {
+      console.log("else")
       this.firstMovieShownIndex = this.movies.length - carrouselMoviesTranslation;
     }
   }
@@ -60,7 +71,7 @@ export class CarrouselComponent  {
   private calculatePageAvailability() {
     let carrouselMoviesTranslation = this.getCarrouselMoviesTranslation();
     this.isPrevPageAvailable = !(this.firstMovieShownIndex === 0)
-    this.isNextPageAvailable = !(this.firstMovieShownIndex + carrouselMoviesTranslation > this.movies.length - carrouselMoviesTranslation)
+    this.isNextPageAvailable = !(this.firstMovieShownIndex + carrouselMoviesTranslation === this.movies.length)
   }
   
   private getCarrouselMoviesTranslation() {

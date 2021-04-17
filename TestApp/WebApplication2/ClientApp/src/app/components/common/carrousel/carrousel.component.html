@@ -4,9 +4,10 @@
         <mat-icon class="app-text-highContrast">navigate_before</mat-icon>
       </button>
       <div class="Carrousel_CarrouselMoviesContainer carrusel_Button" #carrousel>
-        <div *ngFor="let movie of movies" class="Carrousel_MoviesContainer" #carrouselMovies>
+        <div *ngFor="let movie of movies; last as isLast" class="Carrousel_MoviesContainer" #carrouselMovies>
           <app-movie-minified-info 
-            [movie] = "movie">
+            [movie] = "movie"
+            [isShowMoreMoviesByGenre] = isLast>
           </app-movie-minified-info>
         </div>
       </div>

@@ -80,6 +80,25 @@
   margin-right: 2.5%;
 }
 
+.MovieMinifiedInfo_ShowMoreMoviesByGenre {
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--app-background-color-hover);
+}
+
+.MovieMinifiedInfo_ShowMoreMoviesByGenreIcon {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  flex: 1 1 100%;
+  font-size: 150px;
+
+  cursor: pointer;
+}
+
 @media (max-width: 600px) {
   .MovieMinifiedInfo_FooterFullScreenAction{
     display: flex;

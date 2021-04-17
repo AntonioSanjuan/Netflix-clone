@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Movie } from 'src/app/models/dataSupplier-models/Common/movie.model';
-import { FullScreenImageComponent } from '../../common/full-screen-image/full-screen-image.component';
 import { MovieAdvancedInfoComponent } from '../movie-advanced-info/movie-advanced-info.component';
 
 @Component({
@@ -10,6 +9,7 @@ import { MovieAdvancedInfoComponent } from '../movie-advanced-info/movie-advance
   styleUrls: ['./movie-minified-info.component.scss']
 })
 export class MovieMinifiedInfoComponent implements OnInit {
+  @Input() isShowMoreMoviesByGenre: boolean = false;
   @Input() movie: Movie;
 
   constructor(private dialog: MatDialog) { }
@@ -17,7 +17,12 @@ export class MovieMinifiedInfoComponent implements OnInit {
   ngOnInit() {}
 
   getComponentBackGround(){
-    let output = `url(${this.movie.images.backdropImageToBase64})`;
+    let output;
+    if(!this.isShowMoreMoviesByGenre) {
+      output = `url(${this.movie.images.backdropImageToBase64})`;
+    } else {
+      output = `radial-gradient(16px at 60px 50% , #000000 0%, #000000 14px, rgba(0, 0, 0, 0.3) 18px, rgba(0, 0, 0, 0) 19px);`;
+    }
     return output;
   }
 
@@ -25,7 +30,12 @@ export class MovieMinifiedInfoComponent implements OnInit {
     const dialogInfoRef = this.dialog.open(MovieAdvancedInfoComponent, {
       height: '90vh',
       width: '80vh',
-      data: this.movie
+      data: this.movie,
+      hasBackdrop: true // HERE
     });
+  }
+
+  showMore() {
+    console.log("que cojones")
   }
 }

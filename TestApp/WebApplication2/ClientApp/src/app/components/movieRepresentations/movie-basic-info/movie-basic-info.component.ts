@@ -20,7 +20,10 @@ export class MovieBasicInfoComponent implements OnInit {
     const dialogImageRef = this.dialog.open(FullScreenImageComponent, {
       height: '90vh',
       width: 'fit-content',
-      data: this.movie.images.posterImageToBase64
+      data: this.movie.images.posterImageToBase64,
+      panelClass: 'myapp-no-padding-dialog',
+      // backdropClass: 'dark-backdrop',
+      hasBackdrop: true // HERE
     });
   }
 
@@ -28,7 +31,10 @@ export class MovieBasicInfoComponent implements OnInit {
     const dialogInfoRef = this.dialog.open(MovieAdvancedInfoComponent, {
       height: '90vh',
       width: '80vh',
-      data: this.movie
+      data: this.movie,
+      panelClass: 'myapp-no-padding-dialog',
+      // backdropClass: 'dark-backdrop',
+      hasBackdrop: true // HERE
     });
   }
 

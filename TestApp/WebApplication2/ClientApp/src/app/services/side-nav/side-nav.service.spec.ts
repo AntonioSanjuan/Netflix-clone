@@ -1,5 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
+import { DeviceService } from '../user/device/device.service';
 import { SideNavService } from './side-nav.service';
 
 
@@ -14,7 +15,11 @@ describe('SideNavService', () => {
       getScreenSizeType: jest.fn(() => screenSizeTypeValueMock ),
       getScreenSizeTypeChanges$: jest.fn(() => of(screenSizeTypeValueMock))
     }
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [
+        {provide: DeviceService, useValue: deviceServiceStub}
+      ]
+    });
     service = TestBed.inject(SideNavService);
   });
 
