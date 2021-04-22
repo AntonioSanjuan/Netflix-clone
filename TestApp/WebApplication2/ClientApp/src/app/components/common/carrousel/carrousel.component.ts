@@ -1,5 +1,6 @@
-import { Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Movie } from 'src/app/models/dataSupplier-models/Common/movie.model';
+import { DeviceService } from 'src/app/services/user/device/device.service';
 
 @Component({
   selector: 'app-carrousel',
@@ -18,12 +19,17 @@ export class CarrouselComponent implements OnInit {
   @ViewChild('carrousel') carrousel: ElementRef;
   @ViewChildren('carrouselMovies') carrouselMovies: QueryList<ElementRef>;
 
-  constructor() {}
+  constructor(private deviceService: DeviceService) {}
 
   ngOnInit() {
+    this.deviceService.getScreenSizeChanges$().subscribe((_) => {
+      if(this.firstMovieShownIndex !== 0) {
+        this.translateCarrousel();
+      }
+    })
+
     if(this.hasShowMoreMovie) {
       this.movies.push({} as Movie);
-      console.log('length', this.movies.length)
     }
   }
 
@@ -45,12 +51,9 @@ export class CarrouselComponent implements OnInit {
 
   private calculateNextCarrouselStep() {
     let carrouselMoviesTranslation = this.getCarrouselMoviesTranslation();
-    console.log('carrouselMoviesTranslation', carrouselMoviesTranslation)
     if(this.firstMovieShownIndex + carrouselMoviesTranslation < this.movies.length - carrouselMoviesTranslation) {
-      console.log("if")
       this.firstMovieShownIndex += carrouselMoviesTranslation;
     } else {
-      console.log("else")
       this.firstMovieShownIndex = this.movies.length - carrouselMoviesTranslation;
     }
   }

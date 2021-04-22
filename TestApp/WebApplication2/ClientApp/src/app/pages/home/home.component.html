@@ -14,6 +14,7 @@
   <mat-divider class="app-divider"></mat-divider>
   <div class="Home_ModuleContent" [ngSwitch]="selectedSearch">
     <div class="Home_SearchContent" *ngSwitchCase="0">
+      <app-filterMovieSearch></app-filterMovieSearch>
     </div>
     <div class="Home_SearchContent" *ngSwitchCase="1">
       <app-topRatedMovieSearch></app-topRatedMovieSearch>

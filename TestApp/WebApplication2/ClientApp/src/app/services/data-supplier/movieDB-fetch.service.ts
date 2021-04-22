@@ -87,9 +87,9 @@ export class MovieDBService {
     ).toPromise();
   }
 
-  public async GetMoviesByGenre(page: number, genre: number) {
+  public async GetMoviesByGenre(page: number, genreId: number) {
     const getMoviesByGenreRequestUrl: string = this.movieServicesNames.movieDB.getMoviesByGenreUrl();
-    const getMoviesByGenreRequestContent: MoviesByGenreRequestDto = new MoviesByGenreRequestDto('en-US', page, genre, '');
+    const getMoviesByGenreRequestContent: MoviesByGenreRequestDto = new MoviesByGenreRequestDto('en-US', page, genreId, '');
 
     return await this.http.post<IGetMoviesByGenreResponseDto>(getMoviesByGenreRequestUrl, getMoviesByGenreRequestContent).pipe(
       map(response => this.processGetMoviesByGenreResponse(response))

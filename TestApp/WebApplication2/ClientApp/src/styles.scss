@@ -1,5 +1,5 @@
 @import './styleColours.scss';
-
+@import './styleCustomMaterial.scss';
 html{
   height: 100%;
 }
@@ -56,10 +56,10 @@ html{
   }
   
   .app-divider{
-    width: 100%;
+    width: 80%;
+    background: var(--text-small-colour);
     color: var(--text-small-colour);
-    margin-top: 1.5%;
-    margin-bottom: 1.5%;
+    margin: 0.5%;
   }
 
   .app-primary-accent-button-colour{
@@ -88,44 +88,3 @@ html{
 }
 
 div { width: 100%; }
-
-
-.cdk-overlay-pane {
-  width: fit-content;
-}
-
-.mat-drawer-container {
-  background-color: inherit;
-  color: inherit;
-}
-
-.mat-select {
-  color: var(--text-tittle-colour);
-  font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
-}
-
-.mat-select-value {
-  color: inherit;
-}
-
-.mat-form-field-label {
-  color: inherit
-}
-
-.mat-form-field-appearance-outline .mat-form-field-outline {
-  color:var(--app-primary-colour);
-}
-
-.mat-dialog-container {
-  background:var(--app-primary-colour) ;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
-
-.mat-drawer-inner-container {
-  background:var(--app-primary-colour) ;
-}
-
-.mat-drawer-content mat-sidenav-content {
-  margin: 0%;
-}
-

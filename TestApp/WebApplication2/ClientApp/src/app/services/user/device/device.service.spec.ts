@@ -18,9 +18,15 @@ describe('DeviceService', () => {
     expect(service.getScreenSizeType()).toEqual(ScreenTypes.Computer);
   });
 
-  it('getScreenSize$() initially should return undefined', () => {
+  it('getScreenSizeTypeChanges$() initially should return undefined', () => {
     service.getScreenSizeTypeChanges$().subscribe((actual) => {
       expect(actual).toEqual(ScreenTypes.Computer);
+    });
+  });
+
+  it('getScreenSize$() initially should return false', () => {
+    service.getScreenSizeChanges$().subscribe((actual) => {
+      expect(actual).toEqual(false);
     });
   });
 

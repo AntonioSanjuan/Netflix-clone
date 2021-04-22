@@ -11,11 +11,15 @@ export class DeviceService {
   public screenSizeType: ScreenTypes = undefined;
   public screenSizeTypeChanges$ = new BehaviorSubject<ScreenTypes>(this.screenSizeType);
 
+  public screenSizeChanges$ = new BehaviorSubject<boolean>(false);
+
   constructor() { 
     this.calculateScreenSize(window.innerWidth);
 
     window.addEventListener('resize', (event) => {
-      this.calculateScreenSize(window.innerWidth);    
+      this.calculateScreenSize(window.innerWidth);
+      
+      this.screenSizeChanges$.next(true)
     });
   }
 
@@ -25,6 +29,10 @@ export class DeviceService {
 
   public getScreenSizeTypeChanges$(): Observable<ScreenTypes> {
     return this.screenSizeTypeChanges$.asObservable();
+  }
+
+  public getScreenSizeChanges$(): Observable<boolean> {
+    return this.screenSizeChanges$.asObservable();
   }
 
   private calculateScreenSize(deviceScreenWidth: number){

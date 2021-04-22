@@ -8,12 +8,14 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { CarrouselComponent } from './common/carrousel/carrousel.component';
 import { GenreMovieSearchComponent } from './movieSearchs/genreMovieSearch/genreMovieSearch.component';
+import { FilterMovieSearchComponent } from './movieSearchs/filterMovieSearch/filterMovieSearch.component';
 
 export const COMPONENTS: any[] = [
     NavBarComponent,
     SideNavComponent,
     TopRatedMovieSearchComponent,
     GenreMovieSearchComponent,
+    FilterMovieSearchComponent,
     MovieBasicInfoComponent,
     MovieMinifiedInfoComponent,
     MovieAdvancedInfoComponent,

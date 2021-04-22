@@ -1,0 +1,46 @@
+<div class="FilterMovieSearch_MainContainer">
+  <div class="FilterMovieSearch_FilterContainer">
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Filters
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="FilterMovieSearch_Filters">
+        <mat-form-field appearance="outline">
+          <mat-label>By text</mat-label>
+          <input matInput placeholder="I wan't...">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>By genre</mat-label>
+          <mat-select [(ngModel)]="selectedGenre" ngDefaultControl>
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let genre of genres?.content?.genres" [value]="genre">
+              {{genre?.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="FilterMovieSearch_Filters">
+        <button mat-raised-button class="app-primary-accent-button-colour app-border" (click)="setFilters()">Set filters</button>
+      </div>
+    </mat-expansion-panel>
+  </div>
+  <mat-divider class="app-divider"></mat-divider>
+  <app-lodable-content
+    [isLoading]="isLoading">
+    <div class="FilterMovieSearch_MoviesContainer">
+      <div class="FilterMovieSearch_MovieBasicInfoElement" *ngFor="let fetchedTopRatedMovie of filteredMovies?.content?.movies">
+        <app-movie-basic-info
+          [movie] = "fetchedTopRatedMovie"
+        ></app-movie-basic-info>
+      </div>
+    </div>
+  </app-lodable-content>
+  <app-paginator *ngIf="filteredMovies?.content"
+    [pagesToShow] = "5"
+    [numberOfPages] = "filteredMovies.content.total_pages"
+    [selectedPage] = "filteredMovies.content.page"
+    (pageSelectionEvent)="getfilterPage($event)"
+  ></app-paginator>
+</div>

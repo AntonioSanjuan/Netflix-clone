@@ -8,9 +8,12 @@
 }
 
 .Sidenav_MainContainer {
-  height: 100%;
+  height: 100% !important;
 }
 
+.Sidenav_SubContainer {
+  height: 100%;
+}
 .Sidenav_Content {
   height: 100%;
 }
