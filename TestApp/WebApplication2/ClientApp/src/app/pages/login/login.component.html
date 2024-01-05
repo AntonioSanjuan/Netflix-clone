@@ -1,1 +1,36 @@
-<p>login works!</p>
+<div class="Login_MainContainer">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="validateForm()">
+        <div class="Login_FormContainer">
+          <div class="Login_FormSubContainer">
+            <h2>Log In</h2>
+            <mat-form-field appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="username"  name="username" autocomplete="on">
+              <mat-error>
+                Please, provide a valid email address
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" formControlName="password"  name="password" autocomplete="on">
+              <mat-error>
+                Please, provide a valid password
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div *ngIf="error" class="Login_FormError">
+            <mat-error>
+              {{error.errorMessage}}
+            </mat-error>
+          </div>
+          <div class="Login_FormActions">
+            <button mat-raised-button class="app-primary-accent-button-colour app-border">Login</button>
+            <button mat-raised-button class="app-primary-accent-button-colour app-border" disabled>Register</button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

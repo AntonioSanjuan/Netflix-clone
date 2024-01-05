@@ -1,0 +1,90 @@
+@import './styleColours.scss';
+@import './styleCustomMaterial.scss';
+html{
+  height: 100%;
+}
+
+:root{
+  body{
+    height: 100%;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+
+  .app-textHeader{
+    color: var(--text-tittle-colour);
+    font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+    font-size: 120%;
+  }
+  .app-text-big{
+    color: var(--text-small-colour);
+    font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+    font-size:90%;
+  }
+
+  .app-text-normal{
+    color: var(--text-small-colour);
+    font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+    font-size:80%;
+  }
+
+  .app-text-small{
+    color: var(--text-small-colour);
+    font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+    font-size:60%;
+  }
+
+  .app-text-highContrast{
+    color: white !important;
+    text-shadow:
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+
+  }
+
+  .app-button{
+    color: var(--text-small-colour);
+    background-color: var(--app-background-color);
+    width: fit-content;
+  }
+
+  .app-border{
+    border-style: solid;
+    border-width: thin;
+  }
+  
+  .app-divider{
+    width: 80%;
+    background: var(--text-small-colour);
+    color: var(--text-small-colour);
+    margin: 0.5%;
+  }
+
+  .app-primary-accent-button-colour{
+    color: var(--text-tittle-accent-contrast-colour);
+    background-color: var(--app-primary-accent-colour);
+    width: fit-content;
+  }
+
+ .app-secondary-accent-button-colour{
+    color: var(--text-tittle-accent-contrast-colour);
+    background-color: var(--app-secondary-accent-colour);
+    width: fit-content;
+ }
+
+  .app-primary-button-colour{
+    color: var(--text-tittle-contrast-colour);
+    background-color: var(--app-primary-colour);
+    width: fit-content;
+  }
+
+  .app-secondary-button-colour {
+    color: var(--text-tittle-contrast-colour);
+    background-color: var(--app-secondary-colour);
+    width: fit-content;
+  }
+}
+
+div { width: 100%; }

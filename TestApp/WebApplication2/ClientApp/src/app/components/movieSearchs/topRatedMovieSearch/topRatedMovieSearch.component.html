@@ -1,0 +1,20 @@
+<div class="TopRatedMovieSearch_MainContainer">
+  <app-lodable-content
+    [isLoading]="isLoading">
+    <div class="TopRatedMovieSearch_MoviesContainer">
+      <div class="TopRatedMovieSearch_MovieBasicInfoElement" *ngFor="let fetchedTopRatedMovie of fetchedTopRatedMovies?.content?.movies">
+        <app-movie-basic-info
+          [movie] = "fetchedTopRatedMovie"
+        ></app-movie-basic-info>
+      </div>
+    </div>
+
+
+  </app-lodable-content>
+  <app-paginator *ngIf="fetchedTopRatedMovies?.content"
+    [pagesToShow] = "5"
+    [numberOfPages] = "fetchedTopRatedMovies.content.total_pages"
+    [selectedPage] = "fetchedTopRatedMovies.content.page"
+    (pageSelectionEvent)="fetchTopRatedPage($event)"
+  ></app-paginator>
+</div>

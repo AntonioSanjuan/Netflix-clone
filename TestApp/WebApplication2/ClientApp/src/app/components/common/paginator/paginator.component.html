@@ -1,0 +1,19 @@
+<div class="Paginator_MainContainer">
+  <div class="Paginator_ActionsContainer">
+    <div *ngIf="goToFirstPageAvailable">
+      <button (click)="selectFirstPage()" mat-icon-button>
+        <mat-icon class="app-button">navigate_before</mat-icon>
+      </button>
+    </div>
+    <div *ngFor="let page of pages" class="Paginator_pageSelector">
+      <button (click)="selecPage(page)"class="app-button app-border">
+        {{page}}
+      </button>
+    </div>
+    <div *ngIf="goToLastPageAvailable">
+      <button (click)="selectLastPage()" mat-icon-button>
+        <mat-icon  class="app-button">navigate_next</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

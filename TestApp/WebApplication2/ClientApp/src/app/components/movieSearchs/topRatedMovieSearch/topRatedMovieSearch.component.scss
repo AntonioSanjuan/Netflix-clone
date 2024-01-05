@@ -1,0 +1,43 @@
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+.TopRatedMovieSearch_MainContainer {
+  height: 100%;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  display: flex;
+  place-content: flex-start;
+  align-items: center;
+  flex: 1 1 100%;
+}
+
+.TopRatedMovieSearch_MovieBasicInfoElement {
+  width: fit-content;
+  margin-top: 0.5%;
+  margin-bottom: 0.5%;
+
+  display: flex;
+  place-content: center;
+}
+
+.TopRatedMovieSearch_MoviesContainer {
+  height: 100%;
+  flex-wrap: wrap;
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: space-around;
+  flex: 1 1 100%;
+
+  padding-top: 2%;
+}
+
+@media (min-width: 1000px) {
+  .TopRatedMovieSearch_MovieBasicInfoElement {
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+  }
+}

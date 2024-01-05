@@ -1,0 +1,46 @@
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+.LodableContent_MainContainer {
+  height: 100%;
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  flex: 1 1 100%;
+}
+
+.LodableContent_Content {
+  height: 100%;
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: flex-start;
+  align-items: center;
+  flex: 1 1 100%;
+}
+
+.ShowBlur {
+  -webkit-filter: blur(10px);         // Chrome 19+, Safari 6+, Safari 6+ iOS
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);                // IE6-9
+
+  transition: filter 2s ease-in-out;
+
+  pointer-events: none;
+}
+
+.HideBlur {
+  -webkit-filter: blur(0px);
+  -moz-filter: blur(0px);
+  -o-filter: blur(0px);
+  -ms-filter: blur(0px);
+  filter: blur(0px);
+
+  transition: filter 2s ease-in-out;
+}

@@ -1,0 +1,22 @@
+.Paginator_MainContainer {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: space-around;
+  align-items: center;
+  flex: 1 1 100%;
+}
+
+.Paginator_ActionsContainer{
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: center;
+  align-items: center;
+  flex: 1 1 100%;
+}
+
+.Paginator_pageSelector {
+  margin-left: 4%;
+  margin-right: 4%;
+}

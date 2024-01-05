@@ -1,0 +1,91 @@
+
+
+.cdk-overlay-pane {
+    width: fit-content;
+  }   
+
+  .mat-drawer {
+    background: inherit;
+    color: inherit;
+  }
+
+  .mat-list-base .mat-list-item {
+    color: inherit;
+  }
+
+  .mat-drawer-container {
+    background-color: inherit;
+    color: inherit;
+  }
+  .mat-drawer-container {
+    background-color: inherit;
+    color: inherit;
+  }
+  
+  .mat-option-text {
+    color: var(--text-small-colour);
+  }
+  .mat-option:hover {
+    background-color: var(--app-background-color)
+  }
+  .mat-select {
+    color: var(--text-tittle-colour);
+    font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+  }
+  
+  .mat-select-value {
+    color: inherit;
+  }
+  
+  .mat-form-field-label {
+    color: inherit
+  }
+  .mat-select-panel .mat-option.mat-selected {
+    background-color: var(--app-background-color) !important;
+  }
+  
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: var(--app-background-color-hover);
+    color:var(--app-primary-colour);
+  }
+  .mat-select-panel .mat-optgroup-label, .mat-select-panel .mat-option {
+    background-color: var(--app-background-color-hover);
+  }
+  .mat-dialog-container {
+    background:var(--app-primary-colour) ;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  }
+  
+  .mat-drawer-inner-container {
+    background:var(--app-primary-colour) ;
+  }
+  
+  .mat-drawer-content mat-sidenav-content {
+    margin: 0%;
+  }
+  .mat-select-panel {
+    background: var(--app-background-color-hover) !important;
+    background-color: var(--app-background-color-hover) !important;
+    color: var(--text-small-colour) !important;
+  }
+  
+  .mat-expansion-panel {
+    background: var(--app-background-color-hover) !important;
+    background-color: var(--app-background-color-hover) !important;
+    color: var(--text-small-colour) !important;
+  }
+  
+  .mat-expansion-panel-header:hover, .mat-expansion-panel-header:hover:not {
+    background: var(--app-background-color-hover) ;
+    background-color: var(--app-background-color-hover) ;
+    color: var(--text-small-colour) ;
+  }
+  
+  .mat-expansion-panel-header-title {
+    color: var(--text-big-colour);
+  }
+
+  .mat-card {
+    background: var(--app-background-color-hover);
+    color: inherit;
+  }

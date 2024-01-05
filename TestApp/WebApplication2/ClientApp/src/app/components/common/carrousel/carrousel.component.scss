@@ -1,0 +1,59 @@
+:host {
+  width: 100%;
+}
+
+.Carrousel_MainContainer {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: space-around;
+  align-items: center;
+  flex: 1 1 100%;
+}
+.Carrousel_ActionsContainer {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: flex-start;
+  align-items: center;
+  flex: 1 1 100%;
+}
+.Carrousel_CarrouselMoviesContainer {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: flex-start;
+  align-items: center;
+  flex: 1 1 100%;
+}
+.Carrousel_MoviesContainer {
+  padding-right: 0.5%; 
+  padding-left: 0.5%;
+
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: flex-start;
+  align-items: center;
+  flex: 1 1 100%;
+}
+
+.rightTransition {
+  position: absolute;
+  right: 0%;
+  z-index: 1;
+}
+
+.leftTransition {
+  position: absolute;
+  z-index: 1;
+}
+
+.carrusel_Button {
+
+
+  -webkit-transition: all 3s ease;
+  -moz-transition: all 3s ease;
+  -o-transition: all 3s ease;
+  transition: all 3s ease;
+}

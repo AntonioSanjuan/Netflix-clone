@@ -1,11 +1,16 @@
-<div fxLayout="column" fxLayoutAlign="space-around center" > 
-    <div class="leftNavBar"fxFlex="20">
-        <b>Left</b>
+
+<div class="NavBar_MainContainer">
+    <div class="leftNavBar">
+        <button mat-icon-button *ngIf="isMobileDevice()" (click)="switchSideNav()">
+          <mat-icon>more_vert</mat-icon>
+        </button>
     </div>
-    <div class="centralNavBar" fxFlex="60">
-        <b>middle</b>
+    <div class="centralNavBar">
+      <h1 class="NavBar_AppName app-textHeader" (click)="goToHomePage()">
+        RecoMovies
+      </h1>
     </div>
-    <div class="rightNavBar" fxFlex="20">
-        <b>right</b>
+    <div class="rightNavBar">
+        <button *ngIf="!isAuthenticated" (click)="goToLoginPage()" mat-raised-button class="app-primary-accent-button-colour app-border">Login</button>
     </div>
 </div>

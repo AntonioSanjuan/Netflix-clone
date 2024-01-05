@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\TheMoviedb\Movies\Movies\Request\**" />
+    <Content Remove="Models\TheMoviedb\Movies\Movies\Request\**" />
+    <EmbeddedResource Remove="Models\TheMoviedb\Movies\Movies\Request\**" />
+    <None Remove="Models\TheMoviedb\Movies\Movies\Request\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Dtos\Movie\GetMovieImages\Request\" />
+    <Folder Include="Models\TheMoviedb\Auth\CreateRequestToken\Request\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+
+</Project>

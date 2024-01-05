@@ -1,0 +1,33 @@
+<div class="MovieBasicInfo_MainContainer">
+  <div class="MovieBasicInfo_SubContainer">
+    <div class="MovieBasicInfo_ImageContainer app-border">
+      <img class="MovieBasicInfo_Image" (click)="openImageDialog()" src="{{movie?.images?.backdropImageToBase64}}">
+    </div>
+    <div class="MovieBasicInfo_Content">
+      <div class="MovieBasicInfo_ContentContainer">
+        <div class="MovieBasicInfo_ContentTitleData app-text-big">
+          {{movie?.title}}
+        </div >
+        <div class="MovieBasicInfo_ContentInfo">
+          <div class="MovieBasicInfo_ContentRate">
+            <mat-icon class="app-button">star_rate</mat-icon> {{movie?.voteAverage}}
+          </div>
+        </div >
+      </div>
+    </div>
+    <div class="MovieBasicInfo_Actions">
+      <div class="MovieBasicInfo_ActionsContainer">
+        <div class="MovieBasicInfo_Action">
+          <button mat-icon-button>
+            <mat-icon class="app-button">bookmark_border</mat-icon>
+          </button>
+        </div>
+        <div class="MovieBasicInfo_Action">
+          <button (click)="openMovieInfoDialog()" mat-icon-button>
+            <mat-icon class="app-button">info_outline</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<mat-sidenav-container class="Sidenav_MainContainer">
+    <mat-sidenav mode="side" [(opened)]="isSideNavOpened">
+      <div class="Sidenav_SubContainer">
+        <div class="Sidenav_Container">
+          <mat-nav-list>
+            <a class="app-text-big" mat-list-item> Perfil </a>
+            <a class="app-text-big" mat-list-item> Opciones </a>
+          </mat-nav-list>
+        </div>
+        <mat-divider class="app-divider"></mat-divider>
+        <div class="Sidenav_Container">
+          <mat-nav-list>
+            <a class="app-text-big" mat-list-item> Creditos </a>
+            <a class="app-text-big" mat-list-item> Tecnologias </a>
+          </mat-nav-list>
+        </div>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="Sidenav_Content">
+        <ng-content></ng-content>
+    </div>
+    </mat-sidenav-content>

@@ -1,0 +1,39 @@
+@import '../styleColours.scss';
+
+:host{
+  height: 100%;
+}
+
+.container{
+    background-color: var(--app-background-color);
+    color: var(--text-small-colour);
+    height: 100%;
+    overflow-y: auto !important;
+    padding: 0%;
+}
+
+.container_header{
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;
+  place-content: space-around;
+  align-items: center;
+}
+
+.container_body{
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  place-content: space-around;
+  align-items: center;
+  flex: 1 1 100%;
+}
+
+h1 {
+  color: var(--text-tittle-colour);
+}
+
+h2 {
+  color: var(--text-tittle-colour);
+}
+
